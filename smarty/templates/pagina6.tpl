@@ -73,6 +73,7 @@
 
 <input type='submit' value='Añade pista' name='anadePista'/> 
 <input type='submit' value='Eliminar Pista' name='delPista'/><br><br>
+<input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/>
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
 		<th>Pistas</th>	
@@ -157,8 +158,8 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 </table>
 <br><br>
 <form id='listapistas' action='pagina8.php' method='POST'>
-  <input type='submit' value='Añadir Pista' name='anadir'/>
-  <input type='submit' value='Eliminar Pista' name='eliminar'/>
+  <input type='submit' value='Añadir Pista' name='anadePista'/>
+  <input type='submit' value='Eliminar Pista' name='delPista'/>
   <input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/>
 </form>
 
