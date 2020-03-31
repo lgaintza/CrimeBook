@@ -14,8 +14,8 @@ $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
 // Comprobamos si ya se ha enviado el formulario
-if (isset($_POST['anadir'])){
-    $idPrueba =$_POST['codigoprueba'];
+if (isset($_POST['anadirPista'])){
+    $idPrueba =$_POST['codigoPrueba'];
 
 }
 if (isset($_POST['guardar'])) {
