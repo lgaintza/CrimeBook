@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<!-- Desarrollo Web en Entorno Servidor -->
-<!-- Tema 6 : Aplicación completa CrimeBook -->
-<!-- crimeBook: pagina5 -->
 <html>
-    <head>
-	<title>Listado de Juegos</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-    </head>
-    <body class="pagpruebas">
-        <div class="topnav" id="myTopnav">
-            <a href="pagina1.php">Listado de Juegos</a>
-            <a href="pagina2.php">Listado de Partidas</a>
-            <a href="pagina3.php">Listado de Pruebas</a>
-            <a href="pagina4.php">Partida Nueva/Editar</a>
-            <a href="pagina5.php" class="active">Juego Nuevo/Editar</a>
-            <a href="pagina6.php">Prueba Nueva/Editar</a>
+<head>
+  <title>Crimebook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+
+<body class="pagpruebas">
+
+   <div class="topnav" id="myTopnav">
+            <a href="pagina1.php">Listado<br>de Juegos</a>
+            <a href="pagina2.php">Listado<br>de Partidas</a>
+            <a href="pagina3.php">Listado<br>de Pruebas</a>
+            <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
+            <a href="pagina5.php">Juego Nuevo<br>Editar Juego</a>
+            <a href="pagina6.php">Prueba Nueva<br>Editar Prueba</a>
             <a href="pagina7.php">Estadísticas</a>
-            <a href="pagina8.php">Crear pista</a>
+            <a href="pagina8.php" class="active">Crear Pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-		<i class="fa fa-bars"></i>
+    <i class="fa fa-bars"></i>
             </a>
-	</div>
-<div id="pag5" align="center">
+  </div>
+
+
+  <div id="pag5" align="center">
     <!--esta es para editar el juego que ya esta creado -->
-  {if $hayNuevoJuego =="0"} 
+  {if $hayNuevoJuego ==0} 
 
   <h2 align="left">Editar Juego</h2>
   <p><form id='guardajuego' action='guardajuego.php' method='POST'>
@@ -81,7 +82,7 @@
     <strong>Descripcion breve: </strong><textarea name="descBreve" rows="3" cols="50" placeholder="Introduzca una descripción breve"></textarea><br><br>
     <strong>Descripcion extendida: </strong><textarea name="descExtendida" rows="6" cols="50" placeholder="Introduzca una descripción extensa"></textarea><br></br>
       <input type='hidden' name='fechaCreacion' value='{$fechaCreacion}'/>
-      <input type='hidden' name='username' value='{$usuario}'/>
+      <input type='hidden' name='username' value='{$username}'/>
       
        <h3 align="left">Listado de pruebas</h3>
   <table align="center">
@@ -115,10 +116,6 @@
   }
   </script>
 
-        <div id="pie">
-            <form action='logoff.php' method='post'>
-                <input type='submit' name='desconectar' value='Desconectar usuario'/>
-            </form>
-        </div>
-    </body>    
+</body>
 </html>
+   
