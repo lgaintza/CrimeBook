@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-31 16:33:09
+/* Smarty version 3.1.34-dev-7, created on 2020-03-31 19:57:29
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina6.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8354a54eaca9_39833425',
+  'unifunc' => 'content_5e83848928d2d6_18291344',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '47c0ba130e0e5c7bdf00cb406f55dcda6a9b2e35' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina6.tpl',
-      1 => 1585393479,
+      1 => 1585677009,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e8354a54eaca9_39833425 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e83848928d2d6_18291344 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,25 +61,25 @@ function content_5e8354a54eaca9_39833425 (Smarty_Internal_Template $_smarty_tpl)
 <p>Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" name="descripcionextendida"><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescExtendida();?>
  </textarea></p>
 <p>
-		Tipo:<select name="tipo">
+		Tipo: <select name="tipo">
 				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->gettipo() == "Prueba Normal") {?> selected <?php }?> value="Prueba Normal">Normal</option>
 				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->gettipo() == "Prueba Final") {?> selected <?php }?> value="Prueba Final">Final</option>
 		</select>
 </p>
 <p>
-		Dificultad:<select name="dificultad">
+		Dificultad: <select name="dificultad">
 				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->getdificultad() == "Facil") {?> selected <?php }?> value="Facil">Facil</option>
 				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->getdificultad() == "Normal") {?> selected <?php }?> value="Normal">Normal</option>
 				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->getdificultad() == "Dificil") {?> selected <?php }?> value="Dificil">Dificil</option>
 		</select>
 </p>
 
-<p>Ayuda final:<input type="text" name="ayudaFinal"value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getayudaFinal();?>
+<p>Ayuda final: <input type="text" name="ayudaFinal"value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getayudaFinal();?>
 " > </p>
 <input type='hidden' name='username' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getusername();?>
 '/>
 
-<p>Añadir Solucion:<textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
+<p>Añadir Solucion: <textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
  <input type='submit' value='Anadir Solucion' name='anadir'/>
  <input type="hidden" name="arrayrespuestas">
 <br>
@@ -110,6 +110,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 <input type='submit' value='Añade pista' name='anadePista'/> 
 <input type='submit' value='Eliminar Pista' name='delPista'/><br><br>
+<input type='hidden' name='codigoprueba' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
+'/>
+
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
 		<th>Pistas</th>	
@@ -148,32 +151,32 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 <?php } else { ?>
 <p><form id='guardaprueba' action='pagina6.php' method='POST'>
 <p>
-	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre">
+	Nombre: <input type="text" name="nombre" placeholder="Introduzca el nombre">
 </p>
 <p>
-	URL:<input type="text" name="url" placeholder="Introduzca la URL">
+	URL: <input type="text" name="url" placeholder="Introduzca la URL">
 </p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripcionbreve" placeholder="Introduzca una descripción breve"></textarea>
+	Descripción breve: <textarea cols="50" rows="5" name="descripcionbreve" placeholder="Introduzca una descripción breve"></textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="descripcionextendida" placeholder="Introduzca una descripción extensa"></textarea>
+Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" name="descripcionextendida" placeholder="Introduzca una descripción extensa"></textarea>
 	</p>
 	<p>
-		Tipo:<select name="tipo">
+		Tipo: <select name="tipo">
 				<option value="Prueba Normal">Normal</option>
 				<option value="Prueba Final">Final</option>
 				</select>
 	</p>
 <p>
-		Dificultad:<select  name="dificultad">
+		Dificultad: <select  name="dificultad">
 				<option value="F">Facil</option>
 				<option value="N">Normal</option>
 				<option value="D">Dificil</option>
 		</select>
 </p>
 
-<p>Ayuda final:<input type="text" name="ayudaFinal"></p>
+<p>Ayuda final: <input type="text" name="ayudaFinal"></p>
 <input type='hidden' name='username' value='<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 '/>
  
@@ -181,7 +184,7 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 <p>Añadir Solucion:<textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
 
  <input type='submit' value='Añadir Solucion' name='anadir'/><br><br>
- <input type='submit' value='Guardar Prueba' name='anadir'/><br><br>
+ <input type='submit' value='Guardar Prueba' name='guardarPrueba'/><br><br>
 <br><br>
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
@@ -191,10 +194,11 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 		
 </table>
 <br>
- 
+ <input type='submit' value='Añade pista' name='anadePista'/> 
 </form>
 
 <br><br>
+
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
 		<th>Listado de Pistas</th>       
@@ -204,12 +208,7 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 		
 </table>
 <br><br>
-<form id='listapistas' action='pagina8.php' method='POST'>
-  <input type='submit' value='Añadir Pista' name='anadir'/>
-  <input type='submit' value='Eliminar Pista' name='eliminar'/>
-  <input type='hidden' name='codigoprueba' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
-'/>
-</form>
+
 
 
 <?php }?>

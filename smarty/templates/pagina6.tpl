@@ -34,23 +34,23 @@
 <p>Descripción breve: <textarea cols="50" rows="5" name="descripcionbreve">{$prueba->getdescBreve()} </textarea></p>
 <p>Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" name="descripcionextendida">{$prueba->getdescExtendida()} </textarea></p>
 <p>
-		Tipo:<select name="tipo">
+		Tipo: <select name="tipo">
 				<option {if $prueba->gettipo() == "Prueba Normal"} selected {/if} value="Prueba Normal">Normal</option>
 				<option {if $prueba->gettipo() == "Prueba Final"} selected {/if} value="Prueba Final">Final</option>
 		</select>
 </p>
 <p>
-		Dificultad:<select name="dificultad">
+		Dificultad: <select name="dificultad">
 				<option {if $prueba->getdificultad() == "Facil"} selected {/if} value="Facil">Facil</option>
 				<option {if $prueba->getdificultad() == "Normal"} selected {/if} value="Normal">Normal</option>
 				<option {if $prueba->getdificultad() == "Dificil"} selected {/if} value="Dificil">Dificil</option>
 		</select>
 </p>
 
-<p>Ayuda final:<input type="text" name="ayudaFinal"value="{$prueba->getayudaFinal()}" > </p>
+<p>Ayuda final: <input type="text" name="ayudaFinal"value="{$prueba->getayudaFinal()}" > </p>
 <input type='hidden' name='username' value='{$prueba->getusername()}'/>
 
-<p>Añadir Solucion:<textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
+<p>Añadir Solucion: <textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
  <input type='submit' value='Anadir Solucion' name='anadir'/>
  <input type="hidden" name="arrayrespuestas">
 <br>
@@ -74,6 +74,7 @@
 <input type='submit' value='Añade pista' name='anadePista'/> 
 <input type='submit' value='Eliminar Pista' name='delPista'/><br><br>
 <input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/>
+
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
 		<th>Pistas</th>	
@@ -102,39 +103,39 @@
 {else}
 <p><form id='guardaprueba' action='pagina6.php' method='POST'>
 <p>
-	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre">
+	Nombre: <input type="text" name="nombre" placeholder="Introduzca el nombre">
 </p>
 <p>
-	URL:<input type="text" name="url" placeholder="Introduzca la URL">
+	URL: <input type="text" name="url" placeholder="Introduzca la URL">
 </p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripcionbreve" placeholder="Introduzca una descripción breve"></textarea>
+	Descripción breve: <textarea cols="50" rows="5" name="descripcionbreve" placeholder="Introduzca una descripción breve"></textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="descripcionextendida" placeholder="Introduzca una descripción extensa"></textarea>
+Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" name="descripcionextendida" placeholder="Introduzca una descripción extensa"></textarea>
 	</p>
 	<p>
-		Tipo:<select name="tipo">
+		Tipo: <select name="tipo">
 				<option value="Prueba Normal">Normal</option>
 				<option value="Prueba Final">Final</option>
 				</select>
 	</p>
 <p>
-		Dificultad:<select  name="dificultad">
+		Dificultad: <select  name="dificultad">
 				<option value="F">Facil</option>
 				<option value="N">Normal</option>
 				<option value="D">Dificil</option>
 		</select>
 </p>
 
-<p>Ayuda final:<input type="text" name="ayudaFinal"></p>
+<p>Ayuda final: <input type="text" name="ayudaFinal"></p>
 <input type='hidden' name='username' value='{$username}'/>
  
 
 <p>Añadir Solucion:<textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
 
  <input type='submit' value='Añadir Solucion' name='anadir'/><br><br>
- <input type='submit' value='Guardar Prueba' name='anadir'/><br><br>
+ <input type='submit' value='Guardar Prueba' name='guardarPrueba'/><br><br>
 <br><br>
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
@@ -144,10 +145,11 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 		
 </table>
 <br>
- 
+ <input type='submit' value='Añade pista' name='anadePista'/> 
 </form>
 
 <br><br>
+
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
 		<th>Listado de Pistas</th>       
@@ -157,11 +159,7 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 		
 </table>
 <br><br>
-<form id='listapistas' action='pagina8.php' method='POST'>
-  <input type='submit' value='Añadir Pista' name='anadePista'/>
-  <input type='submit' value='Eliminar Pista' name='delPista'/>
-  <input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/>
-</form>
+
 
 
 {/if}
