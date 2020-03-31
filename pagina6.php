@@ -18,7 +18,7 @@ $smarty->cache_dir = 'smarty/cache/';
 //Para crear una nueva prueba, la primera vez que entramos en la página
 if(isset($_SESSION['pag3_to_6']))
 {
-	echo "entramos en la funcion1"; 
+	
 	//En este caso la prueba es nueva 
 	//Podemos coger un id temporal para crear pistas 
 	$ultimaprueba=BD::recogeUltimaPrueba(); 
@@ -46,7 +46,7 @@ if(isset($_SESSION['pag3_to_6']))
 //Si pulsamos el botón de añadir pista antes de ir a la página 8 
 if(isset($_POST['anadePista']))
 {
-	echo "entramos en la funcion2"; 
+	
 
 	//Si pulsamos el botón de añadir pista tenemos que ir a la página 8 guardando todo lo que teníamos antes 
 	$row['nombre']=$_POST['nombre']; 
@@ -70,7 +70,7 @@ if(isset($_POST['anadePista']))
 //Cuando volvemos de la página8 
 if(isset($_SESSION['pruebaGuardadaParaVolver']))
 {
-	echo "entramos en la funcion3"; 
+	
 
 	//Si tenemos esta variable de sesión es que hemos vuelto de la página 8 y tenemos una nueva pista guardada
 	$hayNuevaPrueba=0; 
@@ -88,7 +88,7 @@ if(isset($_SESSION['pruebaGuardadaParaVolver']))
 //Cuando le damos a editar en la pagina3.php 
 if(isset($_SESSION['idpru_3_to_6']))
 {
-	echo "entramos en la funcion4"; 
+	
 
 	//Esto significa que editamos la prueba
 	//Si venimos a editar puede que haya pistas 
@@ -97,7 +97,7 @@ if(isset($_SESSION['idpru_3_to_6']))
 	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
 	$pruebaRecibida=$_SESSION['idpru_3_to_6']; 
 	$_SESSION['pruebaRecibida']=$pruebaRecibida; //el funcionamiento de nueistr pagina 
-	$_SESSION['idTemporalPrueba']=$pruebaRecibida;  //Esta es para la pagina 8 y queno tenga que hace distuncoines
+	$_SESSION['idTemporalPrueba']=$pruebaRecibida;  //Esta es para la pagina 8 y que no tenga que hacer distinciones de si es nueva prueba o editar prueba
 	unset($_SESSION['idpru_3_to_6']); 
 	$_SESSION['accion']="editar";
 	//Además de hacer esto que es lo mismo que hemos hecho arriba, tenemos que crear el objeto prueba 
@@ -126,7 +126,7 @@ if(isset($_SESSION['idpru_3_to_6']))
 //Cuando pulsamos en el botón de añadir solución
 if(isset($_POST['anadir']))
 {
-	echo "entramos en la funcion5"; 
+	
 
 	//Si pulsamos sobre el botón de añadir solución lo que tenemos que hacer es guardar los datos que tenemos en el formulario como un objeto de tipo prueba
 	//Y guardamos en un array las pruebas que vamos metiendo
@@ -223,7 +223,7 @@ if(isset($_POST['anadir']))
 //Cuando pulsamos en el botón guardar prueba
 if(isset($_POST['guardarPrueba']))
 {
-	//echo "entramos en la funcion6"; 
+	
 
 	if(isset($_SESSION['pruebaRecibida']))//Si tenemos el id de la prueba lo metemos en el row para hacer el objeto de prueba
 	{
@@ -247,7 +247,7 @@ if(isset($_POST['guardarPrueba']))
 
 if(isset($_POST['delPista'])) //borrar pista
 {
-	//echo "entramos en la funcion7"; 
+	
 
 	$row['id']=$_SESSION['pruebaRecibida']; 
 	$row['nombre']=$_POST['nombre']; 
