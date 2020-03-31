@@ -1,4 +1,4 @@
-<div align="center"><p><h2>Juego seleccionado: {$mijuego}</h2></p></div>
+<div align="center"><h2>Juego: {$mijuego}.</div>
 <form action="{$smarty.server.PHP_SELF}" method="post">
     <table align="center">
         <tr>

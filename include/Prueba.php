@@ -19,7 +19,7 @@ class Prueba {
     public function geturl() {return $this->url; }
     public function gettipo() {return $this->tipo; }
     public function getdificultad() {return $this->dificultad; }
-    //public function getayudaFinal() {return $this->ayudaFinal; }
+    public function getayudaFinal() {return $this->ayudaFinal; }
     public function getusername() {return $this->username; }
     public function getrespuestas() {return $this->respuestas; }
     public function putrespuesta($valor) { $respuestas[] = $valor; }
@@ -30,18 +30,42 @@ class Prueba {
                 $this->id = $row['id'];
             }        
         $this->nombre = $row['nombre'];
-        $this->descExtendida = $row['descExtendida'];
-        $this->descBreve = $row['descBreve'];
-        $this->url = $row['url'];
+        
+        if(isset($row['descExtendida']))
+             {
+                $this->descExtendida = $row['descExtendida'];
+             }
+        if(isset($row['descBreve']))
+        {
+            $this->descBreve = $row['descBreve'];
+        }
+        
+        
+        if(isset($row['url']))
+        {
+                $this->url = $row['url'];
+        }       
+
         $this->tipo = $row['tipo'];
-        $this->dificultad = $row['dificultad'];
-        //$this->ayudaFinal = $row['ayudaFinal'];
+
+        if(isset($row['dificultad']))
+        {
+                $this->dificultad = $row['dificultad'];
+        }
+        if(isset($row['ayudaFinal']))
+        {
+                $this->ayudaFinal = $row['ayudaFinal'];   
+        }   
         $this->username = $row['username'];       
         
     }
 
     public function cargaRespuestas($valorRespuestas){
         $this->respuestas= $valorRespuestas; 
+    }
+    public function cargaId($nuevoId)
+    {
+        $this->id=$nuevoId; 
     }
 }
 

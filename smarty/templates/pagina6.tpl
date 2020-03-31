@@ -1,31 +1,31 @@
+
 <!DOCTYPE html>
-<!-- Desarrollo Web en Entorno Servidor -->
-<!-- Tema 6 : Aplicación completa CrimeBook -->
-<!-- crimeBook: pagina6 -->
 <html>
-    <head>
-	<title>Listado de Juegos</title>
+<head>
+	<title>Crimebook</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-    </head>
-    <body class="pagpruebas">
-        <div class="topnav" id="myTopnav">
-            <a href="pagina1.php">Listado de Juegos</a>
-            <a href="pagina2.php">Listado de Partidas</a>
-            <a href="pagina3.php">Listado de Pruebas</a>
-            <a href="pagina4.php">Partida Nueva/Editar</a>
-            <a href="pagina5.php">Juego Nuevo/Editar</a>
-            <a href="pagina6.php" class="active">Prueba Nueva/Editar</a>
+</head>
+<body class="pagpruebas">
+
+
+	 <div class="topnav" id="myTopnav">
+            <a href="pagina1.php">Listado<br>de Juegos</a>
+            <a href="pagina2.php">Listado<br>de Partidas</a>
+            <a href="pagina3.php">Listado<br>de Pruebas</a>
+            <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
+            <a href="pagina5.php">Juego Nuevo<br>Editar Juego</a>
+            <a href="pagina6.php">Prueba Nueva<br>Editar Prueba</a>
             <a href="pagina7.php">Estadísticas</a>
-            <a href="pagina8.php">Crear pista</a>
+            <a href="pagina8.php" class="active">Crear Pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		<i class="fa fa-bars"></i>
             </a>
 	</div>
 
 
-<div id="pag6" align="center"  >
+	<div id="pag6" align="center"  >
 
 	{if $hayNuevaPrueba ==0}
 <form action="pagina6.php" method="POST" >
@@ -73,6 +73,7 @@
 
 <input type='submit' value='Añade pista' name='anadePista'/> 
 <input type='submit' value='Eliminar Pista' name='delPista'/><br><br>
+<input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/>
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
 		<th>Pistas</th>	
@@ -157,8 +158,8 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 </table>
 <br><br>
 <form id='listapistas' action='pagina8.php' method='POST'>
-  <input type='submit' value='Añadir Pista' name='anadir'/>
-  <input type='submit' value='Eliminar Pista' name='eliminar'/>
+  <input type='submit' value='Añadir Pista' name='anadePista'/>
+  <input type='submit' value='Eliminar Pista' name='delPista'/>
   <input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/>
 </form>
 
@@ -180,10 +181,5 @@ function myFunction() {
 }
 </script>
 
-        <div id="pie">
-            <form action='logoff.php' method='post'>
-                <input type='submit' name='desconectar' value='Desconectar usuario'/>
-            </form>
-        </div>
-    </body>    
+</body>
 </html>

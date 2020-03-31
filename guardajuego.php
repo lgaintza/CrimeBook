@@ -12,7 +12,7 @@ require_once('include/Juego.php');
 			$descripcionbreve=$_POST['descBreve'];
 			$descripcionextendida=$_POST['descExtendida'];
 			$fechaCreacion=$_POST['fechaCreacion'];
-                        $username=$_POST['username'];
+        	$username=$_POST['username'];
 
         	
 			
@@ -67,7 +67,7 @@ require_once('include/Juego.php');
 			$descripcionbreve=$_POST['descBreve'];
 			$descripcionextendida=$_POST['descExtendida'];
 			$fechaCreacion=$_POST['fechaCreacion'];
-                        $username=$_POST['username'];
+        	$username=$_POST['username'];
         	
 
 			$row= array(); 			 
@@ -75,10 +75,11 @@ require_once('include/Juego.php');
        		$row['descBreve']= $descripcionbreve; 
        		$row['descExtendida']= $descripcionextendida; 
        		$row['fechaCreacion']=$fechaCreacion;
-        	$row['username']="$username";
-        	$maxidjuego=BD::recogeUltimoJuego();//cojemos el ultimo insertado
-        	$idnuevojuego=++$maxidjuego['0']; 
-        	$row['id']=$idnuevojuego; //recojo el ultimo juego para incrementar el id
+        	$row['username']="ivantapia01";
+        	$ultimojuego=BD::recogeUltimoJuego();//cojemos el ultimo insertado
+        	
+        	$ultimojuego=$ultimojuego+1; 
+        	$row['id']=$ultimojuego; //recojo el ultimo juego para incrementar el id
 			$juego = new Juego($row);
 
 			BD::insertarJuego($juego);

@@ -118,10 +118,20 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
     
     //metodo para crear equipo en la pagina 4
     public static function creaEquipo(){
-        $resultadomax = self::obtieneMaxIdEquipos();
+        //crea código de equipo aleatorio
         $codigoaleatorio = self::obtieneAleatorio();
-        $_SESSION['nuevoJuegoId']=++$resultadomax[0];
-        
+        //como es único tenemos que chequear que no exista. Se crea un array con los actuales y se compara
+        $arraycodigos =(BD::arraycodigo());
+        $micheck=$codigoaleatorio;
+        foreach($arraycodigos as $checkcodigo){ 
+            $checkbucle = $checkcodigo->getcodigo();
+            if ($checkbucle==$micheck){
+                //Si el código ya existe, se reinicia la función para que genere uno nuevo
+                $a=(BD::creaEquipo());
+            }
+        }
+         $resultadomax = self::obtieneMaxIdEquipos();
+        $_SESSION['nuevoJuegoId']=++$resultadomax[0];        
         $sql ="INSERT INTO equipos VALUES ('".
         $sql =++$resultadomax[0]."', ".
         $sql ="'".$codigoaleatorio."', ".
@@ -132,6 +142,24 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $equipo;
     }
     
+    
+    //Para chequear codigo equipo nuevo no existe Pag4
+    public static function arraycodigo(){
+        $sql  = "SELECT codigo FROM equipos";
+        $resultado = self::ejecutaConsulta($sql);
+        $codigoequipos = array();
+
+	if($resultado) {
+            // Añadimos un elemento por cada producto obtenido
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $codigoequipos[] = new Equipo($row);
+                $row = $resultado->fetch();
+            }
+	}
+        
+        return $codigoequipos;
+    }
     
     //metodo para crear equipo en la pagina 4
     public static function creaPartidaNueva(){
@@ -205,8 +233,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $row;
     }
     
-    
-    
+        
     
     //Para chequear nombre nueva partida no existe Pag4
     public static function arrayNombrePartidas(){
@@ -454,9 +481,9 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $equipos4;
     }
     
-    protected static function insertaRegistro($sql) {
+       protected static function insertaRegistro($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-        $dsn = "mysql:host=localhost;dbname=CrimeBook";
+        $dsn = "mysql:host=localhost;dbname=crimeBook";
         $usuario = 'ivantapia01';
         $contrasena = '1234abcd';
         $dwes = new PDO($dsn, $usuario, $contrasena, $opc);
@@ -474,32 +501,33 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $resultado;   
 
     }
-    
-    
-public static function obtenerJuego($codigojuego) {
-        $sql = "SELECT *  FROM juegos";
-        $sql .= " WHERE id=$codigojuego";
+
+
+    public static function obtenerJuego($id) {
+        $sql = "SELECT * FROM juegos";
+        $sql .= " WHERE id='".$id."'";
         $resultado = self::ejecutaConsulta ($sql);
         $juego = array();
 
-    	if($resultado) {
+        if($resultado) {
                 
                 $row = $resultado->fetch();
                 while ($row != null) {
                     $juego[] = new Juego($row);
                     $row = $resultado->fetch();
                 }
-    	}
+        }
             
             return $juego;
+        
     }
 
 
     public static function listadoPruebasJuego($codigojuego) {
-        $sql = "SELECT pruebas.id, pruebas.nombre, pruebas.url, pruebas.descBreve";
-        $sql .= " pruebas.descExtendida, pruebas.tipo FROM pruebas, pertenencias"; 
+        $sql = "SELECT pruebas.id, pruebas.nombre, pruebas.url, pruebas.descBreve, pruebas.dificultad,";
+        $sql .= " pruebas.ayudaFinal, pruebas.username, pruebas.descExtendida, pruebas.tipo FROM pruebas, pertenencias"; 
         $sql .= " WHERE (pruebas.id=pertenencias.idprueba";
-        $sql .= "AND pertenencias.idjuego='" . $codigojuego . "')";
+        $sql .= " AND pertenencias.idjuego='" . $codigojuego . "')";
 
         $resultado = self::ejecutaConsulta ($sql);
         $listapruebasjuego = array();
@@ -511,7 +539,7 @@ public static function obtenerJuego($codigojuego) {
                     $row = $resultado->fetch();
                 }
         }
-            
+           
             return $listapruebasjuego; 
     }  
 
@@ -535,7 +563,7 @@ public static function obtenerJuego($codigojuego) {
 
 
 
-    public static function insertarJuego($juego) {      
+     public static function insertarJuego($juego) {      
         
         $sql = "INSERT INTO juegos (id, nombre, descExtendida, descBreve, fechaCreacion, username)";
         $sql .= " VALUES ('".$juego->getid()."','".$juego->getnombre()."', '".$juego->getdescExtendida()."',";
@@ -547,18 +575,19 @@ public static function obtenerJuego($codigojuego) {
     }
 
 
-     public static function actualizaJuego($juego) {        
+     public static function actualizaJuego($juego) {       
         
-        $sql = "UPDATE juegos SET nombre='".$juego->getnombre()."', ";
-        $sql .= "descBreve='".$juego->getdescBreve()."', ";
-        $sql .= "descExtendida='".$juego->getdescExtendida()."'";
+        $sql = "UPDATE juegos SET nombre='".$juego->getnombre()."' ,";
+        $sql .= "descExtendida='".$juego->getdescExtendida()."', ";
+        $sql .= "descBreve='".$juego->getdescBreve()."'";
+
         $sql .=" WHERE id='".$juego->getid()."' ";
         $resultado = self::insertaRegistro($sql);
         
         return;   
     }  
 
-        public static function insertarPertenencias($codigojuego, $codigoprueba) {        
+    public static function insertarPertenencias($codigojuego, $codigoprueba) {        
         
         $sql = " INSERT INTO pertenencias (idJuego, idPrueba)";
         $sql .= " VALUES ('".$codigojuego."','".$codigoprueba."')";      
@@ -576,65 +605,24 @@ public static function obtenerJuego($codigojuego) {
         $resultado = self::ejecutaConsulta ($sql);     
         
         return $sql; 
-    }
+    }     
 
-
-       
-
-    public static function eliminarPertencias($codigojuego, $codigoprueba) {        
-       
-        $sql .= "DELETE FROM table pertencias";
-        $sql .= " WHERE (idJuego=$codigojuego, idPrueba=$codigoprueba";      
-
-        $resultado = self::insertaRegistro($sql);        
-        return;   
-
-    }  
     
-    public static function insertaRespuesta($codigoprueba, $respuesta,$ultimaRespuesta) {        
-        
-        $sql = " INSERT INTO respuestas (idPrueba, respuesta,id)";
-        $sql .= " VALUES ('".$codigoprueba."', '".$respuesta."','".$ultimaRespuesta."')";      
-
-        $resultado = self::insertaRegistro($sql);        
-        return $sql;   
-
-    }   
 
     public static function recogeUltimoJuego() {
-            $resultadomax = self::obtieneMaxIdJuegos();
-            return $resultadomax;
-    }
-     
-
-    
-    public static function obtenerPrueba($idpru) {
-        $sql = "SELECT id, nombre, URL, descBreve, descExtendida, tipo  FROM pruebas";
-        $sql .= " WHERE id=$idpru";
+        $sql = " SELECT MAX(id) FROM juegos";        
         $resultado = self::ejecutaConsulta ($sql);
-        $listarespuestas=array();
-        if($resultado) {
-                // Añadimos un elemento por cada prueba obtenida
-                $row = $resultado->fetch();
-                while ($row != null) {
-                    $prueba= new Prueba($row);
-                    $row = $resultado->fetch();
-                }
-        }
-        //Antes de devolver el objeto de la prueba 
-        //Necesitamos cargas las respuestas que tienen esa prueba 
-        //Como están en otra
-        $listarespuestas2= listadoRespuestas($idpru); 
-        //Ahora nos hace falta guardar el array con las respuestas en nuestro objeto prueba
-        $prueba->cargaRespuestas($listarespuestas); 
-        return $prueba;
-    } 
+        if(isset($resultado)) {
+            $row = $resultado->fetch();
+        }        
+        return $row[0];
+    }
 
-
-    public static function listadoRespuestas($codigorespuesta) {
-        $sql = "SELECT respuesta FROM respuestas"; 
-        $sql .= " WHERE id ='" . $codigorespuesta . "'";
-        $sql .= "AND id=idPrueba";
+    //##Modificada, mal la sql 
+    public static function listadoRespuestas($id) {
+        $sql = " SELECT respuesta FROM respuestas"; 
+        $sql .= " WHERE idPrueba ='" . $id . "'";
+        
 
         $resultado = self::ejecutaConsulta ($sql);
         $listarespuestas = array();
@@ -648,60 +636,150 @@ public static function obtenerJuego($codigojuego) {
         }
             
         return $listarespuestas; 
+    }
+
+    public static function insertaRespuesta($codigoprueba, $respuesta,$ultimaRespuesta) {        
+        
+        $sql = " INSERT INTO respuestas (idPrueba, respuesta,id)";
+        $sql .= " VALUES ('".$codigoprueba."', '".$respuesta."','".$ultimaRespuesta."')";      
+
+        $resultado = self::insertaRegistro($sql);        
+        return $sql;   
+
+    }    
+     
+
+    
+    public static function obtenerPrueba($id) {
+        $sql = " SELECT *  FROM pruebas";
+        $sql .= " WHERE id='".$id."'";
+        $resultado = self::ejecutaConsulta ($sql);
+        $listarespuestas=array();
+        if($resultado) {
+                
+                $row = $resultado->fetch();
+                while ($row != null) {
+                    $prueba= new Prueba($row);
+                    $row = $resultado->fetch();
+                }
+        }
+        
+
+        //Antes de devolver el objeto de la prueba 
+        //Necesitamos cargas las respuestas que tienen esa prueba 
+        //Como están en otra
+        $listarespuestas= self::listadoRespuestas($id); 
+        $prueba->cargaRespuestas($listarespuestas);
+        return $prueba;
+       
+       
     }  
 
-   
-     public static function listadoPistas($codigoprueba) {
-        $sql = "SELECT texto FROM pistas"; 
-        $sql .= " WHERE id ='" . $codigopista . "'";
-        $sql .= "AND id=idPrueba";
 
+    public static function listadoPistas() {
+        $sql = "SELECT * FROM pistas";
         $resultado = self::ejecutaConsulta ($sql);
         $listapistas = array();
+
+        if($resultado) {            
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $listapistas[] = new Pista($row);
+                $row = $resultado->fetch();
+            }
+        }
+        
+        return $listapistas;  
+    }
+
+    
+   
+    public static function listadoPistasPrueba($codigoprueba) {
+        $sql = " SELECT * FROM pistas"; 
+        $sql .= " WHERE idPrueba ='" . $codigoprueba . "'";       
+
+        $resultado = self::ejecutaConsulta ($sql);
+        $listapistasprueba = array();
 
         if($resultado) {
                 $row = $resultado->fetch();
                 while ($row != null) {
-                    $listapistas[] = new Pistas($row);
+                    $listapistasprueba[] = new Pista($row);
                     $row = $resultado->fetch();
                 }
         }
             
-        return $listapistas; 
-    }   
+        return $listapistasprueba; 
+    } 
 
-
-    public static function recogeUltimoPrueba() {
-        $sql = "SELECT MAX(id) FROM pruebas";        
-        $ultimaprueba = self::ejecutaConsulta ($sql);
+     public static function recogeUltimaPista() {
+        $sql = " SELECT MAX(id) FROM pistas";        
+        $resultado= self::ejecutaConsulta ($sql);
+        if(isset($resultado)) {
+            $row = $resultado->fetch();
+        }        
+        return $row[0];
         
-        return $ultimaprueba;
-    }    
+    } 
+
+ 
+
+    public static function recogeUltimaPrueba() {
+        $sql = " SELECT MAX(id) FROM pruebas";        
+        $resultado= self::ejecutaConsulta ($sql);
+        if(isset($resultado)) {
+            $row = $resultado->fetch();
+        }        
+        return $row[0];
+        
+    }  
+    //Esto no lo habías corregido, el id no es incremental en las respuestas tampoco
+    public static function recogeUltimaRespuesta() {
+        $sql = " SELECT MAX(id) FROM respuestas";        
+        $resultado= self::ejecutaConsulta ($sql);
+        if(isset($resultado)) {
+            $row = $resultado->fetch();
+        }        
+        return $row[0];
+        
+    }      
 
 
     public static function insertarPrueba($prueba) {        
         
-        $sql = "INSERT INTO pruebas (nombre, URL, descBreve, descExtendida, tipo)";
-        $sql .= " VALUES ($prueba->getnombreprueba(), $prueba->getURL(), ";
-        $sql .= " $prueba->getdescripcionbreve(),";
-        $sql .= " $prueba->getdescripcionextendida(), $prueba->gettipo())";
+        $sql = " INSERT INTO pruebas (id, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username)";
+        $sql .= " VALUES ('".$prueba->getid()."','".$prueba->getnombre()."', '".$prueba->getdescExtendida()."',";
+        $sql .= " '".$prueba->getdescBreve()."', '".$prueba->gettipo()."', '".$prueba->getdificultad()."' ,";
+        $sql .= " '".$prueba->geturl()."', '".$prueba->getayudaFinal()."', '".$prueba->getusername()."') ";
 
         $resultado = self::insertaRegistro($sql);        
-        return;   
+        return $sql ;   
 
     }
 
 
-     public static function actualizaPrueba($codigoprueba) {        
+    public static function actualizaPrueba($prueba) {        
         
-        $sql = "UPDATE pruebas SET nombre='$prueba->getnombreprueba()' ";
-        $sql .= " URL='getURL()', descBreve='getdescripcionbreve()' ";
-        $sql .= " descExtendida='getdescripcionextendida()' ";
-        $sql .=" tipo='gettipo()' WHERE id='$codigoprueba' ";
+        $sql = " UPDATE pruebas SET nombre='".$prueba->getnombre()."', ";
+        $sql .= " descExtendida='".$prueba->getdescExtendida()."', descBreve='".$prueba->getdescBreve()."' ,";
+        $sql .= " tipo='".$prueba->gettipo()."', dificultad='".$prueba->getdificultad()."', url='".$prueba->geturl()."',";
+        $sql .= " ayudaFinal='".$prueba->getayudaFinal()."'";
+        $sql .= " WHERE id='".$prueba->getid()."' " ;
         $resultado = self::insertaRegistro($sql);
         
-        return;   
+        return $sql;   
     }
+
+    public static function eliminarPistas($idPrueba, $id) {        
+       
+        $sql = " DELETE FROM pistas";
+        $sql .= " WHERE idPrueba='" . $idPrueba . "'";
+        $sql.=" AND id='" . $id . "'";  
+
+        $resultado = self::ejecutaConsulta ($sql);     
+        
+        return $sql; 
+    } 
   
  
     

@@ -45,21 +45,22 @@
     $smarty->config_dir = 'smarty/configs/';
     $smarty->cache_dir = 'smarty/cache/';
     
-    // obtiene num Equipos por partida de la clase DB pasando como parámetro el código del juego recibido 
-    $partidas = BD::obtieneEquipos($idJuego); 
-    
-    
-    // Obtiene las partidas
-    //$partidas = BD::muestraPartidas($idJuego);
-    // Obtiene el nombre del juego
+     // Obtiene el nombre del juego
     $mijuego = BD::nombrejuego($idJuego);
+    
+    // obtiene partidas y número de equipos  
+    $partidas = BD::obtieneEquipos($idJuego); 
+    // si no hay muestra mensaje
+    if ($partidas==''){
+        $smarty->assign('mijuego',"no seleccionado o no tiene partidas");
+    }else{
+        $smarty->assign('mijuego', $mijuego);
+    }
     
     // Ponemos a disposición de la plantilla los datos necesarios
     $smarty->assign('usuario', $_SESSION['usuario']);
-    //$smarty->assign('equipos', $equipos);
     $smarty->assign('partidas', $partidas);
     $smarty->assign('cod', $idJuego);
-    $smarty->assign('mijuego', $mijuego);
     
     // Mostramos la plantilla
     $smarty->display('partidas.tpl');     

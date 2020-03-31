@@ -11,7 +11,7 @@ session_start();
 $smarty = new Smarty;
 
 //entiendo que todos los post que hay son id (que es el codigo de juego que me pasa) y no codigojuego 
-if (isset($_SESSION['accionjuego']) && $_SESSION['accionjuego']=="editar") {
+if (isset($_SESSION['idJuego'])) {
 	
 	$juegoRecibido=$_SESSION['idJuego']; 
 	$hayNuevoJuego=0; //hago una variable para que exista la variable en el template

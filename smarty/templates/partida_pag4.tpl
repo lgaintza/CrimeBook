@@ -51,7 +51,7 @@
 {if $nombrejuego=='No hay Juego Seleccionado'}
    <h2 style="color:#ff0000" align="center">No hay Juego Seleccionado</h2>
 {else}
-    <div align="center"><h2><p>Juego seleccionado: {$nombrejuego}</h2></p></div>
+    <div align="center"><h2>Juego seleccionado: {$nombrejuego}</h2></div>
 {/if}
 <h2 align="center">Duración de la partida</h2>
 <form name="partida" action="pagina4.php" method="post">
@@ -63,33 +63,37 @@
 <div id="equipos">
     {include file="listaequipos.tpl"}
 </div>
-<br>
-{if $accion_pag4 == "editar"}
-<p align="center">
-Nombre del Equipo:<input type="text" align="center" name="nombre_equipo" placeholder="Introduzca el nombre"><br/>
-</p>
-{/if}
+<h3 align="center">
+    Nombre del Equipo: <input {if $accion_pag4 == "crear"} disabled="true" {/if} style=" HEIGHT: 30px" type="text" size="100" align="center" name="nombre_equipo" placeholder="  Introduzca nombre de nuevo Equipo"><br/>
+</h3>
 {if $accion_pag4 == "crear"}
-<p align="center">
-Nombre del Equipo:<input disabled="true" type="text" align="center" name="nombre_equipo" placeholder="Introduzca el nombre"><br/>
+<p align="center" style="color: #999">
+Para añadir Equipo a la Partida Creada, primero debe rellenar Tabla 'Duración de la Partida'<br>
+y pulse 'Guardar Nueva Partida'
 </p>
-<p align="center">
-Para añadir Equipo a la Partida Creada, primero debe rellenar Tabla 'Duración de la Partida'
-</p>
-<p align="center">
-Y después pulse 'Guardar Nueva Partida'
-</p>
+<div id="botonesirapag" align="center">
+    Después de CREAR Partida,<br>
+    <input type="radio" value="pag2" name="botonesirapag" checked="true">Ir a Mostrar Listado de Partidas<br>
+    <input type="radio" value="pag4editar" name="botonesirapag">Pasar a Editar para meter Equipos en la nueva Partida creada<br>
+    <input type="radio" value="pag4crear" name="botonesirapag">Seguir en Crear para poder añadir más Partidas<br>
+</div>
 {/if}
+<br>
+{if $nombrejuego!=='No hay Juego Seleccionado'}
 <div align="center">
     <button {if $accion_pag4 == "crear"} disabled="true" {/if} class="button" name='partida_bt' value='anadir'>{$textoboton1}</button>
     <button class="button" name='partida_bt' value='guardar'>{$textoboton2}</button>
 </div>
-<br>
+{else}
+<div align="center">
+    <button class="button" name='irapag1' value='irapag1'>Pulse para Ir a Página1 y Seleccionar un Juego</button>
+ </div>   
+{/if}
 </form>
-    <div id="pie">
-        <form action='logoff.php' method='post'>
-            <input type='submit' name='desconectar' value='Desconectar usuario'/>
-        </form>
-    </div>
+       <div id="pie">
+            <form action='logoff.php' method='post'>
+                <input type='submit' name='desconectar' value='Desconectar usuario'/>
+            </form>
+        </div>
 </body>    
 </html>
