@@ -389,10 +389,10 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $verificado;
     }
     //metodo para sacar las estadisticas en la pantalla 7
-    public static function obtieneEstadistica($id){
+    public static function obtieneEstadistica($idPartida){
         $sql = "SELECT DISTINCT equipos.nombre as nombreEquipo, partidas.id as id, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
         $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id)";
-        $sql.=" WHERE partidas.id='" . $id . "'";
+        $sql.=" WHERE partidas.id='" . $idPartida. "'";
     
         $resultado = self::ejecutaConsulta($sql);
         $estadisticas =array();

@@ -59,9 +59,10 @@ if(isset($_POST['anadePista']))
 	$row['dificultad']=$_POST['dificultad']; 
 	$row['tipo']= $_POST['tipo']; 
 	$prueba=new Prueba($row); 
+	//guardo en una variable de sesion el codigo de prueba del campo hidden para recibirlo en la pagina 8
+	$_SESSION['codigoPrueba'] = $_POST['codigoPrueba'];
 	//guardamos la prueba porque las respuestas ya están guardadas en una variable de sesión
 	$_SESSION['pruebaGuardadaParaVolver']=$prueba; 
-
 	header("Location: pagina8.php"); 
 
 }

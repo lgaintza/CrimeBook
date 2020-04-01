@@ -16,13 +16,11 @@ $smarty->compile_dir = 'smarty/templates_c/';
 $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
-// Comprobamos si ya se ha enviado el formulario
-if (isset($_POST['anadirPista'])){
     //$_POST['codigoPrueba'];
+    $_SESSION['codigoPrueba'] = $idPrueba;
 
-}
- $idPrueba = 400001;
- $_SESSION['idPrueba'] = $idPrueba;
+
+
 if (isset($_POST['guardar'])) {
     
     $id=$_POST['id'];
@@ -31,7 +29,7 @@ if (isset($_POST['guardar'])) {
     $intentos = $_POST['intentos'];
  
    echo ($_SESSION['idPrueba'].$id.$tiempo.$intentos);
-    $pista = BD::creaPista($_SESSION['idPrueba'], $id, $texto, $tiempo, $intentos);
+    $pista = BD::creaPista($idPrueba, $id, $texto, $tiempo, $intentos);
 
     //var_dump($pista);
   //  header("Location: pagina6.php");

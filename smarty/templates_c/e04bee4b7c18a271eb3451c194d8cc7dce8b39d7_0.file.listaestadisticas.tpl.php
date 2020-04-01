@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2020-03-31 17:38:52
+/* Smarty version 3.1.34-dev-7, created on 2020-04-01 20:12:54
   from 'C:\xampp\htdocs\crimebook\Crimebook interfaces\crimeBook\smarty\templates\listaestadisticas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.33',
-  'unifunc' => 'content_5e83640c6c3742_88310358',
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5e84d9a69fd305_55952340',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e04bee4b7c18a271eb3451c194d8cc7dce8b39d7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crimebook\\Crimebook interfaces\\crimeBook\\smarty\\templates\\listaestadisticas.tpl',
-      1 => 1585415819,
+      1 => 1585669328,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e83640c6c3742_88310358 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e84d9a69fd305_55952340 (Smarty_Internal_Template $_smarty_tpl) {
 ?><form name="xxxx" action="<?php echo $_SERVER['PHP_SELF'];?>
 " method="post">
 <table align="center">
