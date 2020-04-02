@@ -40,13 +40,14 @@
         BD::eliminaJuegos($juegos);
         header("Location: pagina1.php"); 
     }
-
+    
     // Cargamos la librería de Smarty
     $smarty = new Smarty;
     $smarty->template_dir = 'smarty/templates/';
     $smarty->compile_dir = 'smarty/templates_c/';
     $smarty->config_dir = 'smarty/configs/';
     $smarty->cache_dir = 'smarty/cache/';
+    
 
     // Ponemos a disposición de la plantilla los datos necesarios
     $smarty->assign('usuario', $_SESSION['usuario']);

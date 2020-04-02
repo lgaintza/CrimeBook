@@ -25,7 +25,7 @@
         </div>
         <br>
         <div class='campo'>
-            <input type='submit' name='enviar' value='Enviar' class="button"/>
+            <input type='submit' name='enviar' value='Entrar' class="button"/>
         </div>
     </fieldset>
     </form>
