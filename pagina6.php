@@ -201,7 +201,7 @@ if(isset($_POST['anadir']))
 		if(isset($listaPistas[0]))
 		{	//en el caso de tener id y tener pistas
 			$smarty->assign('hayPistas',1);
-			$smarty->assign('listaPistas',$hayNuevaPrueba);
+			$smarty->assign('listaPistas',$listaPistas);
 		}else
 		{
 			//El caso de tener id, pero no hay pistas en la base de datos 

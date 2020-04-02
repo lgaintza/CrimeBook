@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
-<!-- crimeBook: pagina8 -->
+<!-- CrimeBook: pagina8 -->
 <html>
     <head>
 	<title>Estadisticas</title>

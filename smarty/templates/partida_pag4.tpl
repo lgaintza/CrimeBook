@@ -25,7 +25,6 @@
 	</div>
 
 {assign var="export_accion" value=$accion_pag4}
-<p align="center">
 {if $accion_pag4 == 'editar'}
     {* Si la entrada es como 'EDITAR' se muestra: *}
     {foreach from=$partida4 item=partida}
@@ -36,22 +35,25 @@
     {$textoboton1="Añadir Equipo a la Partida Cargada"}
     {$textoboton2="Actualizar Tiempo para esta Partida"}
     {$aviso1="Puede modificar el 'Tiempo de Partida' en la celda 'Duración de la Partida'"}
-    Acceso para Editar una partida<br>
-    Si desea Crear una partida nueva, acceda desde la Página  <a href="pagina1.php">Listado de Juegos</a> y pulse 'Nueva Partida'
+    <div align="center"><h2>Editar Partida</div>
 {/if}
 {if $accion_pag4==  'crear'}
     {* Si la entrada es como 'CREAR' se muestra: *}
     {$textoboton1="Antes de Añadir Equipo debe guardar la Partida Nueva"}
     {$textoboton2="Guardar Nueva Partida"}
     {$aviso1="Para Guardar Nueva Partida rellene celdas de Nombre y Duración<br> y Pulse Botón Guardar Nueva Partida"}
-    Acceso para Crear una Nueva Partida<br>
-    Si desea Editar una Partida en uso, acceda desde la Página <a href="pagina2.php">Listado de Partidas</a> y pulse 'Editar Partida'
+    <div align="center"><h2>Nueva Partida</div>
 {/if}
-<br>
 {if $nombrejuego=='No hay Juego Seleccionado'}
-   <h2 style="color:#ff0000" align="center">No hay Juego Seleccionado</h2>
+   <h2 align="center">No hay Juego Seleccionado</h2>
 {else}
-    <div align="center"><h2>Juego seleccionado: {$nombrejuego}</h2></div>
+    <div align="center"><h2>Juego: {$nombrejuego}</h2></div>
+{/if}
+{if $accion_pag4 == 'editar'}
+    <div align="center">Si desea Crear una partida nueva, acceda desde la Página  <a href="pagina1.php">Listado de Juegos</a> y pulse 'Nueva Partida'</div>
+{/if}
+{if $accion_pag4==  'crear'}
+    <div align="center">Si desea Editar una Partida en uso, acceda desde la Página <a href="pagina2.php">Listado de Partidas</a> y pulse 'Editar Partida'</div>
 {/if}
 <h2 align="center">Duración de la partida</h2>
 <form name="partida" action="pagina4.php" method="post">
