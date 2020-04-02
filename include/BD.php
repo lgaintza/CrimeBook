@@ -484,7 +484,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
     
        protected static function insertaRegistro($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-        $dsn = "mysql:host=localhost;dbname=crimeBook";
+        $dsn = "mysql:host=localhost;dbname=CrimeBook";
         $usuario = 'ivantapia01';
         $contrasena = '1234abcd';
         $dwes = new PDO($dsn, $usuario, $contrasena, $opc);

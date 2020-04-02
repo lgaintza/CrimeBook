@@ -37,7 +37,7 @@ if (isset($_SESSION['idJuego'])) {
 	
 	$smarty->assign('fechaCreacion',$fechaCreacion);
 	$username=$_SESSION['usuario'];
-	$smarty->assign('usuario',$username);
+	$smarty->assign('username',$username);
 	
 }
 

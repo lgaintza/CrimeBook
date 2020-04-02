@@ -75,7 +75,7 @@ require_once('include/Juego.php');
        		$row['descBreve']= $descripcionbreve; 
        		$row['descExtendida']= $descripcionextendida; 
        		$row['fechaCreacion']=$fechaCreacion;
-        	$row['username']="ivantapia01";
+        	$row['username']="$username";
         	$ultimojuego=BD::recogeUltimoJuego();//cojemos el ultimo insertado
         	
         	$ultimojuego=$ultimojuego+1; 
