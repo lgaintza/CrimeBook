@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 13:02:39
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 18:58:07
   from '/Applications/MAMP/htdocs/DWES/UT6/git/crimeBook/smarty/templates/pagina5.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e85e26f41a149_25298372',
+  'unifunc' => 'content_5e8635bf5c7506_10378098',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c09ae170eba3135e13c5323ac05a407f1a983abe' => 
     array (
       0 => '/Applications/MAMP/htdocs/DWES/UT6/git/crimeBook/smarty/templates/pagina5.tpl',
-      1 => 1585831603,
+      1 => 1585853739,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e85e26f41a149_25298372 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8635bf5c7506_10378098 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +38,7 @@ function content_5e85e26f41a149_25298372 (Smarty_Internal_Template $_smarty_tpl)
             <a href="pagina3.php">Listado<br>de Pruebas</a>
             <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
             <a href="pagina5.php" class="active">Juego Nuevo<br>Editar Juego</a>
-            <a href="pagina6.php">Prueba Nueva<br>Editar Prueba</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva<br>Editar Prueba</a>
             <a href="pagina7.php">Estadísticas</a>
             <a href="pagina8.php">Crear Pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -50,6 +50,7 @@ function content_5e85e26f41a149_25298372 (Smarty_Internal_Template $_smarty_tpl)
 
   <div id="pag5" align="center">
     <!--esta es para editar el juego que ya esta creado -->
+    <!--esta variable sustituye al isset pk no se como se hace en tpl el isset -->
   <?php if ($_smarty_tpl->tpl_vars['hayNuevoJuego']->value == 0) {?> 
 
   <h2 align="left">Editar juego</h2>

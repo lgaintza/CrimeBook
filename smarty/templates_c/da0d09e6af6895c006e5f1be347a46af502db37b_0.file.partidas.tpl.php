@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 10:12:58
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 18:57:04
   from '/Applications/MAMP/htdocs/DWES/UT6/git/crimeBook/smarty/templates/partidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e85baaacc4721_00174029',
+  'unifunc' => 'content_5e863580135169_54656167',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da0d09e6af6895c006e5f1be347a46af502db37b' => 
     array (
       0 => '/Applications/MAMP/htdocs/DWES/UT6/git/crimeBook/smarty/templates/partidas.tpl',
-      1 => 1585817868,
+      1 => 1585853739,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listapartidas.tpl' => 1,
   ),
 ),false)) {
-function content_5e85baaacc4721_00174029 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e863580135169_54656167 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -40,7 +40,7 @@ function content_5e85baaacc4721_00174029 (Smarty_Internal_Template $_smarty_tpl)
             <a href="pagina3.php">Listado de Pruebas</a>
             <a href="pagina4.php">Partida Nueva/Editar</a>
             <a href="pagina5.php">Juego Nuevo/Editar</a>
-            <a href="pagina6.php">Prueba Nueva/Editar</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>
             <a href="pagina8.php">Crear pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">

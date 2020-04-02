@@ -427,23 +427,6 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $partidas;    
     }
     
-    /* Método para mostrar partidas en la pantalla 2
-    public static function muestraPartidas($i){
-        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas WHERE idjuego='".$i."'";
-        $resultado = self::ejecutaConsulta($sql);
-        $partidas = array();
-
-	if($resultado) {
-            // Añadimos un elemento por cada producto obtenido
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $partidas[] = new Partida($row);
-                $row = $resultado->fetch();
-            }
-	}
-        
-        return $partidas;      
-    }*/
     
     // Método para mostrar partidas y obtener equipos en la página 2
     public static function muestraPartidas($idjuego) {
