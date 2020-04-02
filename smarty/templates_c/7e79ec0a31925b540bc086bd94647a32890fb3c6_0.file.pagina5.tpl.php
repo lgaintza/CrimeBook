@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 09:31:36
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 12:31:12
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina5.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8594d86f8aa8_48094285',
+  'unifunc' => 'content_5e85bef0f00d82_54611622',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7e79ec0a31925b540bc086bd94647a32890fb3c6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina5.tpl',
-      1 => 1585812663,
+      1 => 1585823410,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e8594d86f8aa8_48094285 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e85bef0f00d82_54611622 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
-  <title>Crimebook</title>
+  <title>CrimeBook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/estilos.css">
@@ -37,13 +37,14 @@ function content_5e8594d86f8aa8_48094285 (Smarty_Internal_Template $_smarty_tpl)
             <a href="pagina2.php">Listado<br>de Partidas</a>
             <a href="pagina3.php">Listado<br>de Pruebas</a>
             <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
-            <a href="pagina5.php">Juego Nuevo<br>Editar Juego</a>
+            <a href="pagina5.php" class="active">Juego Nuevo<br>Editar Juego</a>
             <a href="pagina6.php">Prueba Nueva<br>Editar Prueba</a>
             <a href="pagina7.php">Estadísticas</a>
-            <a href="pagina8.php" class="active">Crear Pista</a>
+            <a href="pagina8.php">Crear Pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
+               <i class="fa fa-bars"></i>
             </a>
+            
   </div>
 
 
@@ -83,6 +84,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
 ?>
+      <?php if ($_smarty_tpl->tpl_vars['listapruebas']->value == $_smarty_tpl->tpl_vars['listado']->value) {?> disabled="true" <?php }?>
         <input type="checkbox" name="new<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
 " 
         value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
@@ -120,7 +122,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   </table>
   <br>
   <br>
-  <input type='submit' name='guardajuego' value='Guardar juego'/>
+  <input type='submit' name='guardajuego' value='Guardar juego'/> 
+  <input type='submit' value='Cancelar' />
   </form></p>
 
    <!--Esta parte es para crear un juego nuevo -->
@@ -158,7 +161,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   </table>
   </br>
   </br>
-  <input type='submit' name='guardajuego' value='Guardar juego'/>
+  <input type='submit' name='guardajuego' value='Guardar juego'/> 
+  <input type='submit' value='Cancelar' />
   </form></p>
   <?php }?>
   

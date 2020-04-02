@@ -16,12 +16,13 @@
             <a href="pagina3.php">Listado<br>de Pruebas</a>
             <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
             <a href="pagina5.php">Juego Nuevo<br>Editar Juego</a>
-            <a href="pagina6.php">Prueba Nueva<br>Editar Prueba</a>
+            <a href="pagina6.php" class="active">Prueba Nueva<br>Editar Prueba</a>
             <a href="pagina7.php">Estadísticas</a>
-            <a href="pagina8.php" class="active">Crear Pista</a>
+            <a href="pagina8.php">Crear Pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-		<i class="fa fa-bars"></i>
+				<i class="fa fa-bars"></i>
             </a>
+            
 	</div>
 
 
@@ -96,7 +97,8 @@
 </table>
 <br>
 
- <input type='submit' value='Guardar Prueba' name='guardarPrueba'/>
+ <input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
+ <input type='submit' value='Cancelar' />
 </form>
 
 
@@ -137,7 +139,8 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 <p>Añadir Solucion:<textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
 
  <input type='submit' value='Añadir Solucion' name='anadir'/><br><br>
- <input type='submit' value='Guardar Prueba' name='guardarPrueba'/><br><br>
+ <input type='submit' value='Guardar Prueba' name='guardarPrueba'/>  
+ <input type='submit' value='Cancelar' />
 <br><br>
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
