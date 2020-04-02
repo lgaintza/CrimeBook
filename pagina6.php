@@ -16,7 +16,10 @@ $smarty->cache_dir = 'smarty/cache/';
 
 
 //Para crear una nueva prueba, la primera vez que entramos en la página
-if(isset($_SESSION['pag3_to_6']))
+##Si existe la sesión venimos de la página 1
+##Si existe el get venimos del menú
+## en ambos casos tenemos que acabar aquí
+if((isset($_SESSION['pag3_to_6']))||(isset($_GET['variable'])))
 {
 	
 	//En este caso la prueba es nueva 

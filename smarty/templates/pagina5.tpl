@@ -15,7 +15,7 @@
             <a href="pagina3.php">Listado<br>de Pruebas</a>
             <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
             <a href="pagina5.php" class="active">Juego Nuevo<br>Editar Juego</a>
-            <a href="pagina6.php">Prueba Nueva<br>Editar Prueba</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva<br>Editar Prueba</a>
             <a href="pagina7.php">Estadísticas</a>
             <a href="pagina8.php">Crear Pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -27,6 +27,7 @@
 
   <div id="pag5" align="center">
     <!--esta es para editar el juego que ya esta creado -->
+    <!--esta variable sustituye al isset pk no se como se hace en tpl el isset -->
   {if $hayNuevoJuego ==0} 
 
   <h2 align="left">Editar juego</h2>

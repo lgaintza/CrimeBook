@@ -14,6 +14,7 @@ if(isset($_SESSION['pruebaParaGuardar'])) //Solo hacemos algo si  hemos llegado 
 	//Si tenemos la variable de sesión de nueva, tenemos que guardar una nueva prueba
 	if($_SESSION['accion']=="nueva")
 	{
+		unset($_SESSION['pruebaRecibida']); 
 		unset($_SESSION['accion']); //siempre la pongo al inicio, porque si da fallo en mitad del código la variable se queda huerfana y puede dar errores más adelante
 		$ultimaprueba=BD::recogeUltimaPrueba(); 
 		$ultimaPrueba=$ultimaprueba+1;
@@ -34,6 +35,7 @@ if(isset($_SESSION['pruebaParaGuardar'])) //Solo hacemos algo si  hemos llegado 
 		
 	}else if($_SESSION['accion']=="editar") //Si no la editamos
 	{
+		unset($_SESSION['pruebaRecibida']); 
 		unset($_SESSION['accion']);
 		$solucionesNuevas=$_SESSION['listaSolucionesNuevas']; //Cogemos solo la soluciones nuevas
 		unset($_SESSION['listaSolucionesNuevas']);

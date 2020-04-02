@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 12:38:07
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:30:00
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\partida_pag4.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e85c08f9817c3_54122344',
+  'unifunc' => 'content_5e862f2832a9b9_02954162',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3454c76dd0bbb6e71e82a42f14631e135825b137' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\partida_pag4.tpl',
-      1 => 1585823468,
+      1 => 1585852179,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listaequipos.tpl' => 1,
   ),
 ),false)) {
-function content_5e85c08f9817c3_54122344 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e862f2832a9b9_02954162 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -39,7 +39,7 @@ function content_5e85c08f9817c3_54122344 (Smarty_Internal_Template $_smarty_tpl)
             <a href="pagina1.php">Listado de Juegos</a>
             <a href="pagina2.php">Listado de Partidas</a>
             <a href="pagina3.php">Listado de Pruebas</a>
-            <a href="pagina4.php" class="active">Partida Nueva/Editar</a>
+            <a href="pagina4.php" ?variable=nuevaPruebaMenu" class="active">Partida Nueva/Editar</a>
             <a href="pagina5.php">Juego Nuevo/Editar</a>
             <a href="pagina6.php">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>

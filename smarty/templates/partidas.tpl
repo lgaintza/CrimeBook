@@ -16,7 +16,7 @@
             <a href="pagina3.php">Listado de Pruebas</a>
             <a href="pagina4.php">Partida Nueva/Editar</a>
             <a href="pagina5.php">Juego Nuevo/Editar</a>
-            <a href="pagina6.php">Prueba Nueva/Editar</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>
             <a href="pagina8.php">Crear pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 12:37:13
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:29:57
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina5.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e85c059d942a4_87631310',
+  'unifunc' => 'content_5e862f25e61323_66409780',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7e79ec0a31925b540bc086bd94647a32890fb3c6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina5.tpl',
-      1 => 1585823541,
+      1 => 1585852159,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e85c059d942a4_87631310 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e862f25e61323_66409780 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +37,7 @@ function content_5e85c059d942a4_87631310 (Smarty_Internal_Template $_smarty_tpl)
             <a href="pagina2.php">Listado<br>de Partidas</a>
             <a href="pagina3.php">Listado<br>de Pruebas</a>
             <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
-            <a href="pagina5.php" class="active">Juego Nuevo<br>Editar Juego</a>
+            <a href="pagina5.php" ?variable=nuevaPruebaMenu" class="active">Juego Nuevo<br>Editar Juego</a>
             <a href="pagina6.php">Prueba Nueva<br>Editar Prueba</a>
             <a href="pagina7.php">Estadísticas</a>
             <a href="pagina8.php">Crear Pista</a>
@@ -50,6 +50,7 @@ function content_5e85c059d942a4_87631310 (Smarty_Internal_Template $_smarty_tpl)
 
   <div id="pag5" align="center">
     <!--esta es para editar el juego que ya esta creado -->
+    <!--esta variable sustituye al isset pk no se como se hace en tpl el isset -->
   <?php if ($_smarty_tpl->tpl_vars['hayNuevoJuego']->value == 0) {?> 
 
   <h2 align="left">Editar juego</h2>
