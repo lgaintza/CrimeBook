@@ -6,7 +6,7 @@
             <th>Descripción</th>
             <th>N.º de pruebas</th>
             <th>Usuario que lo creó</th>
-            <th>¿Eliminar Juegos?</th>
+            <th style="color: white">¿Eliminar Juegos?</th>
         </tr>
         {foreach from=$juegos item=juego}
             <tr>    

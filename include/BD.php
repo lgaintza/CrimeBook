@@ -47,11 +47,11 @@ class BD {
         return $juegos;
     }
     
-    // Método para mostrar juegos en la pantalla 1 (hay que adaptar consulta para que tammbién muestre juegos sin pruebas)
+    // Método para mostrar juegos en las páginas 2 y 4
     public static function nombrejuego($id){
         $sql = "SELECT nombre FROM juegos WHERE id='".$id."'";
         $minombre = self::ejecutaConsulta($sql);
-        if($minombre) {            // Añadimos un elemento por cada producto obtenido
+        if($minombre) {  
             $row = $minombre->fetch();                                  
 	}
         
@@ -427,7 +427,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $partidas;    
     }
     
-    // Método para mostrar partidas en la pantalla 2
+    /* Método para mostrar partidas en la pantalla 2
     public static function muestraPartidas($i){
         $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas WHERE idjuego='".$i."'";
         $resultado = self::ejecutaConsulta($sql);
@@ -443,10 +443,10 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
 	}
         
         return $partidas;      
-    }
+    }*/
     
-    // Método para obtener el número de equipos que han jugado una partida
-    public static function obtieneEquipos($idjuego) {
+    // Método para mostrar partidas y obtener equipos en la página 2
+    public static function muestraPartidas($idjuego) {
         $sql = "SELECT partidas.id, count(equipos.id) as 'num_equipospartida', ";
         $sql .= "partidas.nombre, partidas.fechaCreacion, partidas.duracion, partidas.fechaInicio, partidas.idJuego, partidas.username, partidas.finalizada ";
         $sql .= " FROM partidas LEFT JOIN equipos";
@@ -782,23 +782,14 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $sql; 
     } 
   
- 
-    
-        
-       
+  
     // Método para eliminar juegos. Elimina también las partidas de ese juego y las pertenencias
     public static function eliminaJuegos($codigo){
         foreach ($codigo as $juego) {
             $sql = "DELETE FROM juegos ";
             $sql.=" WHERE juegos.id='" . $juego . "'";
             $resultado = self::ejecutaConsulta ($sql);
-        
-            if(isset($resultado)) {
-                $row = $resultado->fetch();
-            }
         }
-        
-        return $row;
     }
     
         
@@ -808,10 +799,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         $sql.=" WHERE partidas.id='" . $codigo . "'";
         $sql.=" AND partidas.finalizada='S'";
         $resultado = self::ejecutaConsulta ($sql);
-        
-        if(isset($resultado)) {
-            $row = $resultado->fetch();
-        }
+
     }
     
        
