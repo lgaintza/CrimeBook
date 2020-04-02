@@ -126,6 +126,8 @@ SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 
 ALTER TABLE `partidas` DROP FOREIGN KEY `partidas_ibfk_1`; ALTER TABLE `partidas` ADD CONSTRAINT `partidas_ibfk_1` FOREIGN KEY (`idJuego`) REFERENCES `juegos`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
 ALTER TABLE `pertenencias` DROP FOREIGN KEY `pertenencias_ibfk_1`; ALTER TABLE `pertenencias` ADD CONSTRAINT `pertenencias_ibfk_1` FOREIGN KEY (`idJuego`) REFERENCES `juegos`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+ALTER TABLE `equipos` DROP FOREIGN KEY `equipos_ibfk_1`; ALTER TABLE `equipos` ADD CONSTRAINT `equipos_ibfk_1` FOREIGN KEY (`idPartida`) REFERENCES `partidas`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+ALTER TABLE `resoluciones` DROP FOREIGN KEY `resoluciones_ibfk_1`; ALTER TABLE `resoluciones` ADD CONSTRAINT `resoluciones_ibfk_1` FOREIGN KEY (`idEquipo`) REFERENCES `equipos`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
 
 -- ----------------------------------
 -- Modificaciones a ejecutar en Base de datos propuestas por Yolanda para utilidades de PRUEBAS: ----------------------

@@ -789,13 +789,13 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
             $sql = "DELETE FROM juegos ";
             $sql.=" WHERE juegos.id='" . $juego . "'";
             $resultado = self::ejecutaConsulta ($sql);
-        
+        /*
             if(isset($resultado)) {
                 $row = $resultado->fetch();
-            }
+            }*/
         }
         
-        return $row;
+        //return $row;
     }
     
         
@@ -805,10 +805,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         $sql.=" WHERE partidas.id='" . $codigo . "'";
         $sql.=" AND partidas.finalizada='S'";
         $resultado = self::ejecutaConsulta ($sql);
-        
-        if(isset($resultado)) {
-            $row = $resultado->fetch();
-        }
+
     }
     
        
