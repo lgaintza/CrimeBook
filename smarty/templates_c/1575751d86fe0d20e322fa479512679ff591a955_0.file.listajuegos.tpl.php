@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 08:59:57
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:39:58
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\listajuegos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e858d6de26346_99914232',
+  'unifunc' => 'content_5e86317eced669_64159285',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1575751d86fe0d20e322fa479512679ff591a955' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\listajuegos.tpl',
-      1 => 1585664039,
+      1 => 1585852535,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e858d6de26346_99914232 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e86317eced669_64159285 (Smarty_Internal_Template $_smarty_tpl) {
 ?><form action="<?php echo $_SERVER['PHP_SELF'];?>
 " method="post">
     <table align="center">
@@ -30,7 +30,7 @@ function content_5e858d6de26346_99914232 (Smarty_Internal_Template $_smarty_tpl)
             <th>Descripción</th>
             <th>N.º de pruebas</th>
             <th>Usuario que lo creó</th>
-            <th>¿Eliminar Juegos?</th>
+            <th style="color: white">¿Eliminar Juegos?</th>
         </tr>
         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['juegos']->value, 'juego');

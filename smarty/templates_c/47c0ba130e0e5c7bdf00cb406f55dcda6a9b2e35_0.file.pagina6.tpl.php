@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 19:52:22
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:45:40
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina6.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8626566b83a6_91569432',
+  'unifunc' => 'content_5e8632d427ccc5_04287794',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '47c0ba130e0e5c7bdf00cb406f55dcda6a9b2e35' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina6.tpl',
-      1 => 1585849934,
+      1 => 1585853135,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e8626566b83a6_91569432 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8632d427ccc5_04287794 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -146,7 +146,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 <br>
 
  <input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
- <input type='submit' value='Cancelar'/>
+ <input type='submit' name="cancelar" value='Cancelar'/>
 </form>
 
 
@@ -213,7 +213,7 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 </table>
 <br>
 <input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
-<input type='submit' value='Cancelar'/>
+<input type='submit' name="cancelar" value='Cancelar'/>
 </form>
 
 

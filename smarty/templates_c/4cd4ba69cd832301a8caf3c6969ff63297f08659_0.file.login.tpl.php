@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 08:59:50
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:39:53
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e858d66e6edd6_27644846',
+  'unifunc' => 'content_5e86317913f243_40690773',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4cd4ba69cd832301a8caf3c6969ff63297f08659' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\login.tpl',
-      1 => 1585664039,
+      1 => 1585852535,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e858d66e6edd6_27644846 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e86317913f243_40690773 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : CrimeBook -->
@@ -50,7 +50,7 @@ echo $_smarty_tpl->tpl_vars['error']->value;
         </div>
         <br>
         <div class='campo'>
-            <input type='submit' name='enviar' value='Enviar' class="button"/>
+            <input type='submit' name='enviar' value='Entrar' class="button"/>
         </div>
     </fieldset>
     </form>

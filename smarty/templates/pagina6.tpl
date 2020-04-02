@@ -98,7 +98,7 @@
 <br>
 
  <input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
- <input type='submit' value='Cancelar'/>
+ <input type='submit' name="cancelar" value='Cancelar'/>
 </form>
 
 
@@ -164,7 +164,7 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 </table>
 <br>
 <input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
-<input type='submit' value='Cancelar'/>
+<input type='submit' name="cancelar" value='Cancelar'/>
 </form>
 
 

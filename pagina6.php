@@ -19,6 +19,15 @@ $smarty->cache_dir = 'smarty/cache/';
 ##Si existe la sesión venimos de la página 1
 ##Si existe el get venimos del menú
 ## en ambos casos tenemos que acabar aquí
+if(isset($_POST['cancelar']))
+{
+	
+	unset($_SESSION['pruebaParaGuardar']); 
+	unset($_SESSION['listaSoluciones']);
+	unset($_SESSION['accion']);
+	unset($_SESSION['pruebaRecibida']);
+	header("Location: pagina3.php");
+}
 if((isset($_SESSION['pag3_to_6']))||(isset($_GET['variable'])))
 {
 	
