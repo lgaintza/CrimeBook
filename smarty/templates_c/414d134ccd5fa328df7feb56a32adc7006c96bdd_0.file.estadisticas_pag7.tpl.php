@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 3.1.34-dev-7, created on 2020-04-01 20:12:54
-  from 'C:\xampp\htdocs\crimebook\Crimebook interfaces\crimeBook\smarty\templates\estadisticas_pag7.tpl' */
+  from 'C:\xampp\htdocs\CrimeBook\CrimeBook interfaces\CrimeBook\smarty\templates\estadisticas_pag7.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     '414d134ccd5fa328df7feb56a32adc7006c96bdd' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\crimebook\\Crimebook interfaces\\crimeBook\\smarty\\templates\\estadisticas_pag7.tpl',
+      0 => 'C:\\xampp\\htdocs\\CrimeBook\\CrimeBook interfaces\\CrimeBook\\smarty\\templates\\estadisticas_pag7.tpl',
       1 => 1585416474,
       2 => 'file',
     ),
@@ -25,7 +25,7 @@ function content_5e84d9a69a1b60_59522783 (Smarty_Internal_Template $_smarty_tpl)
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
-<!-- crimeBook: pagina8 -->
+<!-- CrimeBook: pagina8 -->
 <html>
     <head>
 	<title>Estadisticas</title>

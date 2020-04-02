@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
-<!-- crimeBook: pagina2 -->
+<!-- CrimeBook: pagina2 -->
 <html>
     <head>
 	<title>Listado de Juegos</title>
