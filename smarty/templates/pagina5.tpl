@@ -28,11 +28,11 @@
     <!--esta es para editar el juego que ya esta creado -->
   {if $hayNuevoJuego ==0} 
 
-  <h2 align="left">Editar Juego</h2>
+  <h2 align="left">Editar juego</h2>
   <p><form id='guardajuego' action='guardajuego.php' method='POST'>
     <strong>Nombre del juego: </strong><textarea  name="nombre" rows="1" cols="40" >{$juego->getnombre()}</textarea><br><br>
-    <strong>Descripcion breve:</strong><textarea name="descBreve" rows="3" cols="50" >{$juego->getdescBreve()}</textarea><br><br>
-    <strong>Descripcion extendida:</strong><textarea name="descExtendida" rows="6" cols="50" >{$juego->getdescExtendida()}</textarea><br>
+    <strong>Descripcion breve: </strong><textarea name="descBreve" rows="3" cols="50" >{$juego->getdescBreve()}</textarea><br><br>
+    <strong>Descripcion extendida: </strong><textarea name="descExtendida" rows="6" cols="50" >{$juego->getdescExtendida()}</textarea><br>
       <!--El Codigo juego lo vamos a necesitar ahora mas que nunca porque necesitamos relacionar las pruebas con el juego que hayamos pasado para editar -->
       <input type='hidden' name='fechaCreacion' value='{$juego->getfechaCreacion()}'/>
       <input type='hidden' name='username' value='{$juego->getusername()}'/>
@@ -59,7 +59,7 @@
     </table>
     <br>
     <br>
-    <h3>Eliminar Pruebas del juego</h3>
+    <h3>Eliminar pruebas del juego</h3>
     <table align="center">
         <tr>
         {foreach from=$listado item=prueba2}
@@ -71,12 +71,12 @@
   </table>
   <br>
   <br>
-  <input type='submit' name='guardajuego' value='guardajuego'/>
+  <input type='submit' name='guardajuego' value='Guardar juego'/>
   </form></p>
 
    <!--Esta parte es para crear un juego nuevo -->
   {else}
-  <h2 align="left">Nuevo Juego</h2>
+  <h2 align="left">Nuevo juego</h2>
   <p><form id='guardajuego' action='guardajuego.php' method='POST'>
      <strong>Nombre del juego: </strong><textarea name="nombre" rows="1" cols="40" placeholder="Introduzca el nombre"></textarea><br><br>
     <strong>Descripcion breve: </strong><textarea name="descBreve" rows="3" cols="50" placeholder="Introduzca una descripción breve"></textarea><br><br>
@@ -84,7 +84,7 @@
       <input type='hidden' name='fechaCreacion' value='{$fechaCreacion}'/>
       <input type='hidden' name='username' value='{$username}'/>
       
-       <h3 align="left">Listado de pruebas</h3>
+       <h3 align="left">Listado de pruebas para añadir al juego</h3>
   <table align="center">
     <tr>
      
@@ -97,7 +97,7 @@
   </table>
   </br>
   </br>
-  <input type='submit' name='guardajuego' value='guardajuego'/>
+  <input type='submit' name='guardajuego' value='Guardar juego'/>
   </form></p>
   {/if}
   

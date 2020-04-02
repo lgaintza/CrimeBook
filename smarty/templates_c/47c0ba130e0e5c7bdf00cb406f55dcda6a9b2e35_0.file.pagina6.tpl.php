@@ -1,4 +1,27 @@
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 10:02:58
+  from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina6.tpl' */
 
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5e859c32132a01_47628546',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '47c0ba130e0e5c7bdf00cb406f55dcda6a9b2e35' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina6.tpl',
+      1 => 1585814242,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5e859c32132a01_47628546 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,29 +50,35 @@
 
 	<div id="pag6" align="center"  >
 
-	{if $hayNuevaPrueba ==0}
+	<?php if ($_smarty_tpl->tpl_vars['hayNuevaPrueba']->value == 0) {?>
 	<h2 align="left">Editar prueba</h2>
 <form action="pagina6.php" method="POST" >
-<p>Nombre: <input type="text" size="60" name="nombre" value="{$prueba->getnombre()}"></p>
-<p>URL: <input type="text" name="url" size="60" value="{$prueba->geturl()}"></p>
-<p>Descripción breve: <textarea cols="50" rows="5" name="descripcionbreve">{$prueba->getdescBreve()} </textarea></p>
-<p>Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" name="descripcionextendida">{$prueba->getdescExtendida()} </textarea></p>
+<p>Nombre: <input type="text" size="60" name="nombre" value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getnombre();?>
+"></p>
+<p>URL: <input type="text" name="url" size="60" value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->geturl();?>
+"></p>
+<p>Descripción breve: <textarea cols="50" rows="5" name="descripcionbreve"><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescBreve();?>
+ </textarea></p>
+<p>Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" name="descripcionextendida"><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescExtendida();?>
+ </textarea></p>
 <p>
 		Tipo: <select name="tipo">
-				<option {if $prueba->gettipo() == "Prueba Normal"} selected {/if} value="Prueba Normal">Normal</option>
-				<option {if $prueba->gettipo() == "Prueba Final"} selected {/if} value="Prueba Final">Final</option>
+				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->gettipo() == "Prueba Normal") {?> selected <?php }?> value="Prueba Normal">Normal</option>
+				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->gettipo() == "Prueba Final") {?> selected <?php }?> value="Prueba Final">Final</option>
 		</select>
 </p>
 <p>
 		Dificultad: <select name="dificultad">
-				<option {if $prueba->getdificultad() == "Facil"} selected {/if} value="Facil">Facil</option>
-				<option {if $prueba->getdificultad() == "Normal"} selected {/if} value="Normal">Normal</option>
-				<option {if $prueba->getdificultad() == "Dificil"} selected {/if} value="Dificil">Dificil</option>
+				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->getdificultad() == "Facil") {?> selected <?php }?> value="Facil">Facil</option>
+				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->getdificultad() == "Normal") {?> selected <?php }?> value="Normal">Normal</option>
+				<option <?php if ($_smarty_tpl->tpl_vars['prueba']->value->getdificultad() == "Dificil") {?> selected <?php }?> value="Dificil">Dificil</option>
 		</select>
 </p>
 
-<p>Ayuda final: <input type="text" name="ayudaFinal"value="{$prueba->getayudaFinal()}" > </p>
-<input type='hidden' name='username' value='{$prueba->getusername()}'/>
+<p>Ayuda final: <input type="text" name="ayudaFinal"value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getayudaFinal();?>
+" > </p>
+<input type='hidden' name='username' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getusername();?>
+'/>
 
 <p>Añadir Solucion: <textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
  <input type='submit' value='Anadir Solucion' name='anadir'/>
@@ -62,36 +91,55 @@
 	<tr>
 		<th>Respuestas / Soluciones</th>	
 	</tr>
-          {foreach from=$respuestas item=respuesta}
+          <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['respuestas']->value, 'respuesta');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['respuesta']->value) {
+?>
             <tr>
-            <td>{$respuesta} </td>
+            <td><?php echo $_smarty_tpl->tpl_vars['respuesta']->value;?>
+ </td>
             </tr>
            
-          {/foreach}           
+          <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>           
         
 </table>
 <br>
 
 <input type='submit' value='Añade pista' name='anadePista'/> 
 <input type='submit' value='Eliminar Pista' name='delPista'/><br><br>
-<input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/>
+<input type='hidden' name='codigoprueba' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
+'/>
 
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
 		<th>Pistas</th>	
 	</tr>
-		{if $hayPistas==1}
-          {foreach from=$listaPistas item=pista}
+		<?php if ($_smarty_tpl->tpl_vars['hayPistas']->value == 1) {?>
+          <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['listaPistas']->value, 'pista');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['pista']->value) {
+?>
             <tr>
              <td>
 
-             	<input type="checkbox" name="del{$pista->getid()}"value="{$pista->getid()}"><label>{$pista->gettexto()} </label> 
+             	<input type="checkbox" name="del<?php echo $_smarty_tpl->tpl_vars['pista']->value->getid();?>
+"value="<?php echo $_smarty_tpl->tpl_vars['pista']->value->getid();?>
+"><label><?php echo $_smarty_tpl->tpl_vars['pista']->value->gettexto();?>
+ </label> 
              </td>
             
             </tr>
            
-          {/foreach}   
-        {/if}        
+          <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>   
+        <?php }?>        
         
 </table>
 <br>
@@ -101,7 +149,7 @@
 
 
 
-{else}
+<?php } else { ?>
 <h2 align="left">Nueva prueba</h2>
 <p><form id='guardaprueba' action='pagina6.php' method='POST'>
 <p>
@@ -131,7 +179,8 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 </p>
 
 <p>Ayuda final: <input type="text" name="ayudaFinal"></p>
-<input type='hidden' name='username' value='{$username}'/>
+<input type='hidden' name='username' value='<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+'/>
  
 
 <p>Añadir Solucion:<textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
@@ -164,13 +213,14 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 
 
 
-{/if}
+<?php }?>
 
 		
 </table>
 </form>
 <br>
-<script>
+<?php echo '<script'; ?>
+>
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -179,7 +229,9 @@ function myFunction() {
     x.className = "topnav";
   }
 }
-</script>
+<?php echo '</script'; ?>
+>
 
 </body>
-</html>
+</html><?php }
+}
