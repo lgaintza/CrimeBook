@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 10:04:42
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 11:58:23
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\partida_pag4.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e859c9ac17a64_60005919',
+  'unifunc' => 'content_5e85b73f7af388_01308430',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3454c76dd0bbb6e71e82a42f14631e135825b137' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\partida_pag4.tpl',
-      1 => 1585678028,
+      1 => 1585821439,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listaequipos.tpl' => 1,
   ),
 ),false)) {
-function content_5e859c9ac17a64_60005919 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e85b73f7af388_01308430 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -49,9 +49,8 @@ function content_5e859c9ac17a64_60005919 (Smarty_Internal_Template $_smarty_tpl)
             </a>
 	</div>
 
-<?php $_smarty_tpl->_assignInScope('export_accion', $_smarty_tpl->tpl_vars['accion_pag4']->value);?>
-<p align="center">
-<?php if ($_smarty_tpl->tpl_vars['accion_pag4']->value == 'editar') {?>
+<?php $_smarty_tpl->_assignInScope('export_accion', $_smarty_tpl->tpl_vars['accion_pag4']->value);
+if ($_smarty_tpl->tpl_vars['accion_pag4']->value == 'editar') {?>
         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['partida4']->value, 'partida');
 if ($_from !== null) {
@@ -67,22 +66,25 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <?php $_smarty_tpl->_assignInScope('textoboton1', "Añadir Equipo a la Partida Cargada");?>
     <?php $_smarty_tpl->_assignInScope('textoboton2', "Actualizar Tiempo para esta Partida");?>
     <?php $_smarty_tpl->_assignInScope('aviso1', "Puede modificar el 'Tiempo de Partida' en la celda 'Duración de la Partida'");?>
-    Acceso para Editar una partida<br>
-    Si desea Crear una partida nueva, acceda desde la Página  <a href="pagina1.php">Listado de Juegos</a> y pulse 'Nueva Partida'
+    <div align="center"><h2>Editar Partida</div>
 <?php }
 if ($_smarty_tpl->tpl_vars['accion_pag4']->value == 'crear') {?>
         <?php $_smarty_tpl->_assignInScope('textoboton1', "Antes de Añadir Equipo debe guardar la Partida Nueva");?>
     <?php $_smarty_tpl->_assignInScope('textoboton2', "Guardar Nueva Partida");?>
     <?php $_smarty_tpl->_assignInScope('aviso1', "Para Guardar Nueva Partida rellene celdas de Nombre y Duración<br> y Pulse Botón Guardar Nueva Partida");?>
-    Acceso para Crear una Nueva Partida<br>
-    Si desea Editar una Partida en uso, acceda desde la Página <a href="pagina2.php">Listado de Partidas</a> y pulse 'Editar Partida'
-<?php }?>
-<br>
-<?php if ($_smarty_tpl->tpl_vars['nombrejuego']->value == 'No hay Juego Seleccionado') {?>
-   <h2 style="color:#ff0000" align="center">No hay Juego Seleccionado</h2>
+    <div align="center"><h2>Nueva Partida</div>
+<?php }
+if ($_smarty_tpl->tpl_vars['nombrejuego']->value == 'No hay Juego Seleccionado') {?>
+   <h2 align="center">No hay Juego Seleccionado</h2>
 <?php } else { ?>
-    <div align="center"><h2>Juego seleccionado: <?php echo $_smarty_tpl->tpl_vars['nombrejuego']->value;?>
+    <div align="center"><h2>Juego: <?php echo $_smarty_tpl->tpl_vars['nombrejuego']->value;?>
 </h2></div>
+<?php }
+if ($_smarty_tpl->tpl_vars['accion_pag4']->value == 'editar') {?>
+    <div align="center">Si desea Crear una partida nueva, acceda desde la Página  <a href="pagina1.php">Listado de Juegos</a> y pulse 'Nueva Partida'</div>
+<?php }
+if ($_smarty_tpl->tpl_vars['accion_pag4']->value == 'crear') {?>
+    <div align="center">Si desea Editar una Partida en uso, acceda desde la Página <a href="pagina2.php">Listado de Partidas</a> y pulse 'Editar Partida'</div>
 <?php }?>
 <h2 align="center">Duración de la partida</h2>
 <form name="partida" action="pagina4.php" method="post">
@@ -131,5 +133,6 @@ y pulse 'Guardar Nueva Partida'
             </form>
         </div>
 </body>    
-</html><?php }
+</html>
+<?php }
 }
