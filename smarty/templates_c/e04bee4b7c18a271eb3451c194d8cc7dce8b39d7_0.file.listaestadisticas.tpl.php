@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 3.1.34-dev-7, created on 2020-04-01 20:12:54
-  from 'C:\xampp\htdocs\CrimeBook\CrimeBook interfaces\CrimeBook\smarty\templates\listaestadisticas.tpl' */
+  from 'C:\xampp\htdocs\crimebook\Crimebook interfaces\crimeBook\smarty\templates\listaestadisticas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'e04bee4b7c18a271eb3451c194d8cc7dce8b39d7' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\CrimeBook\\CrimeBook interfaces\\CrimeBook\\smarty\\templates\\listaestadisticas.tpl',
+      0 => 'C:\\xampp\\htdocs\\crimebook\\Crimebook interfaces\\crimeBook\\smarty\\templates\\listaestadisticas.tpl',
       1 => 1585669328,
       2 => 'file',
     ),
