@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 09:10:51
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 12:51:46
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\crearPista_pag8.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e858ffbdca096_86926374',
+  'unifunc' => 'content_5e85c3c2c95fb4_55970009',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84816e5207fbd9d144fa91aadd921eb2544b5590' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\crearPista_pag8.tpl',
-      1 => 1585664039,
+      1 => 1585821652,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e858ffbdca096_86926374 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e85c3c2c95fb4_55970009 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
-<!-- crimeBook: pagina8 -->
+<!-- CrimeBook: pagina8 -->
 <html>
     <head>
 	<title>Estadisticas</title>

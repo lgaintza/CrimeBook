@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 12:11:39
+/* Smarty version 3.1.34-dev-7, created on 2020-04-02 16:16:12
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina6.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e85ba5ba06f91_77600057',
+  'unifunc' => 'content_5e85f3ac63aaf8_55157327',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '47c0ba130e0e5c7bdf00cb406f55dcda6a9b2e35' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina6.tpl',
-      1 => 1585822186,
+      1 => 1585836964,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e85ba5ba06f91_77600057 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e85f3ac63aaf8_55157327 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -145,7 +145,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </table>
 <br>
 
- <input type='submit' value='Guardar Prueba' name='guardarPrueba'/>
+ <input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
+ <input type='submit' value='Cancelar'/>
 </form>
 
 
@@ -187,7 +188,7 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 <p>Añadir Solucion:<textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
 
  <input type='submit' value='Añadir Solucion' name='anadir'/><br><br>
- <input type='submit' value='Guardar Prueba' name='guardarPrueba'/><br><br>
+ 
 <br><br>
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
@@ -198,7 +199,7 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 </table>
 <br>
  <input type='submit' value='Añade pista' name='anadePista'/> 
-</form>
+
 
 <br><br>
 
@@ -210,8 +211,10 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
     </tr>
 		
 </table>
-<br><br>
-
+<br>
+<input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
+<input type='submit' value='Cancelar'/>
+</form>
 
 
 <?php }?>

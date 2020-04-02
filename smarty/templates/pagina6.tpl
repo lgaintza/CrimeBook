@@ -98,7 +98,7 @@
 <br>
 
  <input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
- <input type='submit' value='Cancelar' />
+ <input type='submit' value='Cancelar'/>
 </form>
 
 
@@ -139,8 +139,7 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 <p>Añadir Solucion:<textarea cols="50" rows="5" name="anadirsolucion"></textarea></p>
 
  <input type='submit' value='Añadir Solucion' name='anadir'/><br><br>
- <input type='submit' value='Guardar Prueba' name='guardarPrueba'/>  
- <input type='submit' value='Cancelar' />
+ 
 <br><br>
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>
@@ -151,7 +150,7 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 </table>
 <br>
  <input type='submit' value='Añade pista' name='anadePista'/> 
-</form>
+
 
 <br><br>
 
@@ -163,8 +162,10 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
     </tr>
 		
 </table>
-<br><br>
-
+<br>
+<input type='submit' value='Guardar Prueba' name='guardarPrueba'/> 
+<input type='submit' value='Cancelar'/>
+</form>
 
 
 {/if}
