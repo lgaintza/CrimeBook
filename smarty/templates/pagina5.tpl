@@ -10,12 +10,12 @@
 <body class="pagpruebas">
 
    <div class="topnav" id="myTopnav">
-            <a href="pagina1.php">Listado<br>de Juegos</a>
-            <a href="pagina2.php">Listado<br>de Partidas</a>
-            <a href="pagina3.php">Listado<br>de Pruebas</a>
-            <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
-            <a href="pagina5.php" class="active">Juego Nuevo<br>Editar Juego</a>
-            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva<br>Editar Prueba</a>
+            <a href="pagina1.php">Listado de Juegos</a>
+            <a href="pagina2.php">Listado de Partidas</a>
+            <a href="pagina3.php">Listado de Pruebas</a>
+            <a href="pagina4.php">Partida Nueva/Editar</a>
+            <a href="pagina5.php" class="active">Juego Nuevo/Editar</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>
             <a href="pagina8.php">Crear Pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -42,7 +42,7 @@
      <input type='hidden' name='codigojuego' value='{$juego->getid()}'/>
      <br>
      <br>
-     <h3 align="left">Listado de pruebas para añadir al juego</h3>
+     <h3 align="left">Pruebas disponibles para añadir al juego</h3>
     <table align="center">
     <tr>
       

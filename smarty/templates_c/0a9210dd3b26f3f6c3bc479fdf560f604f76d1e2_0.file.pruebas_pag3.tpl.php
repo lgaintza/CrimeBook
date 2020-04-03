@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:40:00
+/* Smarty version 3.1.34-dev-7, created on 2020-04-03 10:01:17
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pruebas_pag3.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e863180d30f67_11130811',
+  'unifunc' => 'content_5e86ed4d77c561_17283254',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0a9210dd3b26f3f6c3bc479fdf560f604f76d1e2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pruebas_pag3.tpl',
-      1 => 1585852497,
+      1 => 1585900700,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listapruebas.tpl' => 1,
   ),
 ),false)) {
-function content_5e863180d30f67_11130811 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e86ed4d77c561_17283254 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
 <!-- crimeBook: pagina3 -->
 <html>
     <head>
-	<title>Listado de Juegos</title>
+	<title>Listado de Pruebas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
@@ -58,10 +58,10 @@ function content_5e863180d30f67_11130811 (Smarty_Internal_Template $_smarty_tpl)
                 </div>
                 <br>
                 <div align="center">                
-                    <button class="button" name='pru_bt' value='crear'>Crear prueba</button>
-                    <button class="button" name='pru_bt' value='duplicar'>Duplicar prueba</button>
-                    <button class="button" name='pru_bt' value='editar'>Editar prueba</button>                
-                    <button class="button" name='pru_bt' value='eliminar'>Eliminar prueba</button>
+                    <button class="button" name='pru_bt' value='crear'>Crear Prueba</button>
+                    <button class="button" name='pru_bt' value='duplicar'>Duplicar Prueba</button>
+                    <button class="button" name='pru_bt' value='editar'>Editar Prueba</button>                
+                    <button class="button" name='pru_bt' value='eliminar'>Eliminar Prueba</button>
                     <br>
                 </div>
                 <br>

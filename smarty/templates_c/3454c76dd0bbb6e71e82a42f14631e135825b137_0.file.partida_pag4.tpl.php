@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:30:00
+/* Smarty version 3.1.34-dev-7, created on 2020-04-03 09:59:16
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\partida_pag4.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e862f2832a9b9_02954162',
+  'unifunc' => 'content_5e86ecd4a7a513_31652496',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3454c76dd0bbb6e71e82a42f14631e135825b137' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\partida_pag4.tpl',
-      1 => 1585852179,
+      1 => 1585900700,
       2 => 'file',
     ),
   ),
@@ -22,14 +22,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listaequipos.tpl' => 1,
   ),
 ),false)) {
-function content_5e862f2832a9b9_02954162 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e86ecd4a7a513_31652496 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
 <!-- crimeBook: pagina4 -->
 <html>
     <head>
-	<title>Listado de Juegos</title>
+	<title>Listado de Partidas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
@@ -39,9 +39,9 @@ function content_5e862f2832a9b9_02954162 (Smarty_Internal_Template $_smarty_tpl)
             <a href="pagina1.php">Listado de Juegos</a>
             <a href="pagina2.php">Listado de Partidas</a>
             <a href="pagina3.php">Listado de Pruebas</a>
-            <a href="pagina4.php" ?variable=nuevaPruebaMenu" class="active">Partida Nueva/Editar</a>
+            <a href="pagina4.php" class="active">Partida Nueva/Editar</a>
             <a href="pagina5.php">Juego Nuevo/Editar</a>
-            <a href="pagina6.php">Prueba Nueva/Editar</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>
             <a href="pagina8.php">Crear pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -66,13 +66,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <?php $_smarty_tpl->_assignInScope('textoboton1', "Añadir Equipo a la Partida Cargada");?>
     <?php $_smarty_tpl->_assignInScope('textoboton2', "Actualizar Tiempo para esta Partida");?>
     <?php $_smarty_tpl->_assignInScope('aviso1', "Puede modificar el 'Tiempo de Partida' en la celda 'Duración de la Partida'");?>
-    <div align="center"><h2>Editar Partida</div>
+    <div align="center"><h2>Editar Partida</h2></div>
 <?php }
 if ($_smarty_tpl->tpl_vars['accion_pag4']->value == 'crear') {?>
         <?php $_smarty_tpl->_assignInScope('textoboton1', "Antes de Añadir Equipo debe guardar la Partida Nueva");?>
     <?php $_smarty_tpl->_assignInScope('textoboton2', "Guardar Nueva Partida");?>
     <?php $_smarty_tpl->_assignInScope('aviso1', "Para Guardar Nueva Partida rellene celdas de Nombre y Duración<br> y Pulse Botón Guardar Nueva Partida");?>
-    <div align="center"><h2>Nueva Partida</div>
+    <div align="center"><h2>Nueva Partida</h2></div>
 <?php }
 if ($_smarty_tpl->tpl_vars['nombrejuego']->value == 'No hay Juego Seleccionado') {?>
    <h2 align="center">No hay Juego Seleccionado</h2>

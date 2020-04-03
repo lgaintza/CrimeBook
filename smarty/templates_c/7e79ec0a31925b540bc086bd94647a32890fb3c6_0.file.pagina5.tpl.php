@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:29:57
+/* Smarty version 3.1.34-dev-7, created on 2020-04-03 10:21:24
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina5.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e862f25e61323_66409780',
+  'unifunc' => 'content_5e86f204c91569_12859177',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7e79ec0a31925b540bc086bd94647a32890fb3c6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina5.tpl',
-      1 => 1585852159,
+      1 => 1585902072,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e862f25e61323_66409780 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e86f204c91569_12859177 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -33,12 +33,12 @@ function content_5e862f25e61323_66409780 (Smarty_Internal_Template $_smarty_tpl)
 <body class="pagpruebas">
 
    <div class="topnav" id="myTopnav">
-            <a href="pagina1.php">Listado<br>de Juegos</a>
-            <a href="pagina2.php">Listado<br>de Partidas</a>
-            <a href="pagina3.php">Listado<br>de Pruebas</a>
-            <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
-            <a href="pagina5.php" ?variable=nuevaPruebaMenu" class="active">Juego Nuevo<br>Editar Juego</a>
-            <a href="pagina6.php">Prueba Nueva<br>Editar Prueba</a>
+            <a href="pagina1.php">Listado de Juegos</a>
+            <a href="pagina2.php">Listado de Partidas</a>
+            <a href="pagina3.php">Listado de Pruebas</a>
+            <a href="pagina4.php">Partida Nueva/Editar</a>
+            <a href="pagina5.php" class="active">Juego Nuevo/Editar</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>
             <a href="pagina8.php">Crear Pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -71,7 +71,7 @@ function content_5e862f25e61323_66409780 (Smarty_Internal_Template $_smarty_tpl)
 '/>
      <br>
      <br>
-     <h3 align="left">Listado de pruebas para añadir al juego</h3>
+     <h3 align="left">Pruebas disponibles para añadir al juego</h3>
     <table align="center">
     <tr>
       
