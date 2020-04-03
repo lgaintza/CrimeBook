@@ -33,10 +33,10 @@
                 </div>
                 <br>
                 <div align="center">                
-                    <button class="button" name='pru_bt' value='crear'>Crear prueba</button>
-                    <button class="button" name='pru_bt' value='duplicar'>Duplicar prueba</button>
-                    <button class="button" name='pru_bt' value='editar'>Editar prueba</button>                
-                    <button class="button" name='pru_bt' value='eliminar'>Eliminar prueba</button>
+                    <button class="button" name='pru_bt' value='crear'>Crear Prueba</button>
+                    <button class="button" name='pru_bt' value='duplicar'>Duplicar Prueba</button>
+                    <button class="button" name='pru_bt' value='editar'>Editar Prueba</button>                
+                    <button class="button" name='pru_bt' value='eliminar'>Eliminar Prueba</button>
                     <br>
                 </div>
                 <br>
