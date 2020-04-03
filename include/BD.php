@@ -388,25 +388,26 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         }
         return $verificado;
     }
-    //metodo para sacar las estadisticas en la pantalla 7
-    public static function obtieneEstadistica($idPartida){
-        $sql = "SELECT DISTINCT equipos.nombre as nombreEquipo, partidas.id as id, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
-        $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id)";
-        $sql.=" WHERE partidas.id='" . $idPartida. "'";
-    
-        $resultado = self::ejecutaConsulta($sql);
-        $estadisticas =array();
-        if($resultado) {
-                // Añadimos un elemento por cada producto obtenido
-                $row = $resultado->fetch();
-                while ($row != null) {
-                    $estadisticas[] = new Estadistica($row);
+    //metodo para sacar las estadisticas en la pantalla 7 
+ 
+        public static function obtieneEstadisticasTotales(){
+            $sql = "SELECT DISTINCT equipos.nombre as nombreEquipo, partidas.id as id, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
+            $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id)";
+        
+            $resultado = self::ejecutaConsulta($sql);
+            $estadisticas =array();
+            if($resultado) {
+                    // Añadimos un elemento por cada producto obtenido
                     $row = $resultado->fetch();
-                }
-        }
-            
-            return $estadisticas;    
-        }
+                    while ($row != null) {
+                        $estadisticas[] = new Estadistica($row);
+                        $row = $resultado->fetch();
+                    }
+            }
+                
+                return $estadisticas;    
+            }
+
 
     public static function muestraPartida($idJuego){
         $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username from partidas";

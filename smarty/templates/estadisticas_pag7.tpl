@@ -31,6 +31,16 @@
             <div id="pruebas">
                 {include file="listaestadisticas.tpl"}
             </div>
+            <div style="text-align:center; margin:15px;">
+            <form action="pagina7.php" method="POST">
+            <input type=submit name="atras" value="Volver"/>
+            <form>
+            </div>
+        </div>
+         <div id="pie">
+            <form action='logoff.php' method='post'>
+                <input type='submit' name='desconectar' value='Desconectar usuario'/>
+            </form>
         </div>
     </body>
     

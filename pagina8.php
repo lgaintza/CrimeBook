@@ -16,8 +16,12 @@ $smarty->compile_dir = 'smarty/templates_c/';
 $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
-    //$_POST['codigoPrueba'];
-    $_SESSION['codigoPrueba'] = $idPrueba;
+if(isset($_SESSION['codigoPartida'])){
+$idPrueba = $_SESSION['codigoPartida'];
+$smarty->assign('idPrueba', $idPrueba);
+
+}
+
 
 
 
@@ -40,7 +44,6 @@ if(isset($_POST['cancelar'])){
     header("Location: pagina6.php");
 }
 
-$smarty->assign('idPrueba', $idPrueba);
 // Mostramos la plantilla
 $smarty->display('crearPista_pag8.tpl');
 ?>

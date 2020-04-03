@@ -5,7 +5,17 @@
 
    // Recuperamos la información de la sesión
    session_start();
+   if (!isset($_SESSION['usuario'])) 
+   die("Error - debe <a href='login.php'>identificarse</a>.<br />");
+else {
+  
 
+
+   $juegos = BD::obtieneEstadisticasTotales();
+   if(isset($_POST['atras'])){
+      header("location:pagina2.php");
+   }
+}
    // Y comprobamos que el usuario se haya autentificado
 
    // Cargamos la librería de Smarty
@@ -14,12 +24,11 @@
    $smarty->compile_dir = 'smarty/templates_c/';
    $smarty->config_dir = 'smarty/configs/';
    $smarty->cache_dir = 'smarty/cache/';
-   $idPartida=$_SESSION['idPartida'];
-print_r($idPartida);
 
-   $juegos = BD::obtieneEstadistica($idPartida);
 
   $smarty->assign('juegoest',$juegos);
+  $smarty->assign('usuario', $_SESSION['usuario']);
+
    // Mostramos la plantilla
    $smarty->display('estadisticas_pag7.tpl');   
    //print_r($estadisticas);
