@@ -15,7 +15,8 @@ if (!isset($_SESSION['usuario'])){
 }
 //Si hemos entrado por las pestañas de arriba sin seleccionar juego, vamos a pag1
 if (isset($_POST['irapag1'])){ 
-    header("Location: pagina1.php");  
+    header("Location: pagina1.php");
+    exit;
 }
 
 
