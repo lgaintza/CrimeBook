@@ -31,8 +31,8 @@ if (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="crear"){
     if(!isset($_SESSION['idJuego'])){$errorGuardarPartida='1';}    
 }
 
-//Si venimos de Pag2 y opción Editar Partida:
-if (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="editar"){
+//Si venimos de Pag2 y opción Editar Partida o hemos elegido en los radio button quedarnos en editar:
+if ((isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="editar")||isset($_POST['botonesirapag']) && $_POST['botonesirapag']=="pag4editar"){
     $_SESSION['accion_pag4']='editar';
     $accionrecibida=$_SESSION['accionpartida'];
     if(is_array($_SESSION['idJuego'])){
