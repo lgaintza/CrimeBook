@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-03 09:59:16
+/* Smarty version 3.1.34-dev-7, created on 2020-04-03 11:58:45
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\partida_pag4.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e86ecd4a7a513_31652496',
+  'unifunc' => 'content_5e8708d5bf1828_09634262',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3454c76dd0bbb6e71e82a42f14631e135825b137' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\partida_pag4.tpl',
-      1 => 1585900700,
+      1 => 1585907774,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listaequipos.tpl' => 1,
   ),
 ),false)) {
-function content_5e86ecd4a7a513_31652496 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8708d5bf1828_09634262 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -66,13 +66,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <?php $_smarty_tpl->_assignInScope('textoboton1', "Añadir Equipo a la Partida Cargada");?>
     <?php $_smarty_tpl->_assignInScope('textoboton2', "Actualizar Tiempo para esta Partida");?>
     <?php $_smarty_tpl->_assignInScope('aviso1', "Puede modificar el 'Tiempo de Partida' en la celda 'Duración de la Partida'");?>
-    <div align="center"><h2>Editar Partida</h2></div>
+    <div align="center"><h2>Editar partida</h2></div>
 <?php }
 if ($_smarty_tpl->tpl_vars['accion_pag4']->value == 'crear') {?>
         <?php $_smarty_tpl->_assignInScope('textoboton1', "Antes de Añadir Equipo debe guardar la Partida Nueva");?>
     <?php $_smarty_tpl->_assignInScope('textoboton2', "Guardar Nueva Partida");?>
     <?php $_smarty_tpl->_assignInScope('aviso1', "Para Guardar Nueva Partida rellene celdas de Nombre y Duración<br> y Pulse Botón Guardar Nueva Partida");?>
-    <div align="center"><h2>Nueva Partida</h2></div>
+    <div align="center"><h2>Nueva partida</h2></div>
 <?php }
 if ($_smarty_tpl->tpl_vars['nombrejuego']->value == 'No hay Juego Seleccionado') {?>
    <h2 align="center">No hay Juego Seleccionado</h2>

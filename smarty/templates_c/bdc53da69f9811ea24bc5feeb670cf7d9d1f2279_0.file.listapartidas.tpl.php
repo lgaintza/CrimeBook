@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 09:01:56
+/* Smarty version 3.1.34-dev-7, created on 2020-04-03 11:58:43
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\listapartidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e858de43ad9b0_88955738',
+  'unifunc' => 'content_5e8708d37d2505_95420556',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bdc53da69f9811ea24bc5feeb670cf7d9d1f2279' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\listapartidas.tpl',
-      1 => 1585664039,
+      1 => 1585907774,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e858de43ad9b0_88955738 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8708d37d2505_95420556 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div align="center"><h2>Juego: <?php echo $_smarty_tpl->tpl_vars['mijuego']->value;?>
-.</div>
+.</h2></div>
 <form action="<?php echo $_SERVER['PHP_SELF'];?>
 " method="post">
     <table align="center">

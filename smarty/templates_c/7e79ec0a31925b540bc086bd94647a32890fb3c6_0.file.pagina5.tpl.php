@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-03 10:21:24
+/* Smarty version 3.1.34-dev-7, created on 2020-04-03 11:59:30
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina5.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e86f204c91569_12859177',
+  'unifunc' => 'content_5e8709023ba293_54591878',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7e79ec0a31925b540bc086bd94647a32890fb3c6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina5.tpl',
-      1 => 1585902072,
+      1 => 1585907967,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e86f204c91569_12859177 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8709023ba293_54591878 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +32,11 @@ function content_5e86f204c91569_12859177 (Smarty_Internal_Template $_smarty_tpl)
 
 <body class="pagpruebas">
 
-   <div class="topnav" id="myTopnav">
+
+   
+
+  <div class="topnav" id="myTopnav">
+
             <a href="pagina1.php">Listado de Juegos</a>
             <a href="pagina2.php">Listado de Partidas</a>
             <a href="pagina3.php">Listado de Pruebas</a>
@@ -40,12 +44,11 @@ function content_5e86f204c91569_12859177 (Smarty_Internal_Template $_smarty_tpl)
             <a href="pagina5.php" class="active">Juego Nuevo/Editar</a>
             <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>
-            <a href="pagina8.php">Crear Pista</a>
+            <a href="pagina8.php">Crear pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-               <i class="fa fa-bars"></i>
+		<i class="fa fa-bars"></i>
             </a>
-            
-  </div>
+	</div>
 
 
   <div id="pag5" align="center">

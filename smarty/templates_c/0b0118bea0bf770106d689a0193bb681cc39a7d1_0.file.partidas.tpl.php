@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 20:33:43
+/* Smarty version 3.1.34-dev-7, created on 2020-04-03 11:58:43
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\partidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8630071aad03_82872921',
+  'unifunc' => 'content_5e8708d3628826_02601974',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0b0118bea0bf770106d689a0193bb681cc39a7d1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\partidas.tpl',
-      1 => 1585852329,
+      1 => 1585907774,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listapartidas.tpl' => 1,
   ),
 ),false)) {
-function content_5e8630071aad03_82872921 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8708d3628826_02601974 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
 <!-- CrimeBook: pagina2 -->
 <html>
     <head>
-	<title>Listado de Juegos</title>
+	<title>Listado de Partidas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
@@ -62,5 +62,6 @@ function content_5e8630071aad03_82872921 (Smarty_Internal_Template $_smarty_tpl)
             </form>
         </div>
     </body>    
-</html><?php }
+</html>
+<?php }
 }
