@@ -35,14 +35,14 @@
     {$textoboton1="Añadir Equipo a la Partida Cargada"}
     {$textoboton2="Actualizar Tiempo para esta Partida"}
     {$aviso1="Puede modificar el 'Tiempo de Partida' en la celda 'Duración de la Partida'"}
-    <div align="center"><h2>Editar Partida</h2></div>
+    <div align="center"><h2>Editar partida</h2></div>
 {/if}
 {if $accion_pag4==  'crear'}
     {* Si la entrada es como 'CREAR' se muestra: *}
     {$textoboton1="Antes de Añadir Equipo debe guardar la Partida Nueva"}
     {$textoboton2="Guardar Nueva Partida"}
     {$aviso1="Para Guardar Nueva Partida rellene celdas de Nombre y Duración<br> y Pulse Botón Guardar Nueva Partida"}
-    <div align="center"><h2>Nueva Partida</h2></div>
+    <div align="center"><h2>Nueva partida</h2></div>
 {/if}
 {if $nombrejuego=='No hay Juego Seleccionado'}
    <h2 align="center">No hay Juego Seleccionado</h2>

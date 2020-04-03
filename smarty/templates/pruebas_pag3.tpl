@@ -13,7 +13,7 @@
         <div class="topnav" id="myTopnav">
             <a href="pagina1.php">Listado de Juegos</a>
             <a href="pagina2.php">Listado de Partidas</a>
-            <a href="pagina3.php"class="active">Listado de Pruebas</a>
+            <a href="pagina3.php" class="active">Listado de Pruebas</a>
             <a href="pagina4.php">Partida Nueva/Editar</a>
             <a href="pagina5.php">Juego Nuevo/Editar</a>
             <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
@@ -26,7 +26,7 @@
         <form name="pru" action="pagina3.php" method="post">
             <div id="contenedor">
                 <div id="encabezado">
-                    <h2 align="center">Listado de Pruebas</h2>
+                    <h2 align="center">Listado de pruebas</h2>
                 </div>
                 <div id="pruebas">
                     {include file="listapruebas.tpl"}

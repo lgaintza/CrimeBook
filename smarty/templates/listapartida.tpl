@@ -15,11 +15,11 @@
             {/if}
             {if $export_accion == "crear"}
             {* Si la entrada no es como 'EDITAR' se muestra vacío: *}
-                <td>
-                    <input width="100%" name="celdanombrepartida">
+                <td width="100">
+                    <input size="60" name="celdanombrepartida">
                 </td>
-                <td>
-                    <input width="100%" name="celdatiempo">
+                 <td width="80">
+                    <input size="40" name="celdatiempo">
                 </td>
             {/if}            
         </tr>
