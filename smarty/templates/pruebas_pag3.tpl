@@ -26,7 +26,7 @@
         <form name="pru" action="pagina3.php" method="post">
             <div id="contenedor">
                 <div id="encabezado">
-                    <h2 align="center">Listado de Pruebas</h2>
+                    <h2 align="center">Listado de pruebas</h2>
                 </div>
                 <div id="pruebas">
                     {include file="listapruebas.tpl"}
