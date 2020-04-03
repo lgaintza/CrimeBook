@@ -9,20 +9,19 @@
 
 <body class="pagpruebas">
 
-   <div class="topnav" id="myTopnav">
-            <a href="pagina1.php">Listado<br>de Juegos</a>
-            <a href="pagina2.php">Listado<br>de Partidas</a>
-            <a href="pagina3.php">Listado<br>de Pruebas</a>
-            <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
-            <a href="pagina5.php" class="active">Juego Nuevo<br>Editar Juego</a>
-            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva<br>Editar Prueba</a>
+  <div class="topnav" id="myTopnav">
+            <a href="pagina1.php">Listado de Juegos</a>
+            <a href="pagina2.php">Listado de Partidas</a>
+            <a href="pagina3.php">Listado de Pruebas</a>
+            <a href="pagina4.php">Partida Nueva/Editar</a>
+            <a href="pagina5.php" class="active">Juego Nuevo/Editar</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>
-            <a href="pagina8.php">Crear Pista</a>
+            <a href="pagina8.php">Crear pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-               <i class="fa fa-bars"></i>
+		<i class="fa fa-bars"></i>
             </a>
-            
-  </div>
+	</div>
 
 
   <div id="pag5" align="center">
