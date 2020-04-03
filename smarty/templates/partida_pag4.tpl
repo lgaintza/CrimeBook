@@ -4,7 +4,7 @@
 <!-- crimeBook: pagina4 -->
 <html>
     <head>
-	<title>Listado de Juegos</title>
+	<title>Listado de Partidas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
@@ -35,14 +35,14 @@
     {$textoboton1="Añadir Equipo a la Partida Cargada"}
     {$textoboton2="Actualizar Tiempo para esta Partida"}
     {$aviso1="Puede modificar el 'Tiempo de Partida' en la celda 'Duración de la Partida'"}
-    <div align="center"><h2>Editar Partida</div>
+    <div align="center"><h2>Editar Partida</h2></div>
 {/if}
 {if $accion_pag4==  'crear'}
     {* Si la entrada es como 'CREAR' se muestra: *}
     {$textoboton1="Antes de Añadir Equipo debe guardar la Partida Nueva"}
     {$textoboton2="Guardar Nueva Partida"}
     {$aviso1="Para Guardar Nueva Partida rellene celdas de Nombre y Duración<br> y Pulse Botón Guardar Nueva Partida"}
-    <div align="center"><h2>Nueva Partida</div>
+    <div align="center"><h2>Nueva Partida</h2></div>
 {/if}
 {if $nombrejuego=='No hay Juego Seleccionado'}
    <h2 align="center">No hay Juego Seleccionado</h2>
