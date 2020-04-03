@@ -13,7 +13,7 @@
         <div class="topnav" id="myTopnav">
             <a href="pagina1.php">Listado de Juegos</a>
             <a href="pagina2.php">Listado de Partidas</a>
-            <a href="pagina3.php"class="active">Listado de Pruebas</a>
+            <a href="pagina3.php" class="active">Listado de Pruebas</a>
             <a href="pagina4.php">Partida Nueva/Editar</a>
             <a href="pagina5.php">Juego Nuevo/Editar</a>
             <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
