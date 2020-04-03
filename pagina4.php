@@ -35,8 +35,18 @@ if (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="crear"){
 if (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="editar"){
     $_SESSION['accion_pag4']='editar';
     $accionrecibida=$_SESSION['accionpartida'];
-    foreach($_SESSION['idJuego'] as $juegorecibido);
-    foreach($_SESSION['idPartida'] as $partidarecibida);
+    if(is_array($_SESSION['idJuego'])){
+        foreach($_SESSION['idJuego'] as $juegorecibido);    
+    }
+    else{
+        $juegorecibido=$_SESSION['idJuego']; 
+    }
+    if(is_array($_SESSION['idPartida'])){
+        foreach($_SESSION['idPartida'] as $partidarecibida);    
+    }
+    else{
+        $partidarecibida=$_SESSION['idPartida']; 
+    }
     //Si no la recibo de pag2 como Array sale nula, la recibo como string de pag4
     if($partidarecibida==""){$partidarecibida=$_SESSION['idNuevaPartida'];}
     $_SESSION['juegopag4']=$juegorecibido;
