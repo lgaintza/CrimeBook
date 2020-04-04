@@ -5,9 +5,9 @@ require_once('include/Partida.php');
 require_once('include/Equipo.php');
 require_once('include/Prueba.php');
 require_once('include/libs/Smarty.class.php');
-
 // Recuperamos la información de la sesión
 session_start();
+$errorGuardarPartida='0';
 
 // Y comprobamos que el usuario se haya autentificado
 if (!isset($_SESSION['usuario'])){ 
@@ -19,38 +19,50 @@ if (isset($_POST['irapag1'])){
     exit;
 }
 
+if (isset($_POST['partida_bt']) && isset($_POST['botonesirapag']) && $_POST['botonesirapag']=='pag4editar'){
+    if(isset($_SESSION['accionfinalizada']) && $_SESSION['accionfinalizada']=='1'){
+        $_SESSION['accionpartida']='editar';
+    }    
+}
+
 
 //Si venimos de Pag1 y opción Crear Nueva Partida:
-if (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="crear"){
-    $_SESSION['accion_pag4']='crear';
+if (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="crear" && !isset($_POST['partida_bt'])){
     //Se recibe Idjuego commoarray. Lo pasamos a valor
-    foreach($_SESSION['idJuego'] as $arrayjuego){
-        $juegorecibido=$arrayjuego;
-        $_SESSION['juegorecibido']=$arrayjuego;
-    };
+    if (isset($_SESSION['idJuego'])){
+        foreach($_SESSION['idJuego'] as $arrayjuego){
+            $juegorecibido=$arrayjuego;
+            $_SESSION['juegorecibido']=$arrayjuego;
+        }
+    }
     if(!isset($_SESSION['idJuego'])){$errorGuardarPartida='1';}    
 }
 
 //Si venimos de Pag2 y opción Editar Partida o hemos elegido en los radio button quedarnos en editar:
 if ((isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="editar")||isset($_POST['botonesirapag']) && $_POST['botonesirapag']=="pag4editar"){
-    $_SESSION['accion_pag4']='editar';
-    $accionrecibida=$_SESSION['accionpartida'];
-    if(is_array($_SESSION['idJuego'])){
+    $accionrecibida='editar';
+    if(isset($_SESSION['idJuego']) && is_array($_SESSION['idJuego'])){
         foreach($_SESSION['idJuego'] as $juegorecibido);    
     }
     else{
-        $juegorecibido=$_SESSION['idJuego']; 
+        if(isset($_SESSION['idJuego'])){$juegorecibido=$_SESSION['idJuego'];} 
     }
-    if(is_array($_SESSION['idPartida'])){
+    if(isset($_SESSION['idPartida']) && is_array($_SESSION['idPartida'])){
         foreach($_SESSION['idPartida'] as $partidarecibida);    
     }
     else{
-        $partidarecibida=$_SESSION['idPartida']; 
+        if(isset($_SESSION['idPartida'])){$partidarecibida=$_SESSION['idPartida'];} 
     }
     //Si no la recibo de pag2 como Array sale nula, la recibo como string de pag4
-    if($partidarecibida==""){$partidarecibida=$_SESSION['idNuevaPartida'];}
-    $_SESSION['juegopag4']=$juegorecibido;
-    $_SESSION['partidapag4']=$partidarecibida; 
+    if(isset($_SESSION['idPartida'])&& ($partidarecibida=="")){
+        $partidarecibida=$_SESSION['idNuevaPartida'];
+        }
+    if(isset($juegorecibido)){
+        $_SESSION['juegopag4']=$juegorecibido;
+        }
+    if(isset($partidarecibida)){
+        $_SESSION['partidapag4']=$partidarecibida;
+        } 
 }
 
 
@@ -76,7 +88,7 @@ if (isset( $_POST['partida_bt']) && $_POST['partida_bt']=='anadir'){
 //Si venimos de uno de los botones de acción de la propia página
 // Si venimos de EDITAR
 
-if (isset($_POST['partida_bt']) && $_POST['partida_bt']=='guardar' && isset($_POST['celdatiempo']) && $_SESSION['accion_pag4']=='editar' ){
+if (isset($_POST['partida_bt']) && $_POST['partida_bt']=='guardar' && $_SESSION['accionpartida']=='editar' ){
     if (isset($_POST['celdatiempo'])){
         if ($_POST['celdatiempo']==null){$_POST['celdatiempo']='0';}
         $checktime=ctype_digit(str_replace(":","",$_POST['celdatiempo']));
@@ -93,8 +105,7 @@ if (isset($_POST['partida_bt']) && $_POST['partida_bt']=='guardar' && isset($_PO
 
 
 // Si venimos de los botones de acción de la propia página y la acción es crear partida
-if (isset($_POST['partida_bt']) && $_SESSION['accion_pag4']=='crear'){
-    $errorGuardarPartida=0;
+if (isset($_POST['partida_bt']) && $_SESSION['accionpartida']=='crear' ){
     $nombrespartidas =(BD::arrayNombrePartidas());
      
 
@@ -106,7 +117,9 @@ if (isset($_POST['partida_bt']) && $_SESSION['accion_pag4']=='crear'){
 
     //comprobamos si el nombre de la nueva partida ya existe
     if (isset($nombrespartidas) && $errorGuardarPartida==0){
-        $micheck=$_POST['celdanombrepartida'];
+        if (isset($_POST['celdanombrepartida'])){
+            $micheck=$_POST['celdanombrepartida'];
+        }
         foreach($nombrespartidas as $checkpartida){ 
             $checkbucle = $checkpartida->getnombre();
                 if ($checkbucle==$micheck && $errorGuardarPartida!=='1'){
@@ -140,27 +153,29 @@ if (isset($_POST['partida_bt']) && $_SESSION['accion_pag4']=='crear'){
 // O si la acción recibida es EDITAR los cargamos por primera vez
 // Recuperamos datos de partida y equipos
 if (isset($_POST['partida_bt']) || $_SESSION['accionpartida']=='editar'){
-$smarty->assign('partida4', BD::obtienePartida4($partidarecibida));
-$smarty->assign('equipos4', BD::obtieneEquiposPag4($partidarecibida));
-$smarty->assign('accion_pag4',  $accionrecibida);
+if (isset($partidarecibida)){$smarty->assign('partida4', BD::obtienePartida4($partidarecibida));}
+if (isset($partidarecibida)){$smarty->assign('equipos4', BD::obtieneEquiposPag4($partidarecibida));}
+if (isset($accionrecibida)){
+        $smarty->assign('accion_pag4',  $accionrecibida);
+    }
 }
 
 // En caso contrario CREAR, muestra los campos vacíos, salvo Nombre del juego
 // Si venimos de los botones de acción de la propia página refrescamos datos
 // O si la acción recibida es EDITAR los cargamos por primera vez
 // Recuperamos datos de partida y equipos
-if ($_SESSION['accion_pag4']=='editar'){
+if (isset($_SESSION['accionpartida'])&& $_SESSION['accionpartida']=='editar'){
 $smarty->assign('accion_pag4','editar');
 
 }
-if ($_SESSION['accion_pag4']=='crear'){
+if (isset($_SESSION['accionpartida'])&& $_SESSION['accionpartida']=='crear'){
 $smarty->assign('accion_pag4','crear');
 $crear="terminado";
 }
-if ($juegorecibido==''){
+if (isset($juegorecibido) && $juegorecibido==''){
     $smarty->assign('nombrejuego',"No hay Juego Seleccionado");
 }else{
-    $smarty->assign('nombrejuego',  BD::nombrejuego($juegorecibido));
+    if (isset($juegorecibido)){$smarty->assign('nombrejuego',  BD::nombrejuego($juegorecibido));}
 }
 // Si venimos de crear, y queremos ir a Pag2, opción por defecto
     if (isset($_POST['botonesirapag']) && $_POST['botonesirapag']=="pag2" && $errorGuardarPartida==0) {
@@ -169,29 +184,26 @@ if ($juegorecibido==''){
     }
 // O nos quedamos en Pag4 como editar, para poder meter equipos o cambiar tiempo en la partida recién creada
     if (isset($_POST['botonesirapag']) && $_POST['botonesirapag']=="pag4editar" && $errorGuardarPartida==0) {
-        $_SESSION['idjuego']=$_SESSION['juegopag4'];
+        if (isset($_SESSION['juegopag4'])){$_SESSION['idjuego']=$_SESSION['juegopag4'];}
         $_SESSION['idPartida']=null;
-        $_SESSION['idPartida']=$_SESSION['idNuevaPartida'];
-        $_SESSION['accionpartida']=null;
+        if (isset($_SESSION['idNuevaPartida'])){$_SESSION['idPartida']=$_SESSION['idNuevaPartida'];}
+        if (isset($_SESSION['accionpartida'])){$_SESSION['accionpartida']=null;}
         $_SESSION['accionpartida']="editar";
-        if (isset($_SESSION['accion_pag4'])){$_SESSION['accion_pag4']=null;}        
+        $_SESSION['accionfinalizada']="1";
         // Redirige a la página 4
         header("Location: pagina4.php");  
     }
 // O nos quedamos en Pag4 como crear, para poder seguir metiendo nueva partidas
     if (isset($_POST['botonesirapag']) && $_POST['botonesirapag']=="pag4crear" && $errorGuardarPartida==0) {
-        $_SESSION['idjuego']=$_SESSION['juegopag4'];
+        if (isset($_SESSION['juegopag4'])){$_SESSION['idjuego']=$_SESSION['juegopag4'];}
         $_SESSION['idPartida']=null;
         $_SESSION['accionpartida']=null;
         $_SESSION['accionpartida']="crear";
-        if (isset($_SESSION['accion_pag4'])){$_SESSION['accion_pag4']=null;}        
-        // Redirige a la página 4
+        //if (isset($_SESSION['accionpartida'])){$_SESSION['accionpartida']=null;}        
+        //Redirige a la página 4
         header("Location: pagina4.php");  
     }
-
-
-
-
+    if (isset($_SESSION['accionfinalizada'])){$_SESSION['accionfinalizada']=null;}
 // Mostramos la plantilla
 $smarty->display('partida_pag4.tpl'); 
 ?>
