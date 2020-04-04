@@ -96,11 +96,7 @@ y pulse 'Guardar Nueva Partida'
 <br>
 {if isset($nombrejuego) && $nombrejuego !=='No hay Juego Seleccionado'}
 <div align="center">
-    {if $accion_pag4!==null && $accion_pag4 == "crear"}
-        <button disabled="true" class="button" name='partida_bt' value='anadir'>{if isset($textoboton1)}{$textoboton1}{/if}</button>
-    {else}
-    <button class="button" name='partida_bt' value='anadir'>{if isset($textoboton1)}{$textoboton1}{/if}</button>
-    {/if}    
+    <button {if $accion_pag4!==null && $accion_pag4 == "crear"} disabled="true" {/if} class="button" name='partida_bt' value='anadir'>{if isset($textoboton1)}{$textoboton1}{/if}</button>
     <button class="button" name='partida_bt' value='guardar'>{if isset($textoboton2)}{$textoboton2}{/if}</button>
 </div>
 {else}
