@@ -7,13 +7,17 @@
         <br>
 	<tr>
             {* Si la entrada es como 'EDITAR' se muestran VALORES: *}
-            {if $export_accion == "editar"}
-                <td>{$partidanombre}</td>
+            {if isset($export_accion) && $export_accion == "editar"}
+                {if ($partidanombre!==null)}
+                    <td>{$partidanombre}</td>
+                {else} 
+                    <td></td>
+                {/if}
                 <td>
                     <input name="celdatiempo" value={$partidaduracion}>
                 </td>
             {/if}
-            {if $export_accion == "crear"}
+            {if isset($export_accion) && $export_accion == "crear"}
             {* Si la entrada no es como 'EDITAR' se muestra vacío: *}
                 <td width="100">
                     <input size="60" name="celdanombrepartida">
