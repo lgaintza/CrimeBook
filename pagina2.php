@@ -51,7 +51,7 @@
     // obtiene partidas y número de equipos  
     $partidas = BD::muestraPartidas($idJuego); 
     // si no hay muestra mensaje
-    if ($partidas==''){
+    if (empty($partidas)){
         $smarty->assign('mijuego',"no seleccionado o no tiene partidas");
     }else{
         $smarty->assign('mijuego', $mijuego);

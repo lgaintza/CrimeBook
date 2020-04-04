@@ -437,17 +437,17 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         $sql .=" ON partidas.id = equipos.idPartida";
         $sql .=" WHERE partidas.idJuego='".$idjuego."' GROUP BY partidas.id";
         $resultado = self::ejecutaConsulta($sql);
-        $num_equipos = array();
+        $partidas_equipos = array();
 
 	if($resultado) {
             $row = $resultado->fetch();
             while ($row != null) {
-                $num_equipos[] = new Partida($row);
+                $partidas_equipos[] = new Partida($row);
                 $row = $resultado->fetch();
             }
 	}
         
-        return $num_equipos;
+        return $partidas_equipos;
     }
     
     
