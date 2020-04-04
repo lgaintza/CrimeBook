@@ -775,7 +775,8 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
             $sql.=" WHERE juegos.id='" . $juego . "'";
             $resultado = self::ejecutaConsulta ($sql);
         }
-    }   
+    }
+    
         
     //metodo para eliminar una partida finalizada en página2
     public static function eliminaPartida($codigo){
@@ -784,8 +785,36 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         $sql.=" AND partidas.finalizada='S'";
         $resultado = self::ejecutaConsulta ($sql);
 
-    }    
+    }
     
-}     
+       
+    
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 ?>
