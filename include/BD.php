@@ -112,9 +112,11 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
     
     //metodo para metodo para actualizar tiempo en la pagina 4
     public static function actualizaTiempo(){
+        if(isset($_POST['celdatiempo']) && isset($_SESSION['partidapag4'])){
         $sql ="UPDATE partidas SET duracion='".$_POST['celdatiempo']."' WHERE id='".$_SESSION['partidapag4']."'";
-        $resultado = self::ejecutaConsulta ($sql);
+        $pruebas = self::ejecutaConsulta ($sql);
         return $pruebas;
+    }
     }
     
     //metodo para crear equipo en la pagina 4
@@ -139,7 +141,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         $sql ="'".$_POST['nombre_equipo']."', ".
         $sql ="'".$_POST['celdatiempo']."', ".
         $sql ="'".$_SESSION['partidapag4']."')";
-        $resultado = self::ejecutaConsulta ($sql);
+        $equipo = self::ejecutaConsulta ($sql);
         return $equipo;
     }
     
@@ -177,7 +179,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         $sql ="'".$_SESSION['usuario']."',".
         $sql ="'N')";
         
-        $resultado = self::ejecutaConsulta ($sql);
+        $partida = self::ejecutaConsulta ($sql);
         return $partida;
     }
     
@@ -388,26 +390,25 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         }
         return $verificado;
     }
-    //metodo para sacar las estadisticas en la pantalla 7 
- 
-        public static function obtieneEstadisticasTotales(){
-            $sql = "SELECT DISTINCT equipos.nombre as nombreEquipo, partidas.id as id, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
-            $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id)";
-        
-            $resultado = self::ejecutaConsulta($sql);
-            $estadisticas =array();
-            if($resultado) {
-                    // Añadimos un elemento por cada producto obtenido
+    //metodo para sacar las estadisticas en la pantalla 7
+    public static function obtieneEstadistica($idPartida){
+        $sql = "SELECT DISTINCT equipos.nombre as nombreEquipo, partidas.id as id, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
+        $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id)";
+        $sql.=" WHERE partidas.id='" . $idPartida. "'";
+    
+        $resultado = self::ejecutaConsulta($sql);
+        $estadisticas =array();
+        if($resultado) {
+                // Añadimos un elemento por cada producto obtenido
+                $row = $resultado->fetch();
+                while ($row != null) {
+                    $estadisticas[] = new Estadistica($row);
                     $row = $resultado->fetch();
-                    while ($row != null) {
-                        $estadisticas[] = new Estadistica($row);
-                        $row = $resultado->fetch();
-                    }
-            }
-                
-                return $estadisticas;    
-            }
-
+                }
+        }
+            
+            return $estadisticas;    
+        }
 
     public static function muestraPartida($idJuego){
         $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username from partidas";
@@ -437,17 +438,16 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         $sql .=" ON partidas.id = equipos.idPartida";
         $sql .=" WHERE partidas.idJuego='".$idjuego."' GROUP BY partidas.id";
         $resultado = self::ejecutaConsulta($sql);
-        $partidas_equipos = array();
 
 	if($resultado) {
             $row = $resultado->fetch();
             while ($row != null) {
-                $partidas_equipos[] = new Partida($row);
+                $num_equipos[] = new Partida($row);
                 $row = $resultado->fetch();
             }
 	}
         
-        return $partidas_equipos;
+        return $num_equipos;
     }
     
     
@@ -775,8 +775,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
             $sql.=" WHERE juegos.id='" . $juego . "'";
             $resultado = self::ejecutaConsulta ($sql);
         }
-    }
-    
+    }   
         
     //metodo para eliminar una partida finalizada en página2
     public static function eliminaPartida($codigo){
@@ -785,36 +784,8 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         $sql.=" AND partidas.finalizada='S'";
         $resultado = self::ejecutaConsulta ($sql);
 
-    }
+    }    
     
-       
-    
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+}     
 
 ?>
