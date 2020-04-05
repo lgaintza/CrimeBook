@@ -75,7 +75,7 @@
 
 <input type='submit' value='Añade pista' name='anadePista'/> 
 <input type='submit' value='Eliminar Pista' name='delPista'/><br><br>
-<input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/>
+<!--<input type='hidden' name='codigoprueba' value='{$prueba->getid()}'/> -->
 
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>

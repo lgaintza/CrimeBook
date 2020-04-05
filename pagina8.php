@@ -22,6 +22,20 @@ if (isset($_SESSION['pruebaRecibida'])){
   $smarty->assign('idPrueba', $_SESSION['pruebaRecibida']);
 
 
+if($_SESSION['idTemporalPrueba'])
+{
+	echo $_SESSION['idTemporalPrueba']; 
+	if(isset($_SESSION['pruebaGuardadaParaVolver']))
+	{
+		echo "existe"; 
+	}else
+	{
+		echo "no existe"; 
+	}
+	//header("Location: pagina6.php"); 
+}
+
+
 
 }
 

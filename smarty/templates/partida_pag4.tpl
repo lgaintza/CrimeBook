@@ -4,7 +4,7 @@
 <!-- crimeBook: pagina4 -->
 <html>
     <head>
-	<title>Listado de Partidas</title>
+	<title>CrimeBook Partidas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
@@ -23,36 +23,43 @@
 		<i class="fa fa-bars"></i>
             </a>
 	</div>
-
-{assign var="export_accion" value=$accion_pag4}
-{if $accion_pag4 == 'editar'}
+{if isset($accion_pag4)} 
+    {assign var="export_accion" value=$accion_pag4}
+{/if}
+{if isset($export_accion)}
+{/if}
+{if isset($accion_pag4) && $accion_pag4 == 'editar'}
     {* Si la entrada es como 'EDITAR' se muestra: *}
-    {foreach from=$partida4 item=partida}
-        {assign var="partidanombre" value=$partida->getnombre()}
-        {assign var="partidaduracion" value=$partida->getduracion()}
-    {/foreach}
-    {assign var="equipos4" value=$equipos4}
-    {$textoboton1="Añadir Equipo a la Partida Cargada"}
-    {$textoboton2="Actualizar Tiempo para esta Partida"}
+    {if isset($partida4)}
+        {foreach from=$partida4 item=partida}
+            {assign var="partidanombre" value=$partida->getnombre()}
+            {assign var="partidaduracion" value=$partida->getduracion()}
+        {/foreach}
+    {/if}
+    {if isset($equipos4)}
+        {assign var="equipos4" value=$equipos4}
+    {/if}
+    {assign var="textoboton1" value="Añadir Equipo a la Partida Cargada"}
+    {assign var="textoboton2" value="Actualizar Tiempo para esta Partida"}
     {$aviso1="Puede modificar el 'Tiempo de Partida' en la celda 'Duración de la Partida'"}
     <div align="center"><h2>Editar partida</h2></div>
 {/if}
-{if $accion_pag4==  'crear'}
+{if isset($accion_pag4) && $accion_pag4=='crear'}
     {* Si la entrada es como 'CREAR' se muestra: *}
-    {$textoboton1="Antes de Añadir Equipo debe guardar la Partida Nueva"}
-    {$textoboton2="Guardar Nueva Partida"}
+    {assign var="textoboton1" value="Antes de Añadir Equipo debe guardar la Partida Nueva"}
+    {assign var="textoboton2" value="Guardar Nueva Partida"}
     {$aviso1="Para Guardar Nueva Partida rellene celdas de Nombre y Duración<br> y Pulse Botón Guardar Nueva Partida"}
     <div align="center"><h2>Nueva partida</h2></div>
 {/if}
-{if $nombrejuego=='No hay Juego Seleccionado'}
+{if (isset($nombrejuego) && $nombrejuego=='No hay Juego Seleccionado')}
    <h2 align="center">No hay Juego Seleccionado</h2>
 {else}
-    <div align="center"><h2>Juego: {$nombrejuego}</h2></div>
+    <div align="center"><h2>Juego: {if (isset($nombrejuego))}{$nombrejuego}{/if}</h2></div>
 {/if}
-{if $accion_pag4 == 'editar'}
+{if isset($accion_pag4) && $accion_pag4 == 'editar'}
     <div align="center">Si desea Crear una partida nueva, acceda desde la Página  <a href="pagina1.php">Listado de Juegos</a> y pulse 'Nueva Partida'</div>
 {/if}
-{if $accion_pag4==  'crear'}
+{if isset($accion_pag4) && $accion_pag4==  'crear'}
     <div align="center">Si desea Editar una Partida en uso, acceda desde la Página <a href="pagina2.php">Listado de Partidas</a> y pulse 'Editar Partida'</div>
 {/if}
 <h2 align="center">Duración de la partida</h2>
@@ -66,13 +73,19 @@
     {include file="listaequipos.tpl"}
 </div>
 <h3 align="center">
-    Nombre del Equipo: <input {if $accion_pag4 == "crear"} disabled="true" {/if} style=" HEIGHT: 30px" type="text" size="100" align="center" name="nombre_equipo" placeholder="  Introduzca nombre de nuevo Equipo"><br/>
+    {if (isset($accion_pag4) && $accion_pag4 == "crear")}
+        Nombre del Equipo: <input  disabled='true' style=" HEIGHT: 30px" type="text" size="100" align="center" name="nombre_equipo" placeholder="  Introduzca nombre de nuevo Equipo"><br/>
+    {else}
+        Nombre del Equipo: <input style=" HEIGHT: 30px" type="text" size="100" align="center" name="nombre_equipo" placeholder="  Introduzca nombre de nuevo Equipo"><br/>
+    {/if}
 </h3>
-{if $accion_pag4 == "crear"}
+{if isset($accion_pag4) && $accion_pag4 == "crear"}
 <p align="center" style="color: #999">
 Para añadir Equipo a la Partida Creada, primero debe rellenar Tabla 'Duración de la Partida'<br>
 y pulse 'Guardar Nueva Partida'
 </p>
+{* Si la entrada es como 'CREAR' se muestra: *}
+    
 <div id="botonesirapag" align="center">
     Después de CREAR Partida,<br>
     <input type="radio" value="pag2" name="botonesirapag" checked="true">Ir a Mostrar Listado de Partidas<br>
@@ -81,10 +94,10 @@ y pulse 'Guardar Nueva Partida'
 </div>
 {/if}
 <br>
-{if $nombrejuego!=='No hay Juego Seleccionado'}
+{if isset($nombrejuego) && $nombrejuego !=='No hay Juego Seleccionado'}
 <div align="center">
-    <button {if $accion_pag4 == "crear"} disabled="true" {/if} class="button" name='partida_bt' value='anadir'>{$textoboton1}</button>
-    <button class="button" name='partida_bt' value='guardar'>{$textoboton2}</button>
+    <button {if $accion_pag4!==null && $accion_pag4 == "crear"} disabled="true" {/if} class="button" name='partida_bt' value='anadir'>{if isset($textoboton1)}{$textoboton1}{/if}</button>
+    <button class="button" name='partida_bt' value='guardar'>{if isset($textoboton2)}{$textoboton2}{/if}</button>
 </div>
 {else}
 <div align="center">
