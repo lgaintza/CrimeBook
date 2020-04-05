@@ -106,7 +106,7 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         if(isset($_POST['pru_id'])){
         $sql.=" WHERE pruebas.id='" .$_POST['pru_id']."'";
         }
-        $resultado = self::ejecutaConsulta($sql);
+        $pruebas = self::ejecutaConsulta($sql);
         return $pruebas;
     }
     
