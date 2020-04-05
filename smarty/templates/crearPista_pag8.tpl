@@ -34,9 +34,25 @@
     
         <div class='campo'>
             <label for='idPrueba'>idPrueba: </label>
+            {if isset($idPrueba)}
             <input type='checkbox' name='idPrueba' value='{$idPrueba}'> {$idPrueba}
+            {else}
+                                            <select  name="idPrueba">
+                                                                <option selected value="0"> Seleccione una prueba...</option>
+                                                                <option value="400001">400001</option>
+                                                                <option value="400002">400002</option>
+                                                                <option value="400003">400003</option>
+                                                                <option value="400004">400004</option>
+                                                                <option value="400005">400005</option>
+                                                                <option value="400006">400006</option>
+                                                                <option value="400007">400007</option>
+                                                                <option value="400008">400008</option>
+                                                                </select>
+                                                                
+            {/if}
+
             <br><br>
-        </div>
+      </div>
         <div class='campo'>
             <label for='id' >id:<span style="color:red;">*</span></label><select  name="id">
                                                                 <option selected value="0"> Seleccione una pista...</option>

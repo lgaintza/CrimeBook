@@ -171,8 +171,6 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 {/if}
 
 		
-</table>
-</form>
 <br>
 <script>
 function myFunction() {

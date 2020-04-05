@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-04-05 13:14:28
+  from 'C:\xampp\htdocs\crimebook\Crimebook interfaces\crimeBook\smarty\templates\pruebas_pag3.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5e89bd9436f985_59270382',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '83ec606c76aaafeff32218b3fc93acc2bee12fec' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\crimebook\\Crimebook interfaces\\crimeBook\\smarty\\templates\\pruebas_pag3.tpl',
+      1 => 1586085266,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:listapruebas.tpl' => 1,
+  ),
+),false)) {
+function content_5e89bd9436f985_59270382 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
 <!-- crimeBook: pagina3 -->
@@ -29,7 +53,8 @@
                     <h2 align="center">Listado de pruebas</h2>
                 </div>
                 <div id="pruebas">
-                    {include file="listapruebas.tpl"}
+                    <?php $_smarty_tpl->_subTemplateRender("file:listapruebas.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
                 </div>
                 <br>
                 <div align="center">                
@@ -49,3 +74,5 @@
         </div>
     </body>    
 </html>
+<?php }
+}

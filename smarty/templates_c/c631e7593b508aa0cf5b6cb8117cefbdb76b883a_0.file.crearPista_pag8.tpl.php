@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-03 18:52:12
+/* Smarty version 3.1.34-dev-7, created on 2020-04-05 14:05:23
   from 'C:\xampp\htdocs\crimebook\Crimebook interfaces\crimeBook\smarty\templates\crearPista_pag8.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8769bc89e162_16722089',
+  'unifunc' => 'content_5e89c983427879_06748767',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c631e7593b508aa0cf5b6cb8117cefbdb76b883a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crimebook\\Crimebook interfaces\\crimeBook\\smarty\\templates\\crearPista_pag8.tpl',
-      1 => 1585932728,
+      1 => 1586088320,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e8769bc89e162_16722089 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e89c983427879_06748767 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -57,11 +57,26 @@ function content_5e8769bc89e162_16722089 (Smarty_Internal_Template $_smarty_tpl)
     
         <div class='campo'>
             <label for='idPrueba'>idPrueba: </label>
+            <?php if (isset($_smarty_tpl->tpl_vars['idPrueba']->value)) {?>
             <input type='checkbox' name='idPrueba' value='<?php echo $_smarty_tpl->tpl_vars['idPrueba']->value;?>
 '> <?php echo $_smarty_tpl->tpl_vars['idPrueba']->value;?>
 
+            <?php } else { ?>
+                                            <select  name="idPrueba">
+                                                                <option selected value="0"> Seleccione una prueba...</option>
+                                                                <option value="400001">400001</option>
+                                                                <option value="400002">400002</option>
+                                                                <option value="400003">400003</option>
+                                                                <option value="400004">400004</option>
+                                                                <option value="400005">400005</option>
+                                                                <option value="400006">400006</option>
+                                                                <option value="400007">400007</option>
+                                                                <option value="400008">400008</option>
+                                                                </select>
+            <?php }?>
+
             <br><br>
-        </div>
+      </div>
         <div class='campo'>
             <label for='id' >id:<span style="color:red;">*</span></label><select  name="id">
                                                                 <option selected value="0"> Seleccione una pista...</option>

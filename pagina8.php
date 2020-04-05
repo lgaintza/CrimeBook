@@ -16,30 +16,33 @@ $smarty->compile_dir = 'smarty/templates_c/';
 $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
-if(isset($_SESSION['codigoPartida'])){
-$idPrueba = $_SESSION['codigoPartida'];
-$smarty->assign('idPrueba', $idPrueba);
+
+
+if (isset($_SESSION['pruebaRecibida'])){
+  $smarty->assign('idPrueba', $_SESSION['pruebaRecibida']);
+
+
 
 }
 
-
-
-
 if (isset($_POST['guardar'])) {
-    
+    $idPrueba = $_POST['idPrueba'];
     $id=$_POST['id'];
     $texto = $_POST['texto'];
     $tiempo = $_POST['tiempo'];
     $intentos = $_POST['intentos'];
  
-   echo ($_SESSION['idPrueba'].$id.$tiempo.$intentos);
+  $pist = new Pista($idPrueba, $id, $texto, $tiempo, $intentos);
+  print_r($pist);
+
+  
     $pista = BD::creaPista($idPrueba, $id, $texto, $tiempo, $intentos);
 
     //var_dump($pista);
   //  header("Location: pagina6.php");
-
-      
 }
+      
+
 if(isset($_POST['cancelar'])){
     header("Location: pagina6.php");
 }
