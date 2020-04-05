@@ -33,7 +33,7 @@ if($_SESSION['idTemporalPrueba'])
 	{
 		echo "no existe"; 
 	}
-	header("Location: pagina6.php"); 
+	//header("Location: pagina6.php"); 
 }
 
 
