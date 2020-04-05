@@ -92,10 +92,7 @@ if((isset($_SESSION['pag3_to_6']))||(isset($_GET['variable'])))
 if(isset($_POST['anadePista']))
 {
 	
-<<<<<<< HEAD
-=======
 	
->>>>>>> 8fc334ed449a55de354580b304217057e479483f
 	//Si pulsamos el botón de añadir pista tenemos que ir a la página 8 guardando todo lo que teníamos antes 
 	$row['nombre']=$_POST['nombre']; 
 	$row['url']=$_POST['url'];
@@ -108,11 +105,7 @@ if(isset($_POST['anadePista']))
 	$row['tipo']= $_POST['tipo']; 
 	$prueba=new Prueba($row); 
 	//guardo en una variable de sesion el codigo de prueba del campo hidden para recibirlo en la pagina 8
-<<<<<<< HEAD
-	// $_SESSION['codigoPrueba'] = $_POST['codigoPrueba'];
-=======
 	//$_SESSION['codigoPrueba'] = $_POST['codigoPrueba'];
->>>>>>> 8fc334ed449a55de354580b304217057e479483f
 	//guardamos la prueba porque las respuestas ya están guardadas en una variable de sesión
 	$_SESSION['pruebaGuardadaParaVolver']=$prueba; 
 	//Esta variable la necesitamos porque inicialmente pensamos que si no existia esta variable no habí anada para guardar y habíamos llegado a la pagina de guardaprueba.php sin querer, era por seguridad. 

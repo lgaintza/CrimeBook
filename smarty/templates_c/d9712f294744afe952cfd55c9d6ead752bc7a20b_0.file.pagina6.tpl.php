@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-05 13:30:01
+/* Smarty version 3.1.34-dev-7, created on 2020-04-05 19:13:48
   from 'C:\xampp\htdocs\crimebook\Crimebook interfaces\crimeBook\smarty\templates\pagina6.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e89c13945d708_52872740',
+  'unifunc' => 'content_5e8a11cc972fd6_16512022',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd9712f294744afe952cfd55c9d6ead752bc7a20b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crimebook\\Crimebook interfaces\\crimeBook\\smarty\\templates\\pagina6.tpl',
-      1 => 1586085655,
+      1 => 1586106413,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e89c13945d708_52872740 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8a11cc972fd6_16512022 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -112,8 +112,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 <input type='submit' value='Añade pista' name='anadePista'/> 
 <input type='submit' value='Eliminar Pista' name='delPista'/><br><br>
-<input type='hidden' name='codigoprueba' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
-'/>
+<!--<input type='hidden' name='codigoprueba' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
+'/> -->
 
 <table width="90%" border="1px solid black" cellpadding="20px" align="center">
 	<tr>

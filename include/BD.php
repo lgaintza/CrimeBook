@@ -57,37 +57,24 @@ class BD {
         
         return $row['nombre'];
     }
-    
-public static function obtieneResolucion($idEquipo){
-        $sql = "SELECT idPrueba, idEquipo, resuelta, intentos from resoluciones";
-        $sql.=" WHERE idEquipo='" . $idEquipo . "'";
-    
-        $resultado = self::ejecutaConsulta ($sql);
-        $partidas = array();
 
-	if($resultado) {
-            // Añadimos un elemento por cada producto obtenido
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $partidas[] = new Partida($row);
-                $row = $resultado->fetch();
-            }
-	}
-        
-        return $partidas;    
-    }    
-    
     
 
-public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
+public static function creaPista($pista){
 
-        
-    $sql = "INSERT INTO pistas (idPrueba, id, texto, tiempo, intentos) values('".$idPrueba."', '".$id."', '".$texto."', '".$tiempo."', '".$intentos."')";
-    $resultado = self::insertaRegistro($sql);        
-        return $sql;   
+  
+$sql = "INSERT INTO pistas (idPrueba, id, texto, tiempo, intentos)";
+$sql .= " VALUES (".$pista->getidPrueba().",".$pista->getid().", '".$pista->gettexto()."',";
+$sql .= $pista->gettiempo().", ".$pista->getintentos()." )";
+print_r($sql);
+
+$resultado = self::insertaRegistro($sql);        
+return $sql;   
+
 
 
 }
+
     
     //metodo para duplicar pruebas en la pagina 3
     public static function eliminaPrueba(){
@@ -380,10 +367,10 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         return $verificado;
     }
     //metodo para sacar las estadisticas en la pantalla 7
-    public static function obtieneEstadistica($idPartida){
+    public static function obtieneEstadistica(){
         $sql = "SELECT DISTINCT equipos.nombre as nombreEquipo, partidas.id as id, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
         $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id)";
-        $sql.=" WHERE partidas.id='" . $idPartida. "'";
+    
     
         $resultado = self::ejecutaConsulta($sql);
         $estadisticas =array();
@@ -535,6 +522,8 @@ public static function creaPista($idPrueba, $id, $texto, $tiempo, $intentos){
         
         return $listapruebas;  
     }
+
+
 
 
 

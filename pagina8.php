@@ -21,22 +21,6 @@ $smarty->cache_dir = 'smarty/cache/';
 if (isset($_SESSION['pruebaRecibida'])){
   $smarty->assign('idPrueba', $_SESSION['pruebaRecibida']);
 
-
-if($_SESSION['idTemporalPrueba'])
-{
-	echo $_SESSION['idTemporalPrueba']; 
-	if(isset($_SESSION['pruebaGuardadaParaVolver']))
-	{
-		echo "existe"; 
-	}else
-	{
-		echo "no existe"; 
-	}
-	//header("Location: pagina6.php"); 
-}
-
-
-
 }
 
 if (isset($_POST['guardar'])) {
@@ -45,19 +29,24 @@ if (isset($_POST['guardar'])) {
     $texto = $_POST['texto'];
     $tiempo = $_POST['tiempo'];
     $intentos = $_POST['intentos'];
+
+    $row= array(); 
+    $row['idPrueba']= $idPrueba; 
+    $row['id']= $id; 
+    $row['texto']= $texto; 
+    $row['tiempo']= $tiempo; 
+    $row['intentos']=$intentos;
+
+    $pista=new Pista($row);
+    var_dump($pista);
  
-  $pist = new Pista($idPrueba, $id, $texto, $tiempo, $intentos);
-  print_r($pist);
 
-  
-    $pista = BD::creaPista($idPrueba, $id, $texto, $tiempo, $intentos);
-
-    //var_dump($pista);
+BD::creaPista($pista);
   //  header("Location: pagina6.php");
 }
       
 
-if(isset($_POST['cancelar'])){
+if(isset($_POST['volver'])){
     header("Location: pagina6.php");
 }
 

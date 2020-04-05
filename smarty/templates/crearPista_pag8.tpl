@@ -28,7 +28,7 @@
 	</div>
      
     
-    <form action='pagina8.php' method='post'style="text-align:center;">
+    <form action='pagina8.php' method='POST' style="text-align:center;">
     <fieldset >
     <h3>Nueva pista: </h3>
     
@@ -48,7 +48,7 @@
                                                                 <option value="400007">400007</option>
                                                                 <option value="400008">400008</option>
                                                                 </select>
-                                                                
+
             {/if}
 
             <br><br>
@@ -89,7 +89,7 @@
         </div>
 
          <div class='campo'>
-            <br/><input type='reset' name='cancelar' value='Cancelar' />
+            <br/><input type='reset' name='volver' value='Volver' />
         </div>
     </fieldset>
     </form>

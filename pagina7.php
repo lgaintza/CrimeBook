@@ -11,7 +11,7 @@ else {
   
 
 
-   $juegos = BD::obtieneEstadisticasTotales();
+   $juegos = BD::obtieneEstadistica();
    if(isset($_POST['atras'])){
       header("location:pagina2.php");
    }
