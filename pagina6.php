@@ -19,8 +19,38 @@ $smarty->cache_dir = 'smarty/cache/';
 ##Si existe la sesión venimos de la página 1
 ##Si existe el get venimos del menú
 ## en ambos casos tenemos que acabar aquí
+
+if(isset($_SESSION['pruebaGuardadaParaVolver']))
+{
+	
+	
+	//Si tenemos esta variable de sesión es que hemos vuelto de la página 8 y tenemos una nueva pista guardada
+	$hayNuevaPrueba=0; 
+	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
+	$prueba=$_SESSION['pruebaGuardadaParaVolver']; 
+	$prueba= unserialize(serialize($prueba));
+	unset($_SESSION['pruebaGuardadaParaVolver']); 
+	unset($_SESSION['idTemporalPrueba']); 
+	$listaPistas=BD::listadoPistasPrueba($prueba->getid());
+	$smarty->assign('hayPistas',1);
+	$smarty->assign('listaPistas',$listaPistas);
+	if(isset($_SESSION['listaSoluciones']))
+	{
+		$listaSoluciones=$_SESSION['listaSoluciones']; 
+		
+	}else
+	{
+		$listaSoluciones=array(); 
+	}
+	$smarty->assign('respuestas',$listaSoluciones);
+	$smarty->assign('prueba',$prueba); 
+
+}
+
+
 if(isset($_POST['cancelar']))
 {
+	 
 	
 	unset($_SESSION['pruebaParaGuardar']); 
 	unset($_SESSION['listaSoluciones']);
@@ -30,6 +60,8 @@ if(isset($_POST['cancelar']))
 }
 if((isset($_SESSION['pag3_to_6']))||(isset($_GET['variable'])))
 {
+	
+	
 	
 	//En este caso la prueba es nueva 
 	//Podemos coger un id temporal para crear pistas 
@@ -41,6 +73,7 @@ if((isset($_SESSION['pag3_to_6']))||(isset($_GET['variable'])))
 	$hayNuevaPrueba=1; 
 	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
 	unset($_SESSION['pag3_to_6']); 
+
 	//por si acaso quitamos estas sesiones para que no se vuelva loca la pagina
 	//La primera vez que entramos no existe 
 	//Pero si por alguna razón has vuelto cn las flechas del navegador a otra parte de la aplicación
@@ -59,7 +92,7 @@ if((isset($_SESSION['pag3_to_6']))||(isset($_GET['variable'])))
 if(isset($_POST['anadePista']))
 {
 	
-
+	
 	//Si pulsamos el botón de añadir pista tenemos que ir a la página 8 guardando todo lo que teníamos antes 
 	$row['nombre']=$_POST['nombre']; 
 	$row['url']=$_POST['url'];
@@ -72,35 +105,33 @@ if(isset($_POST['anadePista']))
 	$row['tipo']= $_POST['tipo']; 
 	$prueba=new Prueba($row); 
 	//guardo en una variable de sesion el codigo de prueba del campo hidden para recibirlo en la pagina 8
-	$_SESSION['codigoPrueba'] = $_POST['codigoPrueba'];
+	//$_SESSION['codigoPrueba'] = $_POST['codigoPrueba'];
 	//guardamos la prueba porque las respuestas ya están guardadas en una variable de sesión
 	$_SESSION['pruebaGuardadaParaVolver']=$prueba; 
-	header("Location: pagina8.php"); 
-
+	//Esta variable la necesitamos porque inicialmente pensamos que si no existia esta variable no habí anada para guardar y habíamos llegado a la pagina de guardaprueba.php sin querer, era por seguridad. 
+	//Como ahora necesitamos guardar la prueba temporal para añadir una pista porque si no si noe nla base de datos no deja guardar, neceistamos hace rque encaje lo que teníamos antes con la nuav ruta que tine eque tomar el flujo del programa 
+	//Antes no pensabamos en ir a guardar más que solo si pulsabamos el botón de guardar, ahora tenemos un caso más y hay que adaptarlo a lo que teníamos antes para que siga funcionando igual 
+	$_SESSION['pruebaParaGuardar']=$prueba;
+	//header("Location: pagina8.php"); 
+	if($_SESSION['accion']=="nueva")
+	{
+		$_SESSION['irAnadePista']=1; 
+		header("Location: guardaprueba.php"); 
+	}else if($_SESSION['accion']=="editar")
+	{
+		$_SESSION['idTemporalPrueba']= $_SESSION['pruebaRecibida']; 
+		header("Location: pagina8.php"); 
+	}
 }
 
 
-//Cuando volvemos de la página8 
-if(isset($_SESSION['pruebaGuardadaParaVolver']))
-{
-	
+//Cuando volvemos de la página8 reconstruinmos el objeto prueba y lo pintamos
 
-	//Si tenemos esta variable de sesión es que hemos vuelto de la página 8 y tenemos una nueva pista guardada
-	$hayNuevaPrueba=0; 
-	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
-	$prueba=$_SESSION['pruebaGuardadaParaVolver']; 
-	$prueba= unserialize(serialize($prueba));
-	unset($_SESSION['pruebaGuardadaParaVolver']); 
-	$listaPistas=BD::listadoPistasPrueba($prueba->getid());
-	$smarty->assign('listaPistas',$listaPistas);
-	$listaSoluciones=$_SESSION['listaSoluciones']; 
-	$smarty->assign('respuestas',$listaSoluciones);
-
-}
 
 //Cuando le damos a editar en la pagina3.php 
 if(isset($_SESSION['idpru_3_to_6']))
 {
+	
 	
 
 	//Esto significa que editamos la prueba
@@ -139,6 +170,7 @@ if(isset($_SESSION['idpru_3_to_6']))
 //Cuando pulsamos en el botón de añadir solución
 if(isset($_POST['anadir']))
 {
+	
 	
 
 	//Si pulsamos sobre el botón de añadir solución lo que tenemos que hacer es guardar los datos que tenemos en el formulario como un objeto de tipo prueba
@@ -223,7 +255,7 @@ if(isset($_POST['anadir']))
 
 	}else
 	{
-		//En el caso de que n otengamos id no hay pistas
+		//En el caso de que no tengamos id no hay pistas
 		$smarty->assign('hayPistas',0);
 	}
 	
@@ -236,6 +268,7 @@ if(isset($_POST['anadir']))
 //Cuando pulsamos en el botón guardar prueba
 if(isset($_POST['guardarPrueba']))
 {
+	
 	
 
 	if(isset($_SESSION['pruebaRecibida']))//Si tenemos el id de la prueba lo metemos en el row para hacer el objeto de prueba
@@ -260,6 +293,7 @@ if(isset($_POST['guardarPrueba']))
 
 if(isset($_POST['delPista'])) //borrar pista
 {
+	
 	
 
 	$row['id']=$_SESSION['pruebaRecibida']; 

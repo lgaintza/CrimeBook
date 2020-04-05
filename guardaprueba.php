@@ -31,7 +31,19 @@ if(isset($_SESSION['pruebaParaGuardar'])) //Solo hacemos algo si  hemos llegado 
 			$ultimaRespuesta= BD::recogeUltimaRespuesta(); //volvemos a recoger el id de la ultima
 			$ultimaRespuesta++; //sumamos uno mas 
 		}
-		header("Location: pagina3.php"); //volvemos pag 3 
+		if(isset($_SESSION['irAnadePista']))
+		{
+			//Quermeos ir a la pagina 8
+			echo "hemos llegado"; 
+			unset($_SESSION['irAnadePista']); 
+			$_SESSION['idTemporalPrueba']=$ultimaPrueba; 
+			header("Location: pagina8.php"); 
+		}else
+		{
+			//Queremo sir a la pagina 3 
+			header("Location: pagina3.php"); //volvemos pag 3 
+		}
+		
 		
 	}else if($_SESSION['accion']=="editar") //Si no la editamos
 	{

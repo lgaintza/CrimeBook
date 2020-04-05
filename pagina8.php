@@ -23,6 +23,20 @@ $smarty->assign('idPrueba', $idPrueba);
 }
 
 
+if($_SESSION['idTemporalPrueba'])
+{
+	echo $_SESSION['idTemporalPrueba']; 
+	if(isset($_SESSION['pruebaGuardadaParaVolver']))
+	{
+		echo "existe"; 
+	}else
+	{
+		echo "no existe"; 
+	}
+	header("Location: pagina6.php"); 
+}
+
+
 
 
 if (isset($_POST['guardar'])) {
