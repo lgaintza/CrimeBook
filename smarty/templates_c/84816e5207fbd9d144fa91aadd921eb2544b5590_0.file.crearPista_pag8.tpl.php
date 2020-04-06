@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-05 17:24:03
+/* Smarty version 3.1.34-dev-7, created on 2020-04-06 13:23:37
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\crearPista_pag8.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e89f813013e91_11403046',
+  'unifunc' => 'content_5e8b11399ca6f8_51142816',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84816e5207fbd9d144fa91aadd921eb2544b5590' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\crearPista_pag8.tpl',
-      1 => 1586089538,
+      1 => 1586171793,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e89f813013e91_11403046 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8b11399ca6f8_51142816 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -51,17 +51,33 @@ function content_5e89f813013e91_11403046 (Smarty_Internal_Template $_smarty_tpl)
 	</div>
      
     
-    <form action='pagina8.php' method='post'style="text-align:center;">
+    <form action='pagina8.php' method='POST' style="text-align:center;">
     <fieldset >
     <h3>Nueva pista: </h3>
     
         <div class='campo'>
             <label for='idPrueba'>idPrueba: </label>
+            <?php if (isset($_smarty_tpl->tpl_vars['idPrueba']->value)) {?>
             <input type='checkbox' name='idPrueba' value='<?php echo $_smarty_tpl->tpl_vars['idPrueba']->value;?>
 '> <?php echo $_smarty_tpl->tpl_vars['idPrueba']->value;?>
 
+            <?php } else { ?>
+                                            <select  name="idPrueba">
+                                                                <option selected value="0"> Seleccione una prueba...</option>
+                                                                <option value="400001">400001</option>
+                                                                <option value="400002">400002</option>
+                                                                <option value="400003">400003</option>
+                                                                <option value="400004">400004</option>
+                                                                <option value="400005">400005</option>
+                                                                <option value="400006">400006</option>
+                                                                <option value="400007">400007</option>
+                                                                <option value="400008">400008</option>
+                                                                </select>
+
+            <?php }?>
+
             <br><br>
-        </div>
+      </div>
         <div class='campo'>
             <label for='id' >id:<span style="color:red;">*</span></label><select  name="id">
                                                                 <option selected value="0"> Seleccione una pista...</option>
@@ -98,7 +114,7 @@ function content_5e89f813013e91_11403046 (Smarty_Internal_Template $_smarty_tpl)
         </div>
 
          <div class='campo'>
-            <br/><input type='reset' name='cancelar' value='Cancelar' />
+            <br/><input type='reset' name='volver' value='Volver' />
         </div>
     </fieldset>
     </form>
