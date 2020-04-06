@@ -18,27 +18,26 @@ $smarty->cache_dir = 'smarty/cache/';
 
 
 
-if (isset($_SESSION['pruebaRecibida'])){
-  $smarty->assign('idPrueba', $_SESSION['pruebaRecibida']);
+if (isset($_SESSION['idTemporalPrueba'])){
+  $smarty->assign('idPrueba', $_SESSION['idTemporalPrueba']);
+  unset( $_SESSION['idTemporalPrueba']);
 
 }
 
 if (isset($_POST['guardar'])) {
     $idPrueba = $_POST['idPrueba'];
-    $id=$_POST['id'];
     $texto = $_POST['texto'];
     $tiempo = $_POST['tiempo'];
     $intentos = $_POST['intentos'];
 
     $row= array(); 
-    $row['idPrueba']= $idPrueba; 
-    $row['id']= $id; 
+    $row['idPrueba']= $idPrueba;
+    $row['id']=BD::obtieneMaxIdPistas();
     $row['texto']= $texto; 
     $row['tiempo']= $tiempo; 
     $row['intentos']=$intentos;
 
     $pista=new Pista($row);
-    var_dump($pista);
  
 
 BD::creaPista($pista);

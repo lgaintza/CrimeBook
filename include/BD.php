@@ -53,12 +53,23 @@ class BD {
         $minombre = self::ejecutaConsulta($sql);
         if($minombre) {  
             $row = $minombre->fetch();                                  
-	}
+    }
         
         return $row['nombre'];
     }
 
     
+
+            //metodo para encontrar máximo Id pistas
+    public static function obtieneMaxIdPistas(){
+        $sql = "SELECT MAX(id)+1 as id FROM pistas";
+        $resulmax = self::ejecutaConsulta($sql);
+        if($resulmax) {            // Añadimos un elemento por cada producto obtenido
+            $row = $resulmax->fetch();                                  
+	}
+        
+        return $row['id'];
+    }
 
 public static function creaPista($pista){
 
@@ -66,8 +77,6 @@ public static function creaPista($pista){
 $sql = "INSERT INTO pistas (idPrueba, id, texto, tiempo, intentos)";
 $sql .= " VALUES (".$pista->getidPrueba().",".$pista->getid().", '".$pista->gettexto()."',";
 $sql .= $pista->gettiempo().", ".$pista->getintentos()." )";
-print_r($sql);
-
 $resultado = self::insertaRegistro($sql);        
 return $sql;   
 
@@ -385,6 +394,9 @@ return $sql;
             
             return $estadisticas;    
         }
+
+   
+    
 
     public static function muestraPartida($idJuego){
         $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username from partidas";
