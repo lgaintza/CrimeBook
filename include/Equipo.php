@@ -16,15 +16,14 @@
         public function getnum_equipos() {return $this->num_equipos;}
 
         public function __construct($row) {
-            $this->id = $row['id'];
-            $this->codigo = $row['codigo'];
-            $this->nombre = $row['nombre'];
-            $this->tiempo = $row['tiempo'];
-            $this->idPartida = $row['idPartida'];
-            $this->username = $row['username'];
-            $this->num_equipos = $row['num_equipos'];       
+            if(isset($row['id'])){$this->id = $row['id'];}
+            if(isset($row['codigo'])){$this->codigo = $row['codigo'];}
+            if(isset($row['nombre'])){$this->nombre = $row['nombre'];}
+            if(isset($row['tiempo'])){$this->tiempo = $row['tiempo'];}
+            if(isset($row['idPartida'])){$this->idPartida = $row['idPartida'];}
+            if(isset($row['username'])){$this->username = $row['username'];}
+            if(isset($row['num_equipos'])){$this->num_equipos = $row['num_equipos'];}      
         }
     }
 
 ?>
-

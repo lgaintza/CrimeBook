@@ -60,25 +60,27 @@ class BD {
 
     
 
-            //metodo para encontrar máximo Id pistas pagina 8
+            //metodo para encontrar máximo Id pistas
     public static function obtieneMaxIdPistas(){
         $sql = "SELECT MAX(id)+1 as id FROM pistas";
         $resulmax = self::ejecutaConsulta($sql);
-        if($resulmax) {            
+        if($resulmax) {            // Añadimos un elemento por cada producto obtenido
             $row = $resulmax->fetch();                                  
 	}
         
         return $row['id'];
     }
 
-
-    //metodo para crear nueva pista en pagina 8
 public static function creaPista($pista){
+
+  
 $sql = "INSERT INTO pistas (idPrueba, id, texto, tiempo, intentos)";
 $sql .= " VALUES (".$pista->getidPrueba().",".$pista->getid().", '".$pista->gettexto()."',";
-$sql .= "'".$pista->gettiempo()."', '".$pista->getintentos()."' )";
-$resultado = self::insertaRegistro($sql); 
+$sql .= $pista->gettiempo().", ".$pista->getintentos()." )";
+$resultado = self::insertaRegistro($sql);        
 return $sql;   
+
+
 
 }
 
@@ -186,7 +188,7 @@ return $sql;
         return $pruebas;
     }
     
-    //metodo para encontrar máximo Id equipos en la pagina 3
+    //metodo para encontrar máximo Id pruebas en la pagina 3
     public static function obtieneMaxIdEquipos(){
         $sql = "SELECT MAX(id) FROM equipos";
         $resulmax = self::ejecutaConsulta($sql);
@@ -452,9 +454,7 @@ return $sql;
         
         return $equipos4;
     }
-//---------------------Metodos creados por Yolanda--------------------------------------
-        
-        //metodo para insertar registros utilizados en pagina5.php y pagina6.php
+    
        protected static function insertaRegistro($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
         $dsn = "mysql:host=localhost;dbname=CrimeBook";
@@ -476,7 +476,7 @@ return $sql;
 
     }
 
-    //metodo para obtener el id cuando se pulsa en editar juego necesario para pagina5.php
+
     public static function obtenerJuego($id) {
         $sql = "SELECT * FROM juegos";
         $sql .= " WHERE id='".$id."'";
@@ -496,7 +496,7 @@ return $sql;
         
     }
 
-    //metodo para obtener el listado de las pruebas que tiene un juego utilizado en pagina5.php
+
     public static function listadoPruebasJuego($codigojuego) {
         $sql = "SELECT pruebas.id, pruebas.nombre, pruebas.url, pruebas.descBreve, pruebas.dificultad,";
         $sql .= " pruebas.ayudaFinal, pruebas.username, pruebas.descExtendida, pruebas.tipo FROM pruebas, pertenencias"; 
@@ -517,7 +517,7 @@ return $sql;
             return $listapruebasjuego; 
     }  
 
-    //metodo para obtener el listado de todas las pruebas utilizado en pagina5.php
+
     public static function listaPruebas() {
         $sql = "SELECT * FROM pruebas";
         $resultado = self::ejecutaConsulta ($sql);
@@ -536,7 +536,9 @@ return $sql;
     }
 
 
-     //metodo para guardar un nuevo juego utilizado en pagina guardajuego.php
+
+
+
      public static function insertarJuego($juego) {      
         
         $sql = "INSERT INTO juegos (id, nombre, descExtendida, descBreve, fechaCreacion, username)";
@@ -548,8 +550,8 @@ return $sql;
 
     }
 
-    //metodo para actualizar un juego editado utilizado en pagina guardajuego.php
-    public static function actualizaJuego($juego) {       
+
+     public static function actualizaJuego($juego) {       
         
         $sql = "UPDATE juegos SET nombre='".$juego->getnombre()."' ,";
         $sql .= "descExtendida='".$juego->getdescExtendida()."', ";
@@ -561,7 +563,6 @@ return $sql;
         return;   
     }  
 
-    //metodo para insertar pertenencias utilizado en guardajuego.php
     public static function insertarPertenencias($codigojuego, $codigoprueba) {        
         
         $sql = " INSERT INTO pertenencias (idJuego, idPrueba)";
@@ -572,7 +573,6 @@ return $sql;
 
     } 
 
-    //metodo para eliminar pertenencias utilizado en guardajuego.php
     public static function eliminarPertenencias($codigojuego, $codigoprueba) {        
        
         $sql = " DELETE FROM pertenencias";
@@ -584,7 +584,7 @@ return $sql;
     }     
 
     
-   // metodo para encontrar máximo Id de juegos utilizado en guardajuego.php
+
     public static function recogeUltimoJuego() {
         $sql = " SELECT MAX(id) FROM juegos";        
         $resultado = self::ejecutaConsulta ($sql);
@@ -594,7 +594,7 @@ return $sql;
         return $row[0];
     }
 
-    // metodo para obtener las respuestas de una prueba utilizado en pagina6.php
+    //##Modificada, mal la sql 
     public static function listadoRespuestas($id) {
         $sql = " SELECT respuesta FROM respuestas"; 
         $sql .= " WHERE idPrueba ='" . $id . "'";
@@ -614,7 +614,6 @@ return $sql;
         return $listarespuestas; 
     }
 
-    //metodo para insertar las respuestas utilizado en guardaprueba.php
     public static function insertaRespuesta($codigoprueba, $respuesta,$ultimaRespuesta) {        
         
         $sql = " INSERT INTO respuestas (idPrueba, respuesta,id)";
@@ -626,7 +625,7 @@ return $sql;
     }    
      
 
-    //metodo para obtener el id cuando se edita una prueba necesario para pagina6.php 
+    
     public static function obtenerPrueba($id) {
         $sql = " SELECT *  FROM pruebas";
         $sql .= " WHERE id='".$id."'";
@@ -639,10 +638,12 @@ return $sql;
                     $prueba= new Prueba($row);
                     $row = $resultado->fetch();
                 }
-        }        
+        }
+        
 
         //Antes de devolver el objeto de la prueba 
-        //Necesitamos cargas las respuestas que tiene esa prueba pk estan en otra         
+        //Necesitamos cargas las respuestas que tienen esa prueba 
+        //Como están en otra
         $listarespuestas= self::listadoRespuestas($id); 
         $prueba->cargaRespuestas($listarespuestas);
         return $prueba;
@@ -650,7 +651,7 @@ return $sql;
        
     }  
 
-    //metodo para obtener el listado de pistas completo utilizado en pagina6.php
+
     public static function listadoPistas() {
         $sql = "SELECT * FROM pistas";
         $resultado = self::ejecutaConsulta ($sql);
@@ -668,7 +669,7 @@ return $sql;
     }
 
     
-   //metodo para obtener el listado de pistas de una prueba utilizado en pagina6.php
+   
     public static function listadoPistasPrueba($codigoprueba) {
         $sql = " SELECT * FROM pistas"; 
         $sql .= " WHERE idPrueba ='" . $codigoprueba . "'";       
@@ -686,8 +687,7 @@ return $sql;
             
         return $listapistasprueba; 
     } 
-    /* Yo creo que este metodo sobra pk lo hice pero no lo utilizo
-    // metodo para encontrar máximo Id de pistas en la pagina6.php
+
      public static function recogeUltimaPista() {
         $sql = " SELECT MAX(id) FROM pistas";        
         $resultado= self::ejecutaConsulta ($sql);
@@ -696,9 +696,10 @@ return $sql;
         }        
         return $row[0];
         
-    } */
+    } 
 
-    // metodo para encontrar máximo Id de pruebas utilizado en la pagina6.php y guardaprueba.php
+ 
+
     public static function recogeUltimaPrueba() {
         $sql = " SELECT MAX(id) FROM pruebas";        
         $resultado= self::ejecutaConsulta ($sql);
@@ -708,8 +709,7 @@ return $sql;
         return $row[0];
         
     }  
-
-    //metodo para encontrar máximo Id de respuestas utilizado en la pagina6.php y guardaprueba.php
+    //Esto no lo habías corregido, el id no es incremental en las respuestas tampoco
     public static function recogeUltimaRespuesta() {
         $sql = " SELECT MAX(id) FROM respuestas";        
         $resultado= self::ejecutaConsulta ($sql);
@@ -720,7 +720,7 @@ return $sql;
         
     }      
 
-    //metodo para insertar nueva prueba en guardaprueba.php
+
     public static function insertarPrueba($prueba) {        
         
         $sql = " INSERT INTO pruebas (id, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username)";
@@ -733,7 +733,7 @@ return $sql;
 
     }
 
-    //metodo para actualizar una prueba en guardaprueba.php cuando se edita
+
     public static function actualizaPrueba($prueba) {        
         
         $sql = " UPDATE pruebas SET nombre='".$prueba->getnombre()."', ";
@@ -746,7 +746,6 @@ return $sql;
         return $sql;   
     }
 
-    //metodo para eliminar pista en pagina6.php
     public static function eliminarPistas($idPrueba, $id) {        
        
         $sql = " DELETE FROM pistas";
@@ -757,7 +756,7 @@ return $sql;
         
         return $sql; 
     } 
-//------------------------FIN metodos de Yolanda  
+  
   
     // Método para eliminar juegos. Elimina también las partidas de ese juego y las pertenencias
     public static function eliminaJuegos($codigo){
