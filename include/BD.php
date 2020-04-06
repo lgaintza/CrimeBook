@@ -60,27 +60,25 @@ class BD {
 
     
 
-            //metodo para encontrar máximo Id pistas
+            //metodo para encontrar máximo Id pistas pagina 8
     public static function obtieneMaxIdPistas(){
         $sql = "SELECT MAX(id)+1 as id FROM pistas";
         $resulmax = self::ejecutaConsulta($sql);
-        if($resulmax) {            // Añadimos un elemento por cada producto obtenido
+        if($resulmax) {            
             $row = $resulmax->fetch();                                  
 	}
         
         return $row['id'];
     }
 
-public static function creaPista($pista){
 
-  
+    //metodo para crear nueva pista en pagina 8
+public static function creaPista($pista){
 $sql = "INSERT INTO pistas (idPrueba, id, texto, tiempo, intentos)";
 $sql .= " VALUES (".$pista->getidPrueba().",".$pista->getid().", '".$pista->gettexto()."',";
-$sql .= $pista->gettiempo().", ".$pista->getintentos()." )";
-$resultado = self::insertaRegistro($sql);        
+$sql .= "'".$pista->gettiempo()."', '".$pista->getintentos()."' )";
+$resultado = self::insertaRegistro($sql); 
 return $sql;   
-
-
 
 }
 

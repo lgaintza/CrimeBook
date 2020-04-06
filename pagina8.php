@@ -17,33 +17,32 @@ $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
 
-//la sesion por donde yo te paso la pista no es $_SESSION['pruebaRecibida'] aqui no recoges nada, es $_SESSION['idTemporalPrueba'], la tienes que recoger y ahi tienes el id de prueba.
-//fijate si pones este codigo como te aparece arriba a la izquierda de la pantalla
-
-/*if($_SESSION['idTemporalPrueba'])
-{
-    echo $_SESSION['idTemporalPrueba']; 
-    if(isset($_SESSION['pruebaGuardadaParaVolver']))
-    {
-        echo "existe"; 
-    }else
-    {
-        echo "no existe"; 
-    }
-    
-}*/
 
 if (isset($_SESSION['idTemporalPrueba'])){
   $smarty->assign('idPrueba', $_SESSION['idTemporalPrueba']);
   unset( $_SESSION['idTemporalPrueba']);
 
 }
-
 if (isset($_POST['guardar'])) {
     $idPrueba = $_POST['idPrueba'];
+   
     $texto = $_POST['texto'];
+     
+
+    if($_POST['tiempo']==''){
+      $tiempo = "NULL";
+
+    }else{
     $tiempo = $_POST['tiempo'];
-    $intentos = $_POST['intentos'];
+
+    }
+    if($_POST['intentos']==''){
+      $intentos = "NULL";
+
+    }else{
+          $intentos = $_POST['intentos'];
+
+    }
 
     $row= array(); 
     $row['idPrueba']= $idPrueba;
@@ -53,15 +52,15 @@ if (isset($_POST['guardar'])) {
     $row['intentos']=$intentos;
 
     $pista=new Pista($row);
+
  
 
 BD::creaPista($pista);
-  //  header("Location: pagina6.php");
 }
       
 
 if(isset($_POST['volver'])){
-    header("Location: pagina6.php");
+    header("location:pagina6.php");
 }
 
 // Mostramos la plantilla
