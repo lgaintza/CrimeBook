@@ -20,14 +20,12 @@ if (isset($_SESSION['idJuego'])) {
 	$smarty->assign('hayNuevoJuego',$hayNuevoJuego);
 	$objetoJuego = BD::obtenerJuego($juegoRecibido['idJuego']); 
 	$objetoJuego= $objetoJuego[0]; 
-	//echo var_dump($objetoJuego); 
+	
     $smarty->assign('juego', $objetoJuego);
-    //echo $juegoRecibido['idJuego']; 
+    
     $listadoPruebasJuego = BD::listadoPruebasJuego($juegoRecibido['idJuego']); 
-    //echo var_dump($listadoPruebasJuego); 
-    //echo $listadoPruebasJuego; 
-    //$listadoPruebasJuego=$listaPruebasDeJuego[0]; //pk esto es un array de objetos y solo necesitamos el primero
-    //echo $listadoPruebasJuego[0]->getnombre(); 
+    
+    
     $smarty->assign('listado',$listadoPruebasJuego); 
     //Cogemos las pruebas que ya hay en el juego 
     unset($_SESSION['idJuego']);
