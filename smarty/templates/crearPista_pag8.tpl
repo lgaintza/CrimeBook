@@ -35,7 +35,8 @@
         <div class='campo'>
             <label for='idPrueba'>idPrueba: </label>
             {if isset($idPrueba)}
-            <input type='checkbox' name='idPrueba' value='{$idPrueba}'> {$idPrueba}
+            {$idPrueba}
+            <input type="hidden" name="idPrueba" value='{$idPrueba}'>
             {else}
                                             <select  name="idPrueba">
                                                                 <option selected value="0"> Seleccione una prueba...</option>
@@ -53,25 +54,10 @@
 
             <br><br>
       </div>
-        <div class='campo'>
-            <label for='id' >id:<span style="color:red;">*</span></label><select  name="id">
-                                                                <option selected value="0"> Seleccione una pista...</option>
-                                                                <option value="600001">600001</option>
-                                                                <option value="600002">600002</option>
-                                                                <option value="600003">600003</option>
-                                                                <option value="600004">600004</option>
-                                                                <option value="600005">600005</option>
-                                                                <option value="600006">600006</option>
-                                                                <option value="600007">600007</option>
-                                                                <option value="600008">600008</option>
-                                                                <option value="600009">600009</option>
-                                                                <option value="600010">600010</option>
-                                                            </select>
-            <br><br>
-        </div>
+
          <div class='campo'>
             <label for='texto' >texto:</label>
-            <input type='text' name='texto' maxlength="50" />
+            <textarea  name='texto' rows="2" cols="30"></textarea>
             <br><br>
         </div>
          <div class='campo'>

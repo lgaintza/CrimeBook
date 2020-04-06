@@ -23,6 +23,11 @@
             $this->intentos = $row['intentos'];
         
         }
+
+        public function nuevoId($nuevoId)
+    {
+        $this->id=$nuevoId; 
+    }
     }
 
 ?>
