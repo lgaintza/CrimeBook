@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-05 17:20:13
+/* Smarty version 3.1.34-dev-7, created on 2020-04-06 13:23:29
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\pagina6.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e89f72d8971e1_37902342',
+  'unifunc' => 'content_5e8b1131c31de2_27298468',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '47c0ba130e0e5c7bdf00cb406f55dcda6a9b2e35' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\pagina6.tpl',
-      1 => 1586099974,
+      1 => 1586171793,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e89f72d8971e1_37902342 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8b1131c31de2_27298468 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -220,8 +220,6 @@ Descripción extendida/Enunciado de la prueba: <textarea cols="50" rows="10" nam
 <?php }?>
 
 		
-</table>
-</form>
 <br>
 <?php echo '<script'; ?>
 >
