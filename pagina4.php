@@ -172,7 +172,7 @@ if (isset($_SESSION['accionpartida'])&& $_SESSION['accionpartida']=='crear'){
 $smarty->assign('accion_pag4','crear');
 $crear="terminado";
 }
-if (isset($juegorecibido) && $juegorecibido==''){
+if ((isset($juegorecibido) && $juegorecibido=='')|| !isset($juegorecibido)){
     $smarty->assign('nombrejuego',"No hay Juego Seleccionado");
 }else{
     if (isset($juegorecibido)){$smarty->assign('nombrejuego',  BD::nombrejuego($juegorecibido));}
