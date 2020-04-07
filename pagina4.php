@@ -152,7 +152,7 @@ if (isset($_POST['partida_bt']) && $_SESSION['accionpartida']=='crear' ){
 // Si venimos de los botones de acción de la propia página refrescamos datos
 // O si la acción recibida es EDITAR los cargamos por primera vez
 // Recuperamos datos de partida y equipos
-if (isset($_POST['partida_bt']) || $_SESSION['accionpartida']=='editar'){
+if (isset($_POST['partida_bt']) || (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=='editar')){
 if (isset($partidarecibida)){$smarty->assign('partida4', BD::obtienePartida4($partidarecibida));}
 if (isset($partidarecibida)){$smarty->assign('equipos4', BD::obtieneEquiposPag4($partidarecibida));}
 if (isset($accionrecibida)){
