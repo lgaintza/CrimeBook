@@ -281,7 +281,7 @@ return $sql;
     }
     
       //metodo para mostrar pruebas en la pagina 3
-    public static function obtienePruebas3(){
+    public static function obtienePruebas(){
         $sql = "SELECT pruebas.id, pruebas.nombre, pruebas.descBreve, pruebas.tipo, pruebas.username";
         $sql.=" FROM pruebas";
         //if(isset($_POST['pru_id'])){
@@ -301,28 +301,7 @@ return $sql;
         return $pruebas;
     }
  
-    
-        //metodo para mostrar pruebas en la pagina 3
-    public static function obtienePruebas(){
-        $sql = "SELECT pruebas.id, pruebas.nombre, pruebas.descBreve, pruebas.tipo, pruebas.username";
-        $sql.=" FROM pruebas ";
-        if(isset($_POST['pru_id'])){
-        $sql.=" WHERE pruebas.id='" .$_POST['pru_id']."'";             
-        }
-        $resultado = self::ejecutaConsulta($sql);
-        $pruebas = array();
-
-	if($resultado) {
-            // Añadimos un elemento por cada producto obtenido
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $pruebas[] = new Prueba($row);
-                $row = $resultado->fetch();
-            }
-	}
-        
-        return $pruebas;
-    }
+           
  
     // Añadimos función para obtener los datos de Partida para Página4
     // Añadimos función para obtener los datos de Partida para Página4
