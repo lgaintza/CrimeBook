@@ -305,7 +305,7 @@ return $sql;
  
     // Añadimos función para obtener los datos de Partida para Página4
     // Añadimos función para obtener los datos de Partida para Página4
-    public static function obtienePartida4($id_partida) {
+    public static function obtienePartida($id_partida) {
         $sql = "SELECT nombre, duracion FROM partidas  WHERE id = '".$id_partida."'";
         $resultado = self::ejecutaConsulta($sql);
         $partida4 = array();
@@ -321,24 +321,6 @@ return $sql;
         return $partida4;
     }
     
-    
-    // Añadimos función para obtener los datos de Partida para Página4
-    // Añadimos función para obtener los datos de Partida para Página4
-    public static function obtienePartida($id_partida) {
-        $sql = "SELECT juegos.id as id_juego, juegos.nombre as nombre_juego, partidas.duracion, equipos.id as id_equipo, equipos.nombre as nombre_equipo, equipos.codigo, partidas.id as id_partida, partidas.nombre as nombre_partida
-            FROM juegos INNER JOIN partidas ON (juegos.id = partidas.idJuego)
-            INNER JOIN equipos ON (equipos.idPartida =partidas.id)
-            WHERE partidas.id = '".$id_partida."'";
-        $resultado = self::ejecutaConsulta($sql);
-        $partida4= null;
-
-	if(isset($resultado)) {
-            $row = $resultado->fetch();
-            $partida4 = new Partidapag4($row);
-	}
-        
-        return $partida4;    
-    }
     
     
     public static function verificaCliente($nombre, $contrasenya) {
