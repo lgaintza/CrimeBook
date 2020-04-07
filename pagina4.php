@@ -18,7 +18,7 @@ if (isset($_POST['irapag1'])){
     header("Location: pagina1.php");
     exit;
 }
-
+//Si venimos de botones de la página, y después de crear nos quedamos en editar y ya hemos creado la partida (segunda pasada)
 if (isset($_POST['partida_bt']) && isset($_POST['botonesirapag']) && $_POST['botonesirapag']=='pag4editar'){
     if(isset($_SESSION['accionfinalizada']) && $_SESSION['accionfinalizada']=='1'){
         $_SESSION['accionpartida']='editar';
@@ -27,7 +27,7 @@ if (isset($_POST['partida_bt']) && isset($_POST['botonesirapag']) && $_POST['bot
 
 
 //Si venimos de Pag1 y opción Crear Nueva Partida:
-if (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="crear" && !isset($_POST['partida_bt'])){
+if (isset($_SESSION['accionpartida']) && $_SESSION['accionpartida']=="crear" ){
     //Se recibe Idjuego commoarray. Lo pasamos a valor
     if (isset($_SESSION['idJuego'])){
         foreach($_SESSION['idJuego'] as $arrayjuego){
