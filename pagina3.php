@@ -53,7 +53,7 @@ if (isset($_POST['pru_bt']) && $_POST['pru_bt']=='eliminar' && isset($_POST['pru
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
 if (!isset($_POST['pru_bt']) || $error_selec=='1' || $_POST['pru_bt']=='eliminar'|| $_POST['pru_bt']=='duplicar'){
-    $smarty->assign('pruebas', BD::obtienePruebas3());
+    $smarty->assign('pruebas', BD::obtienePruebas());
 }
 
 
