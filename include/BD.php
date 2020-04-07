@@ -400,7 +400,7 @@ return $sql;
     }
     
     
-    public static function obtieneEquiposPag4($idpartida) {
+    public static function obtieneEquipos($idpartida) {
         $sql = "SELECT nombre, codigo  FROM equipos WHERE idPartida='" .$idpartida."'";
         $resultado = self::ejecutaConsulta ($sql);  
         $equipos4 = array();
