@@ -85,7 +85,7 @@ return $sql;
 }
 
     
-    //metodo para duplicar pruebas en la pagina 3
+    //metodo para eliminar pruebas en la pagina 3
     public static function eliminaPrueba(){
         $sql = "DELETE FROM pruebas ";
         if(isset($_POST['pru_id'])){
@@ -99,8 +99,8 @@ return $sql;
     public static function actualizaTiempo(){
         if(isset($_POST['celdatiempo']) && isset($_SESSION['partidapag4'])){
         $sql ="UPDATE partidas SET duracion='".$_POST['celdatiempo']."' WHERE id='".$_SESSION['partidapag4']."'";
-        $pruebas = self::ejecutaConsulta ($sql);
-        return $pruebas;
+        $partidas = self::ejecutaConsulta ($sql);
+        return $partidas;
     }
     }
     
@@ -109,7 +109,7 @@ return $sql;
         //crea código de equipo aleatorio
         $codigoaleatorio = self::obtieneAleatorio();
         //como es único tenemos que chequear que no exista. Se crea un array con los actuales y se compara
-        $arraycodigos =(BD::arraycodigo());
+        $arraycodigos =(BD::arrayCodigo());
         $micheck=$codigoaleatorio;
         foreach($arraycodigos as $checkcodigo){ 
             $checkbucle = $checkcodigo->getcodigo();
@@ -131,8 +131,8 @@ return $sql;
     }
     
     
-    //Para chequear codigo equipo nuevo no existe Pag4
-    public static function arraycodigo(){
+    //Para chequear que codigo equipo nuevo no existe Pag4
+    public static function arrayCodigo(){
         $sql  = "SELECT codigo FROM equipos";
         $resultado = self::ejecutaConsulta($sql);
         $codigoequipos = array();
@@ -149,7 +149,7 @@ return $sql;
         return $codigoequipos;
     }
     
-    //metodo para crear equipo en la pagina 4
+    //metodo para crear partida en la pagina 4
     public static function creaPartidaNueva(){
         $resultadomax = self::obtieneMaxIdPartidas();
         $_SESSION['idNuevaPartida']=++$resultadomax[0];
@@ -170,11 +170,14 @@ return $sql;
     
      //metodo para duplicar pruebas en la pagina 3
     public static function duplicaPrueba(){
+        //Obtener max id para saber id nueva prueba
         $resultadomax = self::obtieneMaxIdPruebas();
+        //Obtener array datos prueba para duplicarlo en la nueva prueba duplicada
         $arraypruebadupli = self::obtieneArrayPrueba();
      
         $sql ="INSERT INTO pruebas VALUES ('".
         $sql =++$resultadomax[0]."', ".
+        //nombre no puede ser el mismo, añadimos '_dupli'
         $sql ="'".$arraypruebadupli[1]."_dupli"."', ".
         $sql ="'".$arraypruebadupli[2]."', ".
         $sql ="'".$arraypruebadupli[3]."', ".
@@ -188,7 +191,7 @@ return $sql;
         return $pruebas;
     }
     
-    //metodo para encontrar máximo Id pruebas en la pagina 3
+    //metodo para encontrar máximo Id pruebas en la pagina 4
     public static function obtieneMaxIdEquipos(){
         $sql = "SELECT MAX(id) FROM equipos";
         $resulmax = self::ejecutaConsulta($sql);
@@ -240,7 +243,7 @@ return $sql;
         
         return $nombrepartidas;
     }
-    //metodo para encontrar máximo Id pruebas en la pagina 3
+    //metodo para crear un número aleatorio de 8 digitos numéricos en pag 4
     public static function obtieneAleatorio($longitud = 8) {
     $caracteres = '0123456789';
     $longitudcadena= strlen($caracteres);
@@ -264,6 +267,8 @@ return $sql;
         return $row;
     }
     
+    
+    //metodo para encontrar datos prueba seleccionada y poder duplicarla, en la pagina 3
     public static function obtieneArrayPrueba(){
         $sql  = "SELECT id,nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM pruebas ";
         if(isset($_POST['pru_id'])){
@@ -301,9 +306,9 @@ return $sql;
         return $pruebas;
     }
  
-           
- 
-    // Añadimos función para obtener los datos de Partida para Página4
+    
+         
+    
     // Añadimos función para obtener los datos de Partida para Página4
     public static function obtienePartida($id_partida) {
         $sql = "SELECT nombre, duracion FROM partidas  WHERE id = '".$id_partida."'";
@@ -322,6 +327,7 @@ return $sql;
     }
     
     
+       
     
     public static function verificaCliente($nombre, $contrasenya) {
         $sql = "SELECT username FROM usuarios ";
