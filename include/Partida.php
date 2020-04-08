@@ -9,6 +9,7 @@
         protected $finalizada;
         protected $duracion;
         protected $num_equipospartida;
+        
         public function getid() {return $this->id;}
         public function getnombre() {return $this->nombre;}
         public function getfechaCreacion() {return $this->fechaCreacion;}
@@ -18,6 +19,7 @@
         public function getfinalizada() {return $this->finalizada;}
         public function getduracion() {return $this->duracion;}
         public function getnum_equipospartida() {return $this->num_equipospartida;}
+        
         public function __construct($row) {
             if(isset($row['id'])){$this->id = $row['id'];}
             if(isset($row['nombre'])){$this->nombre = $row['nombre'];}
