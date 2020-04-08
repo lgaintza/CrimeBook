@@ -56,10 +56,11 @@ if (isset($_POST['guardar'])) {
  
 
 BD::creaPista($pista);
+header("location:pagina6.php");
 }
       
 
-if(isset($_POST['volver'])){
+if(isset($_POST['cancelar'])){
     header("location:pagina6.php");
 }
 
