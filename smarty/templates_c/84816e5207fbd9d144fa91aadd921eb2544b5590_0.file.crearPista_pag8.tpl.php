@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-07 17:13:47
+/* Smarty version 3.1.34-dev-7, created on 2020-04-09 15:47:01
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\crearPista_pag8.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8c98aba2d646_02474332',
+  'unifunc' => 'content_5e8f2755043208_56221157',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84816e5207fbd9d144fa91aadd921eb2544b5590' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\crearPista_pag8.tpl',
-      1 => 1586272213,
+      1 => 1586439705,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e8c98aba2d646_02474332 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8f2755043208_56221157 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -100,7 +100,7 @@ function content_5e8c98aba2d646_02474332 (Smarty_Internal_Template $_smarty_tpl)
         </div>
 
          <div class='campo'>
-            <br/><input type='submit' name='volver' value='Volver' />
+            <br/><input type='submit' name='cancelar' value='Cancelar' />
         </div>
     </fieldset>
     </form>

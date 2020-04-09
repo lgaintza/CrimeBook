@@ -437,7 +437,7 @@ return $sql;
         
         return $equipos4;
     }
-    
+    //Metodo para insertar registros de la pagina 5  y pagina 6
        protected static function insertaRegistro($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
         $dsn = "mysql:host=localhost;dbname=CrimeBook";
@@ -459,7 +459,7 @@ return $sql;
 
     }
 
-
+    //metodo para obtener un juego en la pagina 5
     public static function obtenerJuego($id) {
         $sql = "SELECT * FROM juegos";
         $sql .= " WHERE id='".$id."'";
@@ -479,7 +479,7 @@ return $sql;
         
     }
 
-
+    //metodo para obtener las pruebas que tiene asignadas un juego
     public static function listadoPruebasJuego($codigojuego) {
         $sql = "SELECT pruebas.id, pruebas.nombre, pruebas.url, pruebas.descBreve, pruebas.dificultad,";
         $sql .= " pruebas.ayudaFinal, pruebas.username, pruebas.descExtendida, pruebas.tipo FROM pruebas, pertenencias"; 
@@ -500,7 +500,7 @@ return $sql;
             return $listapruebasjuego; 
     }  
 
-
+//metodo para obtener el listado de todas las pruebas utilizado en pagina 5
     public static function listaPruebas() {
         $sql = "SELECT * FROM pruebas";
         $resultado = self::ejecutaConsulta ($sql);
@@ -521,7 +521,7 @@ return $sql;
 
 
 
-
+//metodo para insertar un nuevo juego en pagina guardajuego
      public static function insertarJuego($juego) {      
         
         $sql = "INSERT INTO juegos (id, nombre, descExtendida, descBreve, fechaCreacion, username)";
@@ -533,7 +533,7 @@ return $sql;
 
     }
 
-
+//metodo para actualizar un  juego editado en pagina guardajuego
      public static function actualizaJuego($juego) {       
         
         $sql = "UPDATE juegos SET nombre='".$juego->getnombre()."' ,";
@@ -545,7 +545,7 @@ return $sql;
         
         return;   
     }  
-
+//metodo para insertar cada prueba con su juego correspondiente
     public static function insertarPertenencias($codigojuego, $codigoprueba) {        
         
         $sql = " INSERT INTO pertenencias (idJuego, idPrueba)";
@@ -555,7 +555,7 @@ return $sql;
         return $sql;   
 
     } 
-
+//metodo para eliminar  pruebas de un juego
     public static function eliminarPertenencias($codigojuego, $codigoprueba) {        
        
         $sql = " DELETE FROM pertenencias";
@@ -567,7 +567,7 @@ return $sql;
     }     
 
     
-
+//metodo para recoger el ultimo juego de la base de datos
     public static function recogeUltimoJuego() {
         $sql = " SELECT MAX(id) FROM juegos";        
         $resultado = self::ejecutaConsulta ($sql);
@@ -577,7 +577,7 @@ return $sql;
         return $row[0];
     }
 
-    //##Modificada, mal la sql 
+ //metodo para recoger el listado de respuestas/soluciones que tiene una prueba en pagina6 
     public static function listadoRespuestas($id) {
         $sql = " SELECT respuesta FROM respuestas"; 
         $sql .= " WHERE idPrueba ='" . $id . "'";
@@ -596,7 +596,7 @@ return $sql;
             
         return $listarespuestas; 
     }
-
+//metodo para insertar una nueva respuesta / solucion en pagina6
     public static function insertaRespuesta($codigoprueba, $ultimaRespuesta, $respuesta) {        
         
         $sql = " INSERT INTO respuestas (idPrueba, id, respuesta)";
@@ -608,7 +608,7 @@ return $sql;
     }    
      
 
-    
+   //metodo para obtener  una prueba concreta 
     public static function obtenerPrueba($id) {
         $sql = " SELECT *  FROM pruebas";
         $sql .= " WHERE id='".$id."'";
@@ -621,12 +621,10 @@ return $sql;
                     $prueba= new Prueba($row);
                     $row = $resultado->fetch();
                 }
-        }
-        
+        }       
 
         //Antes de devolver el objeto de la prueba 
-        //Necesitamos cargas las respuestas que tienen esa prueba 
-        //Como están en otra
+        //Necesitamos cargas las respuestas que tienen esa prueba porque estan en otra       
         $listarespuestas= self::listadoRespuestas($id); 
         $prueba->cargaRespuestas($listarespuestas);
         return $prueba;
@@ -634,7 +632,7 @@ return $sql;
        
     }  
 
-
+//metodo para obtener todas las pistas que hay en la Base de datos
     public static function listadoPistas() {
         $sql = "SELECT * FROM pistas";
         $resultado = self::ejecutaConsulta ($sql);
@@ -652,7 +650,7 @@ return $sql;
     }
 
     
-   
+  //metodo para obtener las pistas de una prueba concreta 
     public static function listadoPistasPrueba($codigoprueba) {
         $sql = " SELECT * FROM pistas"; 
         $sql .= " WHERE idPrueba ='" . $codigoprueba . "'";       
@@ -670,7 +668,7 @@ return $sql;
             
         return $listapistasprueba; 
     } 
-
+//metodo para recoger la ultima pista
      public static function recogeUltimaPista() {
         $sql = " SELECT MAX(id) FROM pistas";        
         $resultado= self::ejecutaConsulta ($sql);
@@ -682,7 +680,7 @@ return $sql;
     } 
 
  
-
+//metodo para recoger la ultima prueba
     public static function recogeUltimaPrueba() {
         $sql = " SELECT MAX(id) FROM pruebas";        
         $resultado= self::ejecutaConsulta ($sql);
@@ -692,7 +690,7 @@ return $sql;
         return $row[0];
         
     }  
-    //Esto no lo habías corregido, el id no es incremental en las respuestas tampoco
+//metodo para recoger la ultima respuesta
     public static function recogeUltimaRespuesta() {
         $sql = " SELECT MAX(id) FROM respuestas";        
         $resultado= self::ejecutaConsulta ($sql);
@@ -703,7 +701,7 @@ return $sql;
         
     }      
 
-
+//metodo para insertar una nueva prueba em guardaprueba
     public static function insertarPrueba($prueba) {        
         
         $sql = " INSERT INTO pruebas (id, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username)";
@@ -716,7 +714,7 @@ return $sql;
 
     }
 
-
+//metodo para actualizar una prueba editada
     public static function actualizaPrueba($prueba) {        
         
         $sql = " UPDATE pruebas SET nombre='".$prueba->getnombre()."', ";
@@ -728,7 +726,7 @@ return $sql;
         
         return $sql;   
     }
-
+//metodo para eliminar pistas
     public static function eliminarPistas($idPrueba, $id) {        
        
         $sql = " DELETE FROM pistas";
