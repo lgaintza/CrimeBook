@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 19:04:26
+/* Smarty version 3.1.34-dev-7, created on 2020-04-04 08:28:15
   from '/Applications/MAMP/htdocs/DWES/UT6/git/crimeBook/smarty/templates/crearPista_pag8.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e86373a0ab5d8_09957699',
+  'unifunc' => 'content_5e88451f90d958_40060561',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '607221d3b206550cb6775efded6bfa99e8f3a873' => 
     array (
       0 => '/Applications/MAMP/htdocs/DWES/UT6/git/crimeBook/smarty/templates/crearPista_pag8.tpl',
-      1 => 1585853739,
+      1 => 1585988373,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e86373a0ab5d8_09957699 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e88451f90d958_40060561 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
 <!-- CrimeBook: pagina8 -->
 <html>
     <head>
-	<title>Estadisticas</title>
+	<title>Crear Pista</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
@@ -35,17 +35,19 @@ function content_5e86373a0ab5d8_09957699 (Smarty_Internal_Template $_smarty_tpl)
 
 <body class="crearpistas">
         <div class="topnav" id="myTopnav">
-            <a href="pagina1.php">Listado<br>de Juegos</a>
-            <a href="pagina2.php">Listado<br>de Partidas</a>
-            <a href="pagina3.php">Listado<br>de Pruebas</a>
-            <a href="pagina4.php">Partida Nueva<br>Editar Partida</a>
-            <a href="pagina5.php">Juego Nuevo<br>Editar Juego</a>
-            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva<br>Editar Prueba</a>
+            <a href="pagina1.php">Listado de Juegos</a>
+            <a href="pagina2.php">Listado de Partidas</a>
+            <a href="pagina3.php">Listado de Pruebas</a>
+            <a href="pagina4.php">Partida Nueva/Editar</a>
+            <a href="pagina5.php">Juego Nuevo/Editar</a>
+            <a href="pagina6.php?variable=nuevaPruebaMenu">Prueba Nueva/Editar</a>
             <a href="pagina7.php">Estadísticas</a>
-            <a href="pagina8.php" class="active">Crear Pista</a>
+            <a href="pagina8.php" class="active">Crear pista</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		<i class="fa fa-bars"></i>
+
             </a>
+
 	</div>
      
     
@@ -100,7 +102,12 @@ function content_5e86373a0ab5d8_09957699 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </fieldset>
     </form>
-
+  <div id="pie">
+            <form action='logoff.php' method='post'>
+                <input type='submit' name='desconectar' value='Desconectar usuario'/>
+            </form>
+        </div>
 </body>
-</html><?php }
+</html>
+<?php }
 }

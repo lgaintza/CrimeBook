@@ -75,7 +75,7 @@
         </div>
 
          <div class='campo'>
-            <br/><input type='submit' name='volver' value='Volver' />
+            <br/><input type='submit' name='cancelar' value='Cancelar' />
         </div>
     </fieldset>
     </form>

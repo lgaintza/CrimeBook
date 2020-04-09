@@ -47,20 +47,57 @@ class BD {
         return $juegos;
     }
     
+    // Método para eliminar juegos. Elimina también las partidas de ese juego y las pertenencias
+    public static function eliminaJuegos($codigo){
+        foreach ($codigo as $juego) {
+            $sql = "DELETE FROM juegos ";
+            $sql.=" WHERE juegos.id='" . $juego . "'";
+            $resultado = self::ejecutaConsulta ($sql);
+        }
+    }
+    
+    // Método para mostrar partidas y obtener equipos en la página 2
+    public static function muestraPartidas($idjuego) {
+        $sql = "SELECT partidas.id, count(equipos.id) as 'num_equipospartida', ";
+        $sql .= "partidas.nombre, partidas.fechaCreacion, partidas.duracion, partidas.fechaInicio, partidas.idJuego, partidas.username, partidas.finalizada ";
+        $sql .= " FROM partidas LEFT JOIN equipos";
+        $sql .=" ON partidas.id = equipos.idPartida";
+        $sql .=" WHERE partidas.idJuego='".$idjuego."' GROUP BY partidas.id";
+        $resultado = self::ejecutaConsulta($sql);
+        $partidas = array();
+
+	if($resultado) {
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $partidas[] = new Partida($row);
+                $row = $resultado->fetch();
+            }
+	}
+        
+        return $partidas;
+    }
+        
+    //metodo para eliminar una partida finalizada en página2
+    public static function eliminaPartida($codigo){
+        $sql = "DELETE FROM partidas ";
+        $sql.=" WHERE partidas.id='" . $codigo . "'";
+        $sql.=" AND partidas.finalizada='S'";
+        $resultado = self::ejecutaConsulta ($sql);
+
+    }
+    
     // Método para mostrar juegos en las páginas 2 y 4
     public static function nombrejuego($id){
         $sql = "SELECT nombre FROM juegos WHERE id='".$id."'";
         $minombre = self::ejecutaConsulta($sql);
         if($minombre) {  
             $row = $minombre->fetch();                                  
-    }
+        }
         
         return $row['nombre'];
     }
 
-    
-
-            //metodo para encontrar máximo Id pistas
+    //metodo para encontrar máximo Id pistas
     public static function obtieneMaxIdPistas(){
         $sql = "SELECT MAX(id)+1 as id FROM pistas";
         $resulmax = self::ejecutaConsulta($sql);
@@ -383,28 +420,7 @@ return $sql;
         
         return $partidas;    
     }
-    
-    
-    // Método para mostrar partidas y obtener equipos en la página 2
-    public static function muestraPartidas($idjuego) {
-        $sql = "SELECT partidas.id, count(equipos.id) as 'num_equipospartida', ";
-        $sql .= "partidas.nombre, partidas.fechaCreacion, partidas.duracion, partidas.fechaInicio, partidas.idJuego, partidas.username, partidas.finalizada ";
-        $sql .= " FROM partidas LEFT JOIN equipos";
-        $sql .=" ON partidas.id = equipos.idPartida";
-        $sql .=" WHERE partidas.idJuego='".$idjuego."' GROUP BY partidas.id";
-        $resultado = self::ejecutaConsulta($sql);
-
-	if($resultado) {
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $num_equipos[] = new Partida($row);
-                $row = $resultado->fetch();
-            }
-	}
         
-        return $num_equipos;
-    }
-    
     
     public static function obtieneEquipos($idpartida) {
         $sql = "SELECT nombre, codigo  FROM equipos WHERE idPartida='" .$idpartida."'";
@@ -724,25 +740,6 @@ return $sql;
         return $sql; 
     } 
   
-  
-    // Método para eliminar juegos. Elimina también las partidas de ese juego y las pertenencias
-    public static function eliminaJuegos($codigo){
-        foreach ($codigo as $juego) {
-            $sql = "DELETE FROM juegos ";
-            $sql.=" WHERE juegos.id='" . $juego . "'";
-            $resultado = self::ejecutaConsulta ($sql);
-        }
-    }
-    
-        
-    //metodo para eliminar una partida finalizada en página2
-    public static function eliminaPartida($codigo){
-        $sql = "DELETE FROM partidas ";
-        $sql.=" WHERE partidas.id='" . $codigo . "'";
-        $sql.=" AND partidas.finalizada='S'";
-        $resultado = self::ejecutaConsulta ($sql);
-
-    }
     
        
     

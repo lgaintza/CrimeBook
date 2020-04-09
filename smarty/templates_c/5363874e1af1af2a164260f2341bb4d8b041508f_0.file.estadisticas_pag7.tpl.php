@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-02 18:57:07
+/* Smarty version 3.1.34-dev-7, created on 2020-04-04 08:22:11
   from '/Applications/MAMP/htdocs/DWES/UT6/git/crimeBook/smarty/templates/estadisticas_pag7.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8635836e42c9_81827230',
+  'unifunc' => 'content_5e8843b3753006_84407641',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5363874e1af1af2a164260f2341bb4d8b041508f' => 
     array (
       0 => '/Applications/MAMP/htdocs/DWES/UT6/git/crimeBook/smarty/templates/estadisticas_pag7.tpl',
-      1 => 1585853739,
+      1 => 1585988373,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listaestadisticas.tpl' => 1,
   ),
 ),false)) {
-function content_5e8635836e42c9_81827230 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8843b3753006_84407641 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -56,6 +56,16 @@ function content_5e8635836e42c9_81827230 (Smarty_Internal_Template $_smarty_tpl)
                 <?php $_smarty_tpl->_subTemplateRender("file:listaestadisticas.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
             </div>
+            <div style="text-align:center; margin:15px;">
+            <form action="pagina7.php" method="POST">
+            <input type=submit name="atras" value="Volver"/>
+            <form>
+            </div>
+        </div>
+         <div id="pie">
+            <form action='logoff.php' method='post'>
+                <input type='submit' name='desconectar' value='Desconectar usuario'/>
+            </form>
         </div>
     </body>
     
