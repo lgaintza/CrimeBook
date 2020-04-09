@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-06 13:23:37
+/* Smarty version 3.1.34-dev-7, created on 2020-04-07 17:13:47
   from 'C:\xampp\htdocs\CrimeBook\crimeBook\smarty\templates\crearPista_pag8.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8b11399ca6f8_51142816',
+  'unifunc' => 'content_5e8c98aba2d646_02474332',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84816e5207fbd9d144fa91aadd921eb2544b5590' => 
     array (
       0 => 'C:\\xampp\\htdocs\\CrimeBook\\crimeBook\\smarty\\templates\\crearPista_pag8.tpl',
-      1 => 1586171793,
+      1 => 1586272213,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e8b11399ca6f8_51142816 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e8c98aba2d646_02474332 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -58,9 +58,10 @@ function content_5e8b11399ca6f8_51142816 (Smarty_Internal_Template $_smarty_tpl)
         <div class='campo'>
             <label for='idPrueba'>idPrueba: </label>
             <?php if (isset($_smarty_tpl->tpl_vars['idPrueba']->value)) {?>
-            <input type='checkbox' name='idPrueba' value='<?php echo $_smarty_tpl->tpl_vars['idPrueba']->value;?>
-'> <?php echo $_smarty_tpl->tpl_vars['idPrueba']->value;?>
+            <?php echo $_smarty_tpl->tpl_vars['idPrueba']->value;?>
 
+            <input type="hidden" name="idPrueba" value='<?php echo $_smarty_tpl->tpl_vars['idPrueba']->value;?>
+'>
             <?php } else { ?>
                                             <select  name="idPrueba">
                                                                 <option selected value="0"> Seleccione una prueba...</option>
@@ -78,25 +79,10 @@ function content_5e8b11399ca6f8_51142816 (Smarty_Internal_Template $_smarty_tpl)
 
             <br><br>
       </div>
-        <div class='campo'>
-            <label for='id' >id:<span style="color:red;">*</span></label><select  name="id">
-                                                                <option selected value="0"> Seleccione una pista...</option>
-                                                                <option value="600001">600001</option>
-                                                                <option value="600002">600002</option>
-                                                                <option value="600003">600003</option>
-                                                                <option value="600004">600004</option>
-                                                                <option value="600005">600005</option>
-                                                                <option value="600006">600006</option>
-                                                                <option value="600007">600007</option>
-                                                                <option value="600008">600008</option>
-                                                                <option value="600009">600009</option>
-                                                                <option value="600010">600010</option>
-                                                            </select>
-            <br><br>
-        </div>
+
          <div class='campo'>
             <label for='texto' >texto:</label>
-            <input type='text' name='texto' maxlength="50" />
+            <textarea  name='texto' rows="2" cols="30"></textarea>
             <br><br>
         </div>
          <div class='campo'>
@@ -114,7 +100,7 @@ function content_5e8b11399ca6f8_51142816 (Smarty_Internal_Template $_smarty_tpl)
         </div>
 
          <div class='campo'>
-            <br/><input type='reset' name='volver' value='Volver' />
+            <br/><input type='submit' name='volver' value='Volver' />
         </div>
     </fieldset>
     </form>

@@ -20,7 +20,7 @@ $smarty->cache_dir = 'smarty/cache/';
 
 if (isset($_SESSION['idTemporalPrueba'])){
   $smarty->assign('idPrueba', $_SESSION['idTemporalPrueba']);
-  unset( $_SESSION['idTemporalPrueba']);
+  
 
 }
 if (isset($_POST['guardar'])) {

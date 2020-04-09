@@ -1,19 +1,32 @@
 <?php
+/*
+	Definición: guardajuego.php es la parte de código que ayuda a pagina5.php a guardar el juego junto con sus pruebas
+
+	Podemos llegar a guardajuego.php en alguno de estos casos: 
+		--Pulsamos en el botón de guardar juego en pagina5.php cuando es un juego nuevo (1)
+		--Pulsamos en el botón de guardar juego en pagina5.php cuando es un juego para editar(2)
+
+	Esta parte de la aplicación se encarga de guardar o editar un juego añadiendo las pruebas dependiendo del caso en el que nos encontremos
+
+*/
+
 session_start();
 require_once('include/BD.php');
 require_once('include/Juego.php');
  
 		if(isset($_POST['codigojuego'])){
-			 
-			//Si nos viene un codigo juego significa que hay que editar el que ya tenemos guardado
-			//Para ello, recogemos los datos sencillos del formulario
+	/*
+	Defnición: Entramos en esta parte en el caso (2)
+	Recogemos el codigo del juego que nos llega por POST y volvemos a la página1 			 
+	Si nos viene un codigo juego significa que hay que editar el que ya tenemos guardado
+	Para ello, recogemos los datos sencillos del formulario
+	 */
 			$codigojuego=$_POST['codigojuego'];
 			$nombrejuego=$_POST['nombre'];
 			$descripcionbreve=$_POST['descBreve'];
 			$descripcionextendida=$_POST['descExtendida'];
 			$fechaCreacion=$_POST['fechaCreacion'];
         	$username=$_POST['username'];
-
         	
 			
 			$row= array(); 
@@ -30,12 +43,11 @@ require_once('include/Juego.php');
 			//Una vez actualizado el juego, tenemos que insertar en la base de datos las pruebas nuevas que hemos guardado para el juego
 			//Y también borrar las que hemos seleccionado. 
 			
-			// a las que son de añadir, les he añadido el prefijo new en el name de los input seguido del código de la prueba
-			//A las que son de borrar les he añadido el prefijo del seguido del código de las pruebas. 
+			// a las que son de añadir, les he añadido el prefijo "new" en el name de los input seguido del código de la prueba
+			//A las que son de borrar les he añadido el prefijo "del" seguido del código de las pruebas. 
 
 			//Primero recuperamos todas las pruebas que tenemos en la base de datos
-			//OJO si en la BD el metodo no tiene parametro no le tengo que pasar nada porque
-			//sino no me va a coger todas las pruebas
+			
 			$listadoPruebas = BD::listaPruebas(); 
 			//Ahora recorremos todos los códigos de las pruebas que tenemos en la base de datos, preguntando al post si tiene un new de ese código
 
@@ -60,8 +72,12 @@ require_once('include/Juego.php');
 			}
 			//Con esto hemos eliminado las pruebas que hemos marcado en el formulario y hemos añadido las pruebas que hemos marcado en el formulario 
 			header("Location:pagina1.php");
-		}else {
 
+		}else {
+	/*
+	Defnición: Entramos en esta parte en el caso (1)
+	Recogemos los datos del formulario del juego que nos llega por POST, guardamos y volvemos a la página1 			 
+	*/
 			
 			$nombrejuego=$_POST['nombre'];
 			$descripcionbreve=$_POST['descBreve'];
@@ -92,16 +108,15 @@ require_once('include/Juego.php');
 			
 			$listadoPruebas = BD::listaPruebas();
 			//Ahora en $codigojuegoJuego, tenemos el código del último juego que hemos guardado y con ello podemos guardar en la tabla de relaciones, las pruebas con el juego que acabamos de crear
-			////echo var_dump($listadoPruebas); 
-			//echo (\n); 
+			 
 
 			foreach($listadoPruebas as $prueba)
 			{
 				$codigoprueba="new".$prueba->getid(); 
-				//echo "buscamos el ".$codigoprueba; 
+				
 				if(isset($_POST[$codigoprueba]))
 				{
-					//echo "entramos a guardar la prueba"; 
+					
 					$resultado = BD::insertarPertenencias($ultimojuego, $prueba->getid()); 
 					echo $resultado; 
 				}

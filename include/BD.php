@@ -581,10 +581,10 @@ return $sql;
         return $listarespuestas; 
     }
 
-    public static function insertaRespuesta($codigoprueba, $respuesta,$ultimaRespuesta) {        
+    public static function insertaRespuesta($codigoprueba, $ultimaRespuesta, $respuesta) {        
         
-        $sql = " INSERT INTO respuestas (idPrueba, respuesta,id)";
-        $sql .= " VALUES ('".$codigoprueba."', '".$respuesta."','".$ultimaRespuesta."')";      
+        $sql = " INSERT INTO respuestas (idPrueba, id, respuesta)";
+        $sql .= " VALUES ('".$codigoprueba."','".$ultimaRespuesta."','".$respuesta."')";      
 
         $resultado = self::insertaRegistro($sql);        
         return $sql;   

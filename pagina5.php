@@ -1,7 +1,16 @@
+
 <?php
+
+/*
+    Autor: Yolanda Guerge
+    Definición: pagina5.php es una parte de la aplicación para crear los juegos  con las pruebas que tiene dicho juego 
+    Podemos llegar a la pagina5.php desde: 
+        --Menú principal
+        --pagina1.php         
+*/
 require_once('include/BD.php');
- require_once('include/Juego.php');
-   require_once('include/libs/Smarty.class.php');
+require_once('include/Juego.php');
+require_once('include/libs/Smarty.class.php');
 
 
 // Recuperamos la información de la sesión
@@ -10,13 +19,20 @@ session_start();
 
 $smarty = new Smarty;
 
-//entiendo que todos los post que hay son id (que es el codigo de juego que me pasa) y no codigojuego 
+/*
+    Definición: Entramos en este punto cuando queremos mostrar en la pagina5.tpl un juego ya creadp anteriormente con sus pruebas si las tuviese y el listado de pruebas para poder ponerle
+    //Podemos llegar a este punto de estas maneras: 
+        --Si pulsamos en el botón editar juego en la pagina1.php 
+        
+    Esta parte del código  se encarga de recoger el identificador del juego que queremos pintar en la pagina5.tpl, recogemos sus pruebas y las pintamos.
+    
+    */
 if (isset($_SESSION['idJuego'])) {
 	
 	$juegoRecibido=$_SESSION['idJuego']; 
-	$hayNuevoJuego=0; //hago una variable para que exista la variable en el template
+	$hayNuevoJuego=0; //hago una variable para que exista la variable en el tpl
 	//Si es 0 significa que estamos editando el juego y por tanto nos entra en la primera parte del tpl 
-	//Puedes poner el valor que quieras 
+	
 	$smarty->assign('hayNuevoJuego',$hayNuevoJuego);
 	$objetoJuego = BD::obtenerJuego($juegoRecibido['idJuego']); 
 	$objetoJuego= $objetoJuego[0]; 
@@ -33,9 +49,9 @@ if (isset($_SESSION['idJuego'])) {
     $listaTodasPruebas=BD::listaPruebas(); 
     $listadoResta=array(); //aqui es donde vamos a guardar el listado de las pruebas que no tenemos añadidias
 
-    //Lo hago con el for, porque quiero quitar un elemento de una posición concreta del array 
+    //Hacemos un for, porque quiero quitar un elemento de una posición concreta del array 
     //para ello necesito control sobre en que posición del array está el elemento que quiero quitar 
-    //No lo hago con distinto, porque quiero quitar dle array aquel id de la lista de pruebas del juego que sea igual al id de la lista de pruebas total 
+    //No lo hago con distinto, porque quiero quitar del array aquel id de la lista de pruebas del juego que sea igual al id de la lista de pruebas total 
 
     for($x=0;$x<count($listaTodasPruebas);$x++)
     {
@@ -59,7 +75,17 @@ if (isset($_SESSION['idJuego'])) {
 
    //Al final en la listaTodaasPruebas quedan solo la spruebas que no están en el juego 
     $smarty->assign('listapruebas', $listaTodasPruebas);
+
+
 }else
+/*
+    Definición: Entramos en este punto cuando queremos crear un juego nuevo. 
+    Podemos llegar aquí de una de las siguientes maneras: 
+        --Cuando pulsemos en el botón de crear una prueba en la pagina1.php 
+        --Cuando pulsemos crear Juego en el menú principal superior
+
+    Esta parte del código solo muestra un formulario vacío en pagina5.tpl para que el usuario rellene los datos, añada pruebas ya creadas y guarde el juego. 
+    */
 {
 	$hayNuevoJuego=1; 
 	$smarty->assign('hayNuevoJuego',$hayNuevoJuego);

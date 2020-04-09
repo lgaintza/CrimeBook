@@ -1,4 +1,15 @@
-<?php
+<?php 
+
+/*
+	Autor: Yolanda Guerge
+	Definición: pagina6.php es una parte de la aplicación para crear las pruebas de los juegos junto con las soluciones y pistas que contiene dicha prueba. 
+	Podemos llegar a la pagina6.php desde: 
+		--Menú principal
+		--pagina3.php 
+		--volver de pagina8.php 
+*/
+
+
 require_once('include/BD.php');
 require_once('include/Prueba.php');
 require_once('include/libs/Smarty.class.php');
@@ -10,143 +21,32 @@ $smarty->compile_dir = 'smarty/templates_c/';
 $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
-//TODO quedan las pistas 
 
-//Si pulsamos en el botón de borrar pista
-
-
-//Para crear una nueva prueba, la primera vez que entramos en la página
-##Si existe la sesión venimos de la página 1
-##Si existe el get venimos del menú
-## en ambos casos tenemos que acabar aquí
-
-if(isset($_SESSION['pruebaGuardadaParaVolver']))
-{
-	
-	
-	//Si tenemos esta variable de sesión es que hemos vuelto de la página 8 y tenemos una nueva pista guardada
-	$hayNuevaPrueba=0; 
-	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
-	$prueba=$_SESSION['pruebaGuardadaParaVolver']; 
-	$prueba= unserialize(serialize($prueba));
-	unset($_SESSION['pruebaGuardadaParaVolver']); 
-	unset($_SESSION['idTemporalPrueba']); 
-	$listaPistas=BD::listadoPistasPrueba($prueba->getid());
-	$smarty->assign('hayPistas',1);
-	$smarty->assign('listaPistas',$listaPistas);
-	if(isset($_SESSION['listaSoluciones']))
-	{
-		$listaSoluciones=$_SESSION['listaSoluciones']; 
-		
-	}else
-	{
-		$listaSoluciones=array(); 
-	}
-	$smarty->assign('respuestas',$listaSoluciones);
-	$smarty->assign('prueba',$prueba); 
-
-}
-
-
-if(isset($_POST['cancelar']))
-{
-	 
-	
-	unset($_SESSION['pruebaParaGuardar']); 
-	unset($_SESSION['listaSoluciones']);
-	unset($_SESSION['accion']);
-	unset($_SESSION['pruebaRecibida']);
-	header("Location: pagina3.php");
-}
-if((isset($_SESSION['pag3_to_6']))||(isset($_GET['variable'])))
-{
-	
-	
-	
-	//En este caso la prueba es nueva 
-	//Podemos coger un id temporal para crear pistas 
-	$ultimaprueba=BD::recogeUltimaPrueba(); 
-	$ultimaprueba++; 
-	$_SESSION['idTemporalPrueba']=$ultimaprueba; //Esta es la que pasamos a la pagina 8 
-	//Si venimos del inicio no hay pistas porque es nueva
-	//Indicamos que es nuan  ueva prueba y nos muestra la parte dle tpl vaacia 
-	$hayNuevaPrueba=1; 
-	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
-	unset($_SESSION['pag3_to_6']); 
-
-	//por si acaso quitamos estas sesiones para que no se vuelva loca la pagina
-	//La primera vez que entramos no existe 
-	//Pero si por alguna razón has vuelto cn las flechas del navegador a otra parte de la aplicación
-	//Puede ocurrir que esas variables existan y no las queremos
-	unset($_SESSION['listaSoluciones']); 
-	unset($_SESSION['pruebaParaGuardar']);
-	//Guardamos un estado para indicar que lo qu queríamos hacer inicialmente era crear una nueva
-	//Porque vamos a compartir el tpl en editar y en crear 
-	//el botón de guarda prueba es el mismo 
-	//Entonces necesitamos indicarle al guarda prueba de alguna manera que queremos guardar una neuva
-	$_SESSION['accion']="nueva";
-
-}
-
-//Si pulsamos el botón de añadir pista antes de ir a la página 8 
-if(isset($_POST['anadePista']))
-{
-	
-	
-	//Si pulsamos el botón de añadir pista tenemos que ir a la página 8 guardando todo lo que teníamos antes 
-	$row['nombre']=$_POST['nombre']; 
-	$row['url']=$_POST['url'];
-	$row['descBreve']=$_POST['descripcionbreve'];
-	$row['descExtendida']=$_POST['descripcionextendida'];
-	$row['tipo']=$_POST['tipo'];
-	$row['ayudaFinal']=$_POST['ayudaFinal'];
-	$row['username']=$_SESSION['usuario'];
-	$row['dificultad']=$_POST['dificultad']; 
-	$row['tipo']= $_POST['tipo']; 
-	$prueba=new Prueba($row); 
-	//guardo en una variable de sesion el codigo de prueba del campo hidden para recibirlo en la pagina 8
-	//$_SESSION['codigoPrueba'] = $_POST['codigoPrueba'];
-	//guardamos la prueba porque las respuestas ya están guardadas en una variable de sesión
-	$_SESSION['pruebaGuardadaParaVolver']=$prueba; 
-	//Esta variable la necesitamos porque inicialmente pensamos que si no existia esta variable no habí anada para guardar y habíamos llegado a la pagina de guardaprueba.php sin querer, era por seguridad. 
-	//Como ahora necesitamos guardar la prueba temporal para añadir una pista porque si no si noe nla base de datos no deja guardar, neceistamos hace rque encaje lo que teníamos antes con la nuav ruta que tine eque tomar el flujo del programa 
-	//Antes no pensabamos en ir a guardar más que solo si pulsabamos el botón de guardar, ahora tenemos un caso más y hay que adaptarlo a lo que teníamos antes para que siga funcionando igual 
-	$_SESSION['pruebaParaGuardar']=$prueba;
-	//header("Location: pagina8.php"); 
-	if($_SESSION['accion']=="nueva")
-	{
-		$_SESSION['irAnadePista']=1; 
-		header("Location: guardaprueba.php"); 
-	}else if($_SESSION['accion']=="editar")
-	{
-		$_SESSION['idTemporalPrueba']= $_SESSION['pruebaRecibida']; 
-		header("Location: pagina8.php"); 
-	}
-}
-
-
-//Cuando volvemos de la página8 reconstruinmos el objeto prueba y lo pintamos
-
-
-//Cuando le damos a editar en la pagina3.php 
+ 
 if(isset($_SESSION['idpru_3_to_6']))
 {
-	
-	
+	/*
+	Definición: Entramos en este punto cuando queremos mostrar en la pagina6.tpl una prueba ya creada anteriormente con sus pistas y sus soluciones si las tuviese
+	//Podemos llegar a este punto de estas maneras: 
+		--Si pulsamos en el botón editar prueba en la pagina3.php 
+		--Si añadimos una solución o pista en una prueba nueva, cuando en el guardaprueba.php se guarde la prueba nueva*, volveremos del guardaprueba.php a la pagina6.php siempre con una prueba ya guardad en la base de datos por lo que tiene que entrar en la parte de editar no en la parte de nueva. 
 
-	//Esto significa que editamos la prueba
-	//Si venimos a editar puede que haya pistas 
+	Esta parte del código solo se encarga de recoger el identificador de la prueba que queremos pintar en la pagina6.tpl, recogemos sus pistas y soluciones y las pintamos.
 
+	Notas*: 
+		--prueba nueva*: en el guardaprueba.php hay varias formas de guardar una prueba nueva, mirar el guardaprueba.php para entender que hace. 
+	*/
+	
+	unset($_SESSION['pag3_to_6']); 
+	unset($_SESSION['idTemporalPrueba']);
 	$hayNuevaPrueba=0; 
 	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
 	$pruebaRecibida=$_SESSION['idpru_3_to_6']; 
-	$_SESSION['pruebaRecibida']=$pruebaRecibida; //el funcionamiento de nueistr pagina 
-	$_SESSION['idTemporalPrueba']=$pruebaRecibida;  //Esta es para la pagina 8 y que no tenga que hacer distinciones de si es nueva prueba o editar prueba
+	$_SESSION['pruebaRecibida']=$pruebaRecibida; //el funcionamiento de nuestra pagina 
+	$_SESSION['idTemporalPrueba']=$pruebaRecibida;  //Esta Sesion es para la pagina 8 y que no tenga que hacer distinciones de si es nueva prueba o editar prueba
 	unset($_SESSION['idpru_3_to_6']); 
 	$_SESSION['accion']="editar";
-	//Además de hacer esto que es lo mismo que hemos hecho arriba, tenemos que crear el objeto prueba 
-	//Tenemos que recoger las soluciones que tiene asociada esa prueba
-	//Tenemos que recoger las pistas que tiene asociada esa prueba
+	
 	$prueba=BD::obtenerPrueba($pruebaRecibida);
 	$listaSoluciones= BD::listadoRespuestas($prueba->getid());
 	if(isset($listaSoluciones))
@@ -164,151 +64,134 @@ if(isset($_SESSION['idpru_3_to_6']))
 	{
 		$smarty->assign('hayPistas',0);
 	}
-	
+
 }
-
-//Cuando pulsamos en el botón de añadir solución
-if(isset($_POST['anadir']))
+else if((isset($_SESSION['pag3_to_6']))||(isset($_GET['variable'])))
 {
-	
-	
+	/*
+	Definición: Entramos en este punto cuando queremos crear una prueba nueva. 
+	Podemos llegar aquí de una de las siguientes maneras: 
+		--Cuando pulsemos en el botón de crear una prueba en la pagina3.php 
+		--Cuando pulsemos crear Prueba en el menú principal superior
 
-	//Si pulsamos sobre el botón de añadir solución lo que tenemos que hacer es guardar los datos que tenemos en el formulario como un objeto de tipo prueba
-	//Y guardamos en un array las pruebas que vamos metiendo
-	//Para entrar en la parte de editar
-	$hayNuevaPrueba=0;
-	if(isset($_SESSION['listaSoluciones']))
-	{
-		//Si tenemos ya el array de las lista de las soluciones metemos en el array la nueva solución que nos acaba de llegar
-		//Esta parte del código es tanto para editar como para nueva
-		//Porque en el tpl la variable de lista soluciones es la misma que nueva y editar
-		//Por lo tanto aunque en editar tengamos una lista de solciones nuevas 
-		//tenemos que seguir complentando esta lista para que se pinten en el tpl
-		//En realidad en la de editar estamos guardando 2 veces las nuevas solucines 
-		//Una parte van a la varible de sesión de nuevaSolucione
-		//Y también esa misma parte va a la listaSoluciones, donde está las antiguas + nuevas para pintarlas en el tpl
-		$listaSoluciones=$_SESSION['listaSoluciones']; 
-		$listaSoluciones[]=$_POST['anadirsolucion'];
-		$_SESSION['listaSoluciones']=$listaSoluciones; 
-	}else
-	{
-		//Cuadno no hay soluciones y le damos a añadir solución
-		//Crea el array de lista soluciones, lo inicializa
-		//Y crea la variable de sesion de lista soluciones para que lo guarde temporalmente 
-		//Y poder llevarlo al final al guarda prueba 
-		$listaSoluciones=array(); 
-		//Cogemos la solucion que hemos añadido ahroa mismo 
-		$listaSoluciones[]=$_POST['anadirsolucion']; 
-		//Y oir ultimo actualizamos la variable de sesion de listaSolcuiones
-		$_SESSION['listaSoluciones']=$listaSoluciones; 
-	}
-	//Este botón lo comparte tanto si es para una nuva prueba como si es para editar
-	if(isset($_SESSION['accion']))
-	{
-		if($_SESSION['accion']=="editar") //Si estamos en editar tenemos que distinguir las respuestas nuevas de las que ya teníamos para no gardar duplicados 
-		{
-			//Comparten editar prueba y nueva prueba el mimso botón de añadir solución
-			//Para que el botón sepa cuales son las pruebas nuevas y cuales son las pruebas que había guardadas 
-			//Necesitamos distinguirlas 
-			if(isset($_SESSION['listaSolucionesNuevas']))
-			{
-				$listaSolucionesNuevas=$_SESSION['listaSolucionesNuevas']; 
-				$listaSolucionesNuevas[]=$_POST['anadirsolucion'];
-				$_SESSION['listaSolucionesNuevas']=$listaSolucionesNuevas; 
-			}else
-			{
-				$listaSolucionesNuevas=array(); 
-				$listaSolucionesNuevas[]=$_POST['anadirsolucion']; 
-				$_SESSION['listaSolucionesNuevas']=$listaSolucionesNuevas; 
-			}
-		}
-	}
-	//El id lo tenemos en una variable de seisión, lo aprovechamos para que 
-	//Esta parte del codigo la compartan nueva prueba y editar
-	//porque si es nueva prueba no tiene id si es editar tiene id
-	//Pero no se la pasamos en ninguno de los 2 casos y nos guardamos esa id en la varible de sesión
-	//Para cogerla  más tarde y poder editarla 
-	$row['nombre']=$_POST['nombre']; 
-	$row['url']=$_POST['url'];
-	$row['descBreve']=$_POST['descripcionbreve'];
-	$row['descExtendida']=$_POST['descripcionextendida'];
-	$row['tipo']=$_POST['tipo'];
-	$row['ayudaFinal']=$_POST['ayudaFinal'];
-	$row['username']=$_SESSION['usuario'];
-
-	$prueba=new Prueba($row); 
-	if(isset($_SESSION['pruebaRecibida'])) //Esto es el id de la prueba
-	{
-		//Si tenemos una prueba guardada aprovechamos y recargamos el listado de las pistas 
-		//Para poder pintarlas en el tpl 
-		$listaPistas=BD::listadoPistasPrueba($_SESSION['pruebaRecibida']); 
-		if(isset($listaPistas[0]))
-		{	//en el caso de tener id y tener pistas
-			$smarty->assign('hayPistas',1);
-			$smarty->assign('listaPistas',$listaPistas);
-		}else
-		{
-			//El caso de tener id, pero no hay pistas en la base de datos 
-			$smarty->assign('hayPistas',0);
-		}
-		
-
-	}else
-	{
-		//En el caso de que no tengamos id no hay pistas
-		$smarty->assign('hayPistas',0);
-	}
+	Esta parte del código solo muestra un formulario vacío en pagina6.tpl para que el usuario rellene los datos, añada soluciones y pistas y guarde la prueba. 
+	*/
 	
-	
+	$ultimaprueba=BD::recogeUltimaPrueba(); 
+	$ultimaprueba++; 
+	$_SESSION['idTemporalPrueba']=$ultimaprueba; 
+	$hayNuevaPrueba=1; 
 	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
-	$smarty->assign('prueba',$prueba);
-	$smarty->assign('respuestas',$listaSoluciones);
-}
+	unset($_SESSION['pag3_to_6']); 
+	unset($_SESSION['pruebaParaGuardar']);
+	$_SESSION['accion']="nueva";
+	$hayNuevaPrueba=1; 
+	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
 
-//Cuando pulsamos en el botón guardar prueba
-if(isset($_POST['guardarPrueba']))
+}else if(isset($_POST['anadir']))
 {
-	
-	
+	/*
+	Definición: Entramos aquí cuando pulsamos en el botón añadir solución
+	Guardamos los datos del formulario de la prueba en un objeto de tipo Prueba para pasarlo a guardaprueba.php. 
+	Guardamos la solución que nos llega del formulario en una variable de sesión para pasarla a guardaprueba.php 
+	Le indicamos al guardaprueba.php si estamos añadiendo una solición en una prueba no guardada anteriormente o en una prueba ya guardada 
+	*/
 
-	if(isset($_SESSION['pruebaRecibida']))//Si tenemos el id de la prueba lo metemos en el row para hacer el objeto de prueba
+	//Guardamos el objeto de tipo prueba y la solución del formulario
+	$prueba=preparaPrueba(); 
+	$_SESSION['pruebaParaGuardar']=$prueba;  
+	$_SESSION['anadirsolucion']=$_POST['anadirsolucion']; 
+
+	//Le indicamos al guardaprueba.php si es una prueba nueva o no 
+	if($_SESSION['accion']=="nueva")
 	{
-		$row['id']=$_SESSION['pruebaRecibida']; //Si tenemos esto es porque le hemos pulsado en update
+		
+		$_SESSION['accion']="nuevaSolucion";
+		$_SESSION['pruebaParaGuardar']= $prueba; 
+		header("Location: guardaprueba.php"); 
+
+	}else
+	{
+		
+		$_SESSION['accion']="anadeSolucion";
+		$_SESSION['pruebaParaGuardar']= $prueba; 
+		header("Location: guardaprueba.php"); 
 	}
-	$row['nombre']=$_POST['nombre']; 
-	$row['url']=$_POST['url'];
-	$row['descBreve']=$_POST['descripcionbreve'];
-	$row['descExtendida']=$_POST['descripcionextendida'];
-	$row['tipo']=$_POST['tipo'];
-	$row['ayudaFinal']=$_POST['ayudaFinal'];
-	$row['username']=$_SESSION['usuario'];
-	$row['dificultad']=$_POST['dificultad']; 
-	$row['tipo']= $_POST['tipo']; 
-	$prueba=new Prueba($row); 
-	//Metemos el objeto de prueba en una variable de sesión
-	$_SESSION['pruebaParaGuardar']=$prueba; 
-	//Nos vamos a la guardaprueba.php 
-	header("Location: guardaPrueba.php");
-}
-
-if(isset($_POST['delPista'])) //borrar pista
+}else if(isset($_POST['anadePista']))
 {
+	/*
+	Definición: Entramos aquí si pulsamos el botón de añade pista 
+	Guardamos los datos del formulario en un objeto de tipo prueba y lo pasamos al guardaprueba.php para que lo guarde
+	Le tenemos que indicar si es una prueba nueva o una prueba ya creada para editar
+	*/
 	
-	
+	//Creamos el objeto prueba y lo guardamos en una variable de sesión
+	$prueba=preparaPrueba(); 
+	$_SESSION['pruebaParaGuardar']=$prueba;
 
-	$row['id']=$_SESSION['pruebaRecibida']; 
-	$row['nombre']=$_POST['nombre']; 
-	$row['url']=$_POST['url'];
-	$row['descBreve']=$_POST['descripcionbreve'];
-	$row['descExtendida']=$_POST['descripcionextendida'];
-	$row['tipo']=$_POST['tipo'];
-	$row['ayudaFinal']=$_POST['ayudaFinal'];
-	$row['username']=$_SESSION['usuario'];
-	$row['dificultad']=$_POST['dificultad']; 
-	$row['tipo']= $_POST['tipo']; 
-	$prueba=new Prueba($row);
+	//Le indicamos si es una prueba nueva o editar
+	if($_SESSION['accion']=="nueva")
+	{
+		
+		$_SESSION['accion']="nuevaPista";
+		$_SESSION['pruebaParaGuardar']= $prueba; 
+		header("Location: guardaprueba.php"); 
 
-	$listaPistas = BD::listadoPistas(); //cogemos todas las pistas que hay en la base de datos y miramos si alguna de las que nos viene por post coincide con la que queremos borrar
+	}else
+	{
+		
+		$_SESSION['accion']="anadePista";
+		$_SESSION['pruebaParaGuardar']= $prueba; 
+		header("Location: guardaprueba.php"); 
+	}
+
+}else if(isset($_POST['guardarPrueba']))
+{
+	/*
+	Definición: Entramos en este caso cuando pulsamos en el botón de guardar la prueba
+	Guardamos la prueba en una variable de sesión para pasarla al guardaprueba.php 
+	*/
+
+	$prueba=preparaPrueba(); 
+	$_SESSION['pruebaParaGuardar']= $prueba; 
+	header("Location: guardaprueba.php"); 
+}else if(isset($_POST['cancelar']))
+{
+	/*
+	Definición: Entramos en este caso cuando pulsamos el botón de cancelar. 
+	Hay que borrar todas las variables de sesión que usamos en esta página para que no se queden perdidas
+	Cuando las borramos volvemos a la página3.php 
+	*/
+
+	//Borramos las sesiones
+	unset($_SESSION['accion']); 
+	unset($_SESSION['pruebaParaGuardar']); 
+	unset($_SESSION['pag3_to_6']);
+	unset($_SESSION['idpru_3_to_6']);
+	unset($_SESSION['idTemporalPrueba']);
+	//Volvemos a la página3.php 
+	header("Location: pagina3.php"); 
+}else if(isset($_POST['delPista']))
+{
+	//Caso en el que pulsamos el botón de borrar las pistas 
+	/*
+	Definición: Entramos en este caso cuando pulsamos el botón de borrar pista
+		El objetivo de la función es identificar las pistas que hemos seleccionado en el pagina6.tpl que queremos borrar y eliminarlas del registro de la base de datos.
+
+		Para identificar que pistas queremos borrar usaremos un foreach para recorrer todas las pistas que tiene la prueba guardadas en la base de datos y preguntaremos si existe el $_POST que nos llega de la pagina6.tpl 
+
+		El $_POST del pagina6.tpl nos llega con este formato -> $_POST["del".clacveDeLaPista]. 
+
+		una vez que las hemos borrado cogemos de nuevo las pistas de la base de datos para pintar solo las que nos hemos quedado
+
+		También tenemos que recoger las soluciones de la prueba para volver a pintarlas. 
+		Si estamos en borrar pista, la prueba siempre será una ya creada, una prueba nueva no tiene pistas. 
+
+	*/
+
+	$prueba = preparaPrueba(); 
+	$listaPistas = BD::listadoPistas(); 
+	//identificar las pistas que queremos borrar
 	foreach ($listaPistas as $pista ) {
 		$clave="del".$pista->getid(); 
 		 
@@ -318,11 +201,13 @@ if(isset($_POST['delPista'])) //borrar pista
 
 		}
 	}
-	//una vez que borramos las pistas 
 	$hayNuevaPrueba=1; 
 	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
-	$listaPistas=BD::listadoPistasPrueba($prueba->getid()); //volvemos a recuperar las pistas que quedan para esta prueba
-	//las volvemos a pintar si es que quedan
+	$listaPistas=BD::listadoPistasPrueba($prueba->getid());
+	$hayNuevaPrueba=1; 
+	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
+	//Coger las pistas con las que nos hemos quedado para pintarlas
+	$listaPistas=BD::listadoPistasPrueba($prueba->getid());
 	if(isset($listaPistas[0]))
 	{
 		$smarty->assign('hayPistas',1);
@@ -331,15 +216,56 @@ if(isset($_POST['delPista'])) //borrar pista
 		$smarty->assign('hayPistas',0);
 	}
 	$smarty->assign('listaPistas',$listaPistas);
-	//Ahora pasamos a las soluciones
-	$listaSoluciones=$_SESSION['listaSoluciones']; //estas las teníamos en la variable de listaSoluciones
-	$smarty->assign('respuestas',$listaSoluciones); //la pintamos
-	$hayNuevaPrueba=0; //en este punto siempre van a ser una prueba editar o une nueva pero que se ha pulsado al botón añadir solucion, o añadir pista
+	//Recogemos las soluciones de la prueba para pintarlas 
+	$listaSoluciones= BD::listadoRespuestas($_SESSION['pruebaRecibida']);
+	$smarty->assign('respuestas',$listaSoluciones);
+	$hayNuevaPrueba=0; 
 	$smarty->assign('hayNuevaPrueba',$hayNuevaPrueba);
 	$smarty->assign('prueba',$prueba);
 
+
+
 }
 
-$smarty->display('pagina6.tpl');    
+function preparaPrueba()
+{
+
+	/*
+	Definición: Función que crea a partir de las entradas construye un objeto de tipo prueba
+
+	Entradas: 
+		--$_SESSION['pruebaRecibida'] -> El id de la prueba en el caso de editar 
+		--$_POST['nombre'] -> El nombre de la prueba del formulario de pagina6.tpl 
+		--$_POST['url'] -> la url de la prueba del formulario de pagina6.tpl 
+		--$_POST['descBreve'] -> La descripción breve de la prueba del formulario pagina6.tpl 
+		--$_POST['tipo'] -> El tipo de la prueba el formulario de pagina6.tpl 
+		--$_POST['ayudaFinal'] -> La ayuda final del formulari ode pagina6.tpl 
+		--$_SESSION['usuario'] -> El usuario con el que nos hemos logueado en la aplicación 
+
+	Salidas: 
+		--$prueba: Objeto de tipo prueba con los datos de entrad que hemos recibido
+	
+	*/
+	if(isset($_SESSION['pruebaRecibida']))
+	{
+		$row['id']=$_SESSION['pruebaRecibida']; 
+	}
+	$row['nombre']=$_POST['nombre']; 
+	$row['url']=$_POST['url'];
+	$row['descBreve']=$_POST['descripcionbreve'];
+	$row['descExtendida']=$_POST['descripcionextendida'];
+	$row['tipo']=$_POST['tipo'];
+	$row['ayudaFinal']=$_POST['ayudaFinal'];
+	$row['username']=$_SESSION['usuario'];
+	$prueba=new Prueba($row); 
+	return $prueba; 
+}
+
+/*Cuando terminemos de identificar lo que queremos pintar en la pantalla lo pintamos
+
+	--Si es una nueva prueba
+	--Si editamos una prueba
+*/
+$smarty->display('pagina6.tpl'); 
 
 ?>
