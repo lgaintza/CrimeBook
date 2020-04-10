@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-06 19:19:59
+/* Smarty version 3.1.34-dev-7, created on 2020-04-10 11:35:06
   from 'C:\xampp\htdocs\crimebook\Crimebook interfaces\crimeBook\smarty\templates\partida_pag4.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8b64bf80d9d5_74498416',
+  'unifunc' => 'content_5e903dcaf0ffc8_37502574',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '076998ad89ad46b5523cd9ac57771a4d0d8c4c70' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crimebook\\Crimebook interfaces\\crimeBook\\smarty\\templates\\partida_pag4.tpl',
-      1 => 1586106412,
+      1 => 1586274350,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:listaequipos.tpl' => 1,
   ),
 ),false)) {
-function content_5e8b64bf80d9d5_74498416 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e903dcaf0ffc8_37502574 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -127,7 +127,7 @@ y pulse 'Guardar Nueva Partida'
 </div>
 <?php }?>
 <br>
-<?php if (isset($_smarty_tpl->tpl_vars['nombrejuego']->value) && $_smarty_tpl->tpl_vars['nombrejuego']->value !== 'No hay Juego Seleccionado') {?>
+<?php if ((isset($_smarty_tpl->tpl_vars['nombrejuego']->value) && $_smarty_tpl->tpl_vars['nombrejuego']->value !== 'No hay Juego Seleccionado')) {?>
 <div align="center">
     <button <?php if ($_smarty_tpl->tpl_vars['accion_pag4']->value !== null && $_smarty_tpl->tpl_vars['accion_pag4']->value == "crear") {?> disabled="true" <?php }?> class="button" name='partida_bt' value='anadir'><?php if (isset($_smarty_tpl->tpl_vars['textoboton1']->value)) {
 echo $_smarty_tpl->tpl_vars['textoboton1']->value;

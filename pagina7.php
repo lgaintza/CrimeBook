@@ -10,12 +10,21 @@
 else {
   
 
+if(isset($_SESSION['idPartida'])){
 
-   $juegos = BD::obtieneEstadistica();
-   if(isset($_POST['atras'])){
+$juegos = BD::obtieneEstadisticaPartida($_SESSION['idPartida']);
+unset($_SESSION['idPartida']);
+
+}else{
+$juegos = BD::obtieneEstadistica();
+ 
+}
+   
+}
+
+  if(isset($_POST['atras'])){
       header("location:pagina2.php");
    }
-}
    // Y comprobamos que el usuario se haya autentificado
 
    // Cargamos la librería de Smarty
