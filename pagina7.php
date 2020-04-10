@@ -12,11 +12,11 @@ else {
 
 if(isset($_SESSION['idPartida'])){
 
-$juegos = BD::obtieneEstadisticaPartida($_SESSION['idPartida']);
-unset($_SESSION['idPartida']);
+ $juegos = BD::obtieneEstadisticaPartida($_SESSION['idPartida']);
+ unset($_SESSION['idPartida']);
 
 }else{
-$juegos = BD::obtieneEstadistica();
+$juegos = BD::obtieneEstadisticasTotales();
  
 }
    

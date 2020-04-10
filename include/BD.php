@@ -380,31 +380,32 @@ return $sql;
         return $verificado;
     }
     //metodo para sacar las estadisticas en la pantalla 7 de todas las partidas si no hay un id de partida
-    public static function obtieneEstadistica(){
-        $sql = "SELECT DISTINCT equipos.nombre as nombreEquipo, partidas.id as id, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
-        $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id)";
-    
-    
-        $resultado = self::ejecutaConsulta($sql);
-        $estadisticas =array();
-        if($resultado) {
-                // Añadimos un elemento por cada producto obtenido
-                $row = $resultado->fetch();
-                while ($row != null) {
-                    $estadisticas[] = new Estadistica($row);
+         public static function obtieneEstadisticasTotales(){
+            $sql = "SELECT DISTINCT equipos.id as nombreEquipo, equipos.codigo as codigo, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
+            $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id) ";
+            $sql.="WHERE resoluciones.resuelta = 1";
+            $resultado = self::ejecutaConsulta($sql);
+            $estadisticas =array();
+            if($resultado) {
+                    // Añadimos un elemento por cada producto obtenido
                     $row = $resultado->fetch();
-                }
-        }
-            
-            return $estadisticas;    
-        }
+                    while ($row != null) {
+                        $estadisticas[] = new Estadistica($row);
+                        $row = $resultado->fetch();
+                    }
+            }
+                
+                return $estadisticas;    
+            }
+
+
 
 
         //Para mostrar las estadisticas de una partida en concreta que llega de pag 2  a pag7
          public static function obtieneEstadisticaPartida($idPartida){
         $sql = "SELECT DISTINCT equipos.nombre as nombreEquipo, partidas.id as id, partidas.fechaInicio as fechaInicio, partidas.duracion as duracion, pruebas.nombre as nombrePrueba, equipos.tiempo as tiempoResolucion, resoluciones.intentos as intentos";
         $sql.=" FROM partidas INNER JOIN equipos ON (partidas.id = equipos.idPartida) INNER JOIN resoluciones ON (equipos.id = resoluciones.idEquipo) INNER JOIN pruebas ON (resoluciones.idPrueba = pruebas.id)";
-        $sql.="   WHERE partidas.id='" . $idPartida . "'";
+        $sql.="   WHERE id='" . $idPartida . "' AND resoluciones.resuelta = 1";
     
         $resultado = self::ejecutaConsulta($sql);
         $estadisticas =array();

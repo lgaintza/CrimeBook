@@ -2,7 +2,7 @@
 
     class Estadistica {
         protected $nombreEquipo;
-        protected $idJuego;
+        protected $codigo;
         protected $fechaInicio;
         protected $duracion;
         protected $nombrePrueba;
@@ -11,7 +11,7 @@
 
 
         public function getnombrequipo() {return $this->nombreEquipo;}
-        public function getidjuego() {return $this->idJuego;}
+        public function getcodigo() {return $this->codigo;}
         public function getfechainicio() {return $this->fechaInicio;} 
         public function getduracion() {return $this->duracion;}
         public function getnombreprueba() {return $this->nombrePrueba;}
@@ -22,7 +22,7 @@
 
         public function __construct($row) {
             $this->nombreEquipo = $row[0];
-            $this->idJuego = $row[1];
+            $this->codigo = $row[1];
             $this->fechaInicio = $row[2];
             $this->duracion = $row[3];
             $this->nombrePrueba = $row[4];
