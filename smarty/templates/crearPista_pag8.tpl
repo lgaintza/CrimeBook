@@ -39,15 +39,10 @@
             <input type="hidden" name="idPrueba" value='{$idPrueba}'>
             {else}
                                             <select  name="idPrueba">
-                                                                <option selected value="0"> Seleccione una prueba...</option>
-                                                                <option value="400001">400001</option>
-                                                                <option value="400002">400002</option>
-                                                                <option value="400003">400003</option>
-                                                                <option value="400004">400004</option>
-                                                                <option value="400005">400005</option>
-                                                                <option value="400006">400006</option>
-                                                                <option value="400007">400007</option>
-                                                                <option value="400008">400008</option>
+                                              <option selected value="0"> Seleccione una prueba...</option>
+                                             {foreach from=$listapruebas item=prueba}
+                                              <option value="{$prueba->getid()}">{$prueba->getid()}</option>
+                                                                {/foreach}
                                                                 </select>
 
             {/if}

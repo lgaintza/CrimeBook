@@ -20,9 +20,10 @@ $smarty->cache_dir = 'smarty/cache/';
 
 if (isset($_SESSION['idTemporalPrueba'])){
   $smarty->assign('idPrueba', $_SESSION['idTemporalPrueba']);
-  
-
+  unset($_SESSION['idTemporalPrueba']);
 }
+	$smarty->assign('listapruebas', BD::listaPruebas());
+
 if (isset($_POST['guardar'])) {
     $idPrueba = $_POST['idPrueba'];
    
@@ -53,7 +54,6 @@ if (isset($_POST['guardar'])) {
 
     $pista=new Pista($row);
 
- 
 
 BD::creaPista($pista);
 header("location:pagina6.php");

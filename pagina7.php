@@ -11,8 +11,8 @@ else {
   
 
 if(isset($_SESSION['idPartida'])){
-
- $juegos = BD::obtieneEstadisticaPartida($_SESSION['idPartida']);
+$_SESSION['idPartida'] = $idPartida;
+ $juegos = BD::obtieneEstadisticaPartida($idPartida);
  unset($_SESSION['idPartida']);
 
 }else{

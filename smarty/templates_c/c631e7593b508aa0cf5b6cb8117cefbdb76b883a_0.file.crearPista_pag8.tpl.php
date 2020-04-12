@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-06 20:32:26
+/* Smarty version 3.1.34-dev-7, created on 2020-04-12 20:33:21
   from 'C:\xampp\htdocs\crimebook\Crimebook interfaces\crimeBook\smarty\templates\crearPista_pag8.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e8b75bab54af6_75050579',
+  'unifunc' => 'content_5e935ef14f6ee4_46353704',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c631e7593b508aa0cf5b6cb8117cefbdb76b883a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crimebook\\Crimebook interfaces\\crimeBook\\smarty\\templates\\crearPista_pag8.tpl',
-      1 => 1586197939,
+      1 => 1586716341,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e8b75bab54af6_75050579 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e935ef14f6ee4_46353704 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : Aplicación completa CrimeBook -->
@@ -64,15 +64,19 @@ function content_5e8b75bab54af6_75050579 (Smarty_Internal_Template $_smarty_tpl)
 '>
             <?php } else { ?>
                                             <select  name="idPrueba">
-                                                                <option selected value="0"> Seleccione una prueba...</option>
-                                                                <option value="400001">400001</option>
-                                                                <option value="400002">400002</option>
-                                                                <option value="400003">400003</option>
-                                                                <option value="400004">400004</option>
-                                                                <option value="400005">400005</option>
-                                                                <option value="400006">400006</option>
-                                                                <option value="400007">400007</option>
-                                                                <option value="400008">400008</option>
+                                              <option selected value="0"> Seleccione una prueba...</option>
+                                             <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['listapruebas']->value, 'prueba');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
+?>
+                                              <option value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
+"><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getid();?>
+</option>
+                                                                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                                                 </select>
 
             <?php }?>
@@ -100,7 +104,7 @@ function content_5e8b75bab54af6_75050579 (Smarty_Internal_Template $_smarty_tpl)
         </div>
 
          <div class='campo'>
-            <br/><input type='submit' name='volver' value='Volver' />
+            <br/><input type='submit' name='cancelar' value='Cancelar' />
         </div>
     </fieldset>
     </form>
